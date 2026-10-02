@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#153020">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="حروف خواص">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2218%22%20fill%3D%22%23153020%22/%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%20fill%3D%22%23E8996B%22%20font-family%3D%22serif%22%20font-weight%3D%22bold%22%3E%D8%AD%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2218%22%20fill%3D%22%23153020%22/%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-size%3D%2258%22%20text-anchor%3D%22middle%22%20fill%3D%22%23E8996B%22%20font-family%3D%22serif%22%20font-weight%3D%22bold%22%3E%D8%AD%3C/text%3E%3C/svg%3E">
+<title>جدول حروف و ایام</title>
+<link rel="manifest" href="manifest.json">
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js');});}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#153020;--paper-light:#E0F5F0;--ink:#1E3B2C;--ink-soft:#3E6B54;
+    --maroon:#4169E1;--gold:#3C7A4C;--gold-light:#7AB98A;--gold-dark:#1F4A2E;--line:#9FCBA8;
+    --peach-light:#FFD9B3;--peach:#E8996B;--peach-dark:#B8663D;--btn-text:#1E3B2C;
+    --text-on-dark:#D9EDDD;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;overflow-x:hidden;}
+  body{
+    background:linear-gradient(150deg, #0F2417 0%, #1E4A2E 45%, #2F6B41 100%);
+    color:var(--text-on-dark);font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;
+    min-height:100vh;padding:14px 10px 26px;
+    width:100%;max-width:100vw;
+  }
+  .wrap{max-width:600px;margin:0 auto;min-width:0;}
+  header{text-align:center;padding:4px 0 12px;border-bottom:3px double var(--peach-dark);margin-bottom:14px;position:relative;}
+  header h1{
+    font-size:18px;margin:0 0 3px;font-weight:700;
+    background:linear-gradient(90deg, var(--peach-dark) 0%, var(--peach-light) 25%, var(--peach-dark) 50%, var(--peach-light) 75%, var(--peach-dark) 100%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s linear infinite;
+  }
+  @keyframes shimmer{0%{background-position:0% center;}100%{background-position:250% center;}}
+  .live-saat-banner{
+    text-align:center;font-size:1rem;font-weight:800;margin:0 0 14px;padding:12px 10px;
+    background-color:rgba(0,0,0,0.15);border:1px solid var(--peach-dark);border-radius:8px;
+    background-image:linear-gradient(90deg, var(--peach-dark) 0%, var(--peach-light) 25%, var(--peach-dark) 50%, var(--peach-light) 75%, var(--peach-dark) 100%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 6s linear infinite;line-height:1.9;
+  }
+  header p.byline{
+    font-family:'Lora',serif;margin:0;font-size:9px;font-weight:700;letter-spacing:0.5px;
+    background:linear-gradient(90deg, #8a8f98 0%, #f2f4f6 25%, #b8bdc7 50%, #f2f4f6 75%, #8a8f98 100%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s linear infinite;
+  }
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;}
+  .topbar .home-label{
+    font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.05rem;flex:1;
+    text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    background:linear-gradient(90deg, var(--peach-dark), var(--peach-light), var(--peach-dark));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:0.3px;
+  }
+  .menu-btn{
+    flex:0 0 auto;font-size:1.05rem;cursor:pointer;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 55%, var(--peach-dark) 100%);
+    border:1px solid var(--peach-dark);color:var(--btn-text);padding:0;border-radius:50%;
+    text-shadow:0 1px 1px rgba(255,255,255,0.25);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,0.5),inset 0 -2px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  nav.tabs{
+    display:none;position:fixed;inset:0;z-index:600;
+    background:linear-gradient(165deg, #0A1810 0%, #16341F 55%, #204F30 100%);
+    flex-direction:column;padding:64px 0 24px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  nav.tabs.open{display:flex;}
+  nav.tabs button{
+    width:100%;text-align:center;background:transparent;border:none;
+    border-bottom:1px solid rgba(255,217,179,0.18);
+    font-family:'Noto Nastaliq Urdu',serif;font-size:1.08rem;font-weight:800;
+    padding:16px 26px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:background 0.15s ease;
+  }
+  nav.tabs button, nav.tabs button.active{
+    background-image:linear-gradient(90deg, var(--peach-dark) 0%, var(--peach-light) 25%, var(--peach-dark) 50%, var(--peach-light) 75%, var(--peach-dark) 100%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s linear infinite;
+  }
+  nav.tabs button:active{background-color:rgba(255,255,255,0.06);}
+  nav.tabs button.active{
+    border-right:4px solid var(--peach);background-color:rgba(255,255,255,0.05);padding-right:22px;
+  }
+  .menu-close{
+    position:absolute;top:16px;left:18px;background:transparent;
+    border:1.5px solid var(--peach-light);color:var(--peach-light);border-radius:50%;
+    width:36px;height:36px;font-size:1.15rem;line-height:1;cursor:pointer;
+  }
+  .menu-title{position:absolute;top:20px;right:22px;color:var(--peach-light);font-weight:800;font-size:1.05rem;letter-spacing:0.5px;}
+
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .keypad{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:14px;}
+  .letter-btn{
+    aspect-ratio:1/0.9;background:linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 55%, var(--peach-dark) 100%);
+    border:1px solid var(--peach-dark);border-radius:6px;color:var(--btn-text);font-size:1.05rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;text-shadow:0 1px 1px rgba(255,255,255,0.25);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,0.5),inset 0 -2px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  .letter-btn.active{background:linear-gradient(180deg, var(--maroon) 0%, #1a3a8a 100%);color:#fff;}
+
+  .profile-card{background:var(--paper-light);border:1px solid var(--ink);padding:14px;position:relative;display:none;color:var(--ink);}
+  .profile-card::before{content:"";position:absolute;inset:5px;border:1px solid var(--line);pointer-events:none;}
+  .profile-card.show{display:block;}
+  .profile-card .letter-title{text-align:center;font-size:2.2rem;font-weight:700;color:#E67E22;margin-bottom:2px;}
+  .profile-card .value-line{text-align:center;font-family:'Lora',serif;font-size:0.78rem;color:var(--ink-soft);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+
+  .field-row{background:#E0F5F0;border:1px solid var(--line);padding:10px 12px;line-height:2.2;font-size:0.92rem;color:var(--ink);}
+  .field-row .f-item{white-space:nowrap;}
+  .field-row .f-label{font-family:'Lora',serif;font-size:0.7rem;color:var(--gold-dark);font-weight:700;}
+  .field-row .f-value{color:var(--ink);font-weight:700;}
+  .field-row .sep{color:var(--line);margin:0 7px;}
+
+  .huroof-control-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;}
+  .huroof-control-row button{
+    font-size:0.75rem;padding:8px 2px;white-space:nowrap;width:100%;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .field-group-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .field-group{background:#E0F5F0;border:1px solid var(--line);padding:8px 10px;color:var(--ink);}
+  .field-group h5{margin:0 0 6px;font-size:0.8rem;color:var(--maroon);font-weight:700;border-bottom:1px solid var(--line);padding-bottom:4px;}
+  .fg-item{font-family:'Lora',serif;font-size:13px;line-height:1.8;color:var(--ink);}
+  .fg-item b{font-family:'Noto Nastaliq Urdu',serif;color:var(--gold-dark);font-weight:700;}
+
+
+  .placeholder-msg{text-align:center;color:var(--text-on-dark);opacity:0.8;font-family:'Lora',serif;font-size:0.85rem;padding:24px 10px;}
+
+  /* Days table */
+  .days-scroll{overflow-x:hidden;border:1px solid var(--ink);background:var(--paper-light);}
+  table.days-table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:13px;}
+  .ayyam-scroll{overflow-x:auto !important;-webkit-overflow-scrolling:touch;}
+  .ayyam-scroll table.days-table{table-layout:auto;width:max-content;min-width:100%;}
+  .ayyam-scroll table.days-table th, .ayyam-scroll table.days-table td{white-space:nowrap;padding:8px 10px;}
+  table.days-table th, table.days-table td{
+    border:1px solid var(--line);padding:5px 3px;text-align:center;white-space:normal;color:var(--ink);
+    word-break:break-word;overflow-wrap:break-word;background:#EAF8F5;
+  }
+  table.days-table th{background:linear-gradient(180deg, var(--gold-light), var(--gold));color:var(--ink);font-weight:700;}
+  table.days-table td.day-name{font-weight:700;color:var(--maroon);background:#D5F0EA;}
+  table.days-table td.harf-cell{font-weight:700;color:#E67E22;}
+  table.days-table tr:nth-child(even) td{background:#D5F0EA;}
+
+  .note{
+    font-family:'Lora',serif;font-size:0.72rem;color:var(--maroon);font-weight:700;
+    background:#F5FAF3;border:1px solid var(--gold);padding:8px 10px;margin-bottom:12px;line-height:1.6;
+  }
+
+  .sec-title{
+    font-size:0.95rem;margin:14px 0 6px;font-weight:700;
+    background:linear-gradient(90deg, var(--peach-dark) 0%, var(--peach-light) 25%, var(--peach-dark) 50%, var(--peach-light) 75%, var(--peach-dark) 100%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s linear infinite;display:inline-block;
+  }
+  .sitara-block{background:#E0F5F0;border:1px solid var(--line);padding:10px 12px;margin-bottom:10px;color:var(--ink);}
+  .sitara-block h4{margin:0 0 6px;color:var(--maroon);font-size:1.1rem;font-weight:700;}
+  .sitara-block p{margin:0;font-size:0.9rem;line-height:1.9;color:var(--ink);font-weight:600;}
+
+  .zaicha-form{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;min-width:0;}
+  .zaicha-form input{
+    font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;font-size:1.05rem;font-weight:700;
+    padding:10px 12px;border:1px solid var(--ink);background:#E0F5F0;color:var(--ink);direction:rtl;
+    min-width:0;width:100%;
+  }
+  select{
+    font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;font-size:1rem;font-weight:700;
+    padding:10px 12px;border:1px solid var(--ink);background:#E0F5F0;color:var(--ink);direction:rtl;
+    min-width:0;width:100%;
+  }
+  button.action{
+    font-family:'Noto Nastaliq Urdu',serif;font-size:1rem;font-weight:700;cursor:pointer;
+    background:linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 55%, var(--peach-dark) 100%);
+    border:1px solid var(--peach-dark);color:var(--btn-text);padding:10px 16px;text-shadow:0 1px 1px rgba(255,255,255,0.25);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,0.5),inset 0 -2px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  button.action:active{transform:translateY(1px);}
+  table.days-table td.small-txt{white-space:normal;text-align:right;font-size:14px;font-weight:600;line-height:1.8;}
+  table.days-table td.good{color:#1e6b2e;font-weight:700;}
+  table.days-table td.bad{color:#B5651D;font-weight:800;font-size:0.78rem;}
+  #asmaTable th, #asmaTable td{padding:5px 8px;min-width:0;}
+  #asmaTable{min-width:0 !important;width:100%;}
+
+  footer{text-align:center;margin-top:16px;font-size:0.68rem;color:var(--text-on-dark);opacity:0.75;font-family:'Lora',serif;}
+
+  /* ===== TALISMAN / WAFQ (magic square) styles ===== */
+  .tal-breakdown{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;direction:rtl;}
+  .tal-chip{border:1px solid var(--line);background:#E0F5F0;padding:6px 10px;text-align:center;min-width:44px;font-size:1.1rem;color:var(--ink);font-weight:700;}
+  .tal-chip small{display:block;font-family:'Lora',serif;font-size:0.7rem;color:var(--maroon);margin-top:2px;font-weight:700;}
+  .tal-total-box{margin-top:12px;text-align:center;padding:14px;border:2px solid var(--ink);background:#E0F5F0;}
+  .tal-total-box .num{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;color:var(--maroon);display:block;}
+  .tal-total-box .label{font-size:0.9rem;color:var(--ink-soft);}
+  .tal-guides{display:flex;gap:12px;flex-wrap:nowrap;justify-content:center;margin-top:10px;}
+  .tal-guide-block{text-align:center;flex:1;min-width:0;}
+  .tal-guide-block h4{margin:0 0 8px;font-family:'Lora',serif;font-size:0.85rem;color:var(--peach-light);font-weight:700;line-height:1.4;}
+
+  .naqsh-wafq{text-align:center;color:var(--maroon);font-weight:700;}
+
+  .naqsh2-outer{
+    display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto auto;
+    gap:6px;background:#E0F5F0;border:2px solid var(--ink);padding:10px;align-items:center;justify-items:center;
+  }
+  .naqsh2-side{width:100%;display:flex;align-items:center;justify-content:center;}
+  .naqsh2-side input{width:100%;font-size:0.68rem;padding:6px 2px;border:1px solid var(--line);text-align:center;color:var(--ink);}
+
+  .tal-grid{display:grid;gap:2px;background:var(--ink);border:2px solid var(--ink);width:max-content;margin:0 auto;direction:ltr;}
+  .tal-grid.g3{grid-template-columns:repeat(3,58px);}
+  .tal-grid.g4{grid-template-columns:repeat(4,58px);}
+  .tal-grid .cell{background:#E0F5F0;height:58px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:1.25rem;font-weight:700;color:var(--ink);padding:2px;}
+  .tal-grid .cell.const{background:linear-gradient(180deg, var(--peach-light), var(--peach));font-weight:700;color:var(--ink);box-shadow:inset 0 0 0 2px var(--peach-dark);}
+  .tal-grid input{width:100%;height:100%;border:none;text-align:center;font-family:'Lora',serif;font-size:1.25rem;font-weight:700;background:#E0F5F0;color:var(--ink);}
+  .tal-grid input:focus{outline:2px solid var(--maroon);}
+  .tal-verdict{margin-top:14px;text-align:center;padding:10px;font-weight:700;border:1px solid var(--line);}
+  .tal-verdict.good{color:#1e6b2e;border-color:#1e6b2e;background:#f2f7f5;}
+  .tal-verdict.bad{color:var(--maroon);border-color:var(--maroon);background:#eef1fa;}
+  .tal-division-steps{font-family:'Lora',serif;direction:ltr;text-align:left;line-height:1.9;font-size:0.9rem;background:#E0F5F0;border:1px solid var(--line);padding:10px;color:var(--ink);}
+  .moakkil-name-out{font-size:14px;font-weight:700;color:var(--maroon);margin-top:6px;}
+  .tal-lbox{
+    direction:ltr;text-align:left;background:#E0F5F0;border:1px solid var(--line);
+    padding:14px 10px;color:var(--ink);font-family:'Lora',serif;overflow-x:auto;
+  }
+  .tal-lrow{display:flex;align-items:stretch;}
+  .tal-lspacer{flex:0 0 34px;width:34px;text-align:right;padding-right:6px;font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:flex-end;}
+  .tal-lgrid{display:grid;}
+  .tal-lcell{display:flex;align-items:center;justify-content:flex-end;font-size:1.2rem;font-weight:700;height:38px;padding-right:4px;overflow:visible;white-space:nowrap;}
+  .tal-lcell.tal-lsingle{justify-content:center;padding-right:0;}
+  .tal-lq{color:var(--maroon);font-weight:700;}
+  .tal-lsub{color:var(--ink);position:relative;}
+  .tal-lsub::before{content:'−';position:absolute;right:100%;top:50%;transform:translateY(-50%);padding-right:3px;}
+  .tal-lbrought{color:#E67E22;}
+  .tal-lbracket{border-top:3px solid #2196f3;border-left:3px solid #2196f3;padding-top:2px;margin-left:-3px;}
+  .tal-lrule{align-self:center;height:3px;background:#2196f3;margin:2px 0;}
+  .tal-division-steps .step{border-bottom:1px dashed var(--line);padding:4px 0;}
+  .tal-op-row{display:flex;gap:6px;margin-bottom:10px;}
+  .tal-op-row button{flex:1;font-family:'Lora',serif;font-size:1.1rem;padding:10px 0;background:var(--paper-light);border:1px solid var(--ink);cursor:pointer;color:var(--ink);}
+  .tal-op-row button.selected{background:var(--maroon);color:#fff;font-weight:700;}
+  .tal-calc-display{background:#E0F5F0;border:1px solid var(--ink);padding:14px;text-align:left;direction:ltr;font-family:'Lora',serif;font-size:1.6rem;font-weight:700;margin-bottom:12px;min-height:1.6em;word-break:break-all;color:var(--ink);}
+  .tal-num-style-toggle{display:flex;justify-content:center;gap:8px;margin-bottom:10px;font-size:0.85rem;}
+  .tal-num-style-toggle button{font-family:'Lora',serif;padding:5px 12px;border:1px solid var(--ink);background:#E0F5F0;cursor:pointer;color:var(--ink);}
+  .tal-num-style-toggle button.active{background:var(--ink);color:#fff;}
+  .tal-fill-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
+  .tal-fill-controls select{font-family:'Lora',serif;padding:8px 10px;border:1px solid var(--ink);background:#E0F5F0;color:var(--ink);}
+
+  details.scan-details{margin-top:14px;border-top:1px dashed var(--peach-light);padding-top:10px;}
+  details.scan-details summary{cursor:pointer;color:var(--peach-light);font-weight:700;padding:4px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>کرشمہ حضرتِ انسانی، جلوہ جفرِ نجوم</h1>
+    <p class="byline">Made by Haroon Khann</p>
+  </header>
+
+  <div class="topbar">
+    <button class="menu-btn" onclick="openMenu()" title="مینیو" aria-label="مینیو">☰</button>
+    <span class="home-label" id="currentPanelLabel" onclick="goHome()" style="cursor:pointer;">زائچہ ہوم پیدائشی</span>
+  </div>
+
+  <nav class="tabs">
+    <button class="menu-close" onclick="closeMenu()">✕</button>
+    <span class="menu-title">مینیو</span>
+    <button class="tab-btn" data-tab="zaicha">شادی میلاپ (رشتہ مناسبت)</button>
+    <button class="tab-btn active" data-tab="paidaishi">زائچہ ہوم پیدائشی</button>
+    <button class="tab-btn" data-tab="kawakibmansub">منسوباتِ کواکب</button>
+    <button class="tab-btn" data-tab="asarbuyut">آثار البیوت</button>
+    <button class="tab-btn" data-tab="huroof">ابجد حروفی/ملفوظی</button>
+    <button class="tab-btn" data-tab="ayyam">ایامِ ہفتہ</button>
+    <button class="tab-btn" data-tab="anasir">عناصر</button>
+    <button class="tab-btn" data-tab="manazil">منازلِ قمر</button>
+    <button class="tab-btn" data-tab="yaumia">یومیہ عملیات</button>
+    <button class="tab-btn" data-tab="burjhalaat">حالاتِ بروج</button>
+    <button class="tab-btn" data-tab="kawakib">تثلیث، تربیع و قرانات</button>
+    <button class="tab-btn" data-tab="sitarakaam">ستاروں کے کام</button>
+    <button class="tab-btn" data-tab="asma">اسماء الحسنیٰ</button>
+    <button class="tab-btn" data-tab="talehwaqt">طالع وقت</button>
+    <button class="tab-btn" data-tab="talisman">طلسمات و نقش (وفق)</button>
+    <button class="tab-btn" data-tab="moakkil">اسمائے موکلات</button>
+    <button class="tab-btn" data-tab="jafar">قلبِ نحوست بہ سعد جفر</button>
+  </nav>
+
+  <!-- ===== SHADI MILAAP (MARRIAGE COMPATIBILITY) TAB ===== -->
+  <section class="panel" id="panel-zaicha">
+    <div class="zaicha-form">
+      <input type="text" id="zLarkaNaam" placeholder="لڑکے کا نام لکھیں...">
+      <input type="text" id="zLarkaWalid" placeholder="لڑکے کے والد کا نام (اختیاری)">
+      <input type="text" id="zLarkiNaam" placeholder="لڑکی کا نام لکھیں...">
+      <input type="text" id="zLarkiWalid" placeholder="لڑکی کے والد کا نام (اختیاری)">
+      <button class="action" id="zBuildBtn" style="width:100%;margin-top:8px;">میلاپ دیکھیں</button>
+    </div>
+
+    <div class="placeholder-msg" id="zStartMsg">دونوں نام لکھ کر "میلاپ دیکھیں" دبائیں</div>
+
+    <div id="zResult" style="display:none;">
+      <h3 class="sec-title">لڑکا</h3>
+      <div class="field-row" id="zLarkaSummary" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">لڑکی</h3>
+      <div class="field-row" id="zLarkiSummary" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">میلاپ کا نتیجہ</h3>
+      <div class="sitara-block" id="zMilaapVerdict" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">مشترکہ زندگی کیسی رہے گی</h3>
+      <div class="sitara-block" id="zMilaapLife"></div>
+    </div>
+  </section>
+
+  <!-- ===== PAIDAISHI ZAICHA (BIRTH CHART) TAB ===== -->
+  <section class="panel active" id="panel-paidaishi">
+    <div class="zaicha-form">
+      <input type="text" id="pNaam" placeholder="نام (اختیاری)">
+      <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+        <select id="pGender" style="flex:1;">
+          <option value="مرد">مرد</option>
+          <option value="عورت">عورت</option>
+        </select>
+        <select id="pRelation" style="flex:1;">
+          <option value="خود">خود</option>
+          <option value="مریض">مریض</option>
+          <option value="دوست">دوست</option>
+          <option value="بھائی">بھائی</option>
+          <option value="بہن">بہن</option>
+          <option value="والد">والد</option>
+          <option value="والدہ">والدہ</option>
+          <option value="بیوی">بیوی</option>
+          <option value="خاوند">خاوند</option>
+          <option value="بیٹا">بیٹا</option>
+          <option value="بیٹی">بیٹی</option>
+          <option value="دیگر">دیگر</option>
+        </select>
+      </div>
+      <input type="date" id="pDate">
+      <input type="time" id="pTime">
+      <select id="pCity"></select>
+      <div id="pManualLoc" style="display:none;gap:8px;" class="zaicha-form">
+        <input type="number" id="pLat" placeholder="عرض بلد (Latitude)" step="0.01">
+        <input type="number" id="pLon" placeholder="طول بلد (Longitude)" step="0.01">
+      </div>
+      <input type="number" id="pTz" value="5" step="0.5" placeholder="ٹائم زون (پاکستان کیلئے 5)">
+      <button class="action" id="pBuildBtn" style="width:100%;margin-top:8px;">زائچہ بنائیں</button>
+    </div>
+
+    <div class="placeholder-msg" id="pStartMsg">تاریخ، وقت اور مقام درج کر کے "زائچہ بنائیں" دبائیں</div>
+
+    <div id="pResult" style="display:none;">
+      <div class="profile-card show" style="margin-bottom:12px;">
+        <div class="letter-title" id="pAscSign">—</div>
+        <div class="value-line" id="pAscLabel">طالع (Ascendant)</div>
+      </div>
+
+      <h3 class="sec-title">زائچہ (روایتی مربع شکل)</h3>
+      <div class="field-row" style="margin-bottom:10px;">
+        <label style="font-size:0.85rem;display:block;margin-bottom:4px;">تحویلِ خانہ — کس کے نقطہ نظر سے دیکھنا ہے؟</label>
+        <select id="pTurnHouse" style="width:100%;" onchange="onTurnHouseChange()">
+          <option value="1">معمول — خود (پہلا گھر)</option>
+          <option value="3">بھائی بہن (تیسرا گھر)</option>
+          <option value="4">والدین / گھر (چوتھا گھر)</option>
+          <option value="5">اولاد (پانچواں گھر)</option>
+          <option value="7">شریک حیات / شراکت دار / مدِ مقابل (ساتواں گھر)</option>
+          <option value="10">ملازمت / کیریئر / حاکمِ وقت (دسواں گھر)</option>
+          <option value="11">دوست (گیارہواں گھر)</option>
+        </select>
+      </div>
+      <div id="pSquareChart" style="text-align:center;margin-bottom:8px;"></div>
+      <div id="pHouseDetail" class="field-row" style="display:none;margin-bottom:14px;"></div>
+      <div id="pSquareChartTurnedWrap" style="display:none;">
+        <h3 class="sec-title" id="pTurnedChartTitle">تحویل شدہ زائچہ</h3>
+        <div id="pSquareChartTurned" style="text-align:center;margin-bottom:8px;"></div>
+        <div id="pHouseDetailTurned" class="field-row" style="display:none;margin-bottom:14px;"></div>
+      </div>
+
+      <h3 class="sec-title">سیاروں کے مقامات</h3>
+      <div class="days-scroll"><table class="days-table" id="pPlanetsTable"></table></div>
+
+      <h3 class="sec-title">بارہ گھر (Equal House)</h3>
+      <div class="days-scroll"><table class="days-table" id="pHousesTable"></table></div>
+    </div>
+  </section>
+
+  <!-- ===== KAWAKIB MANSOOBAT TAB ===== -->
+  <section class="panel" id="panel-kawakibmansub">
+    <div class="days-scroll"><table class="days-table" id="kawakibMansubTable"></table></div>
+  </section>
+
+  <!-- ===== ASAR-UL-BUYUT TAB ===== -->
+  <section class="panel" id="panel-asarbuyut">
+    <div id="asarKeypad" class="keypad" style="grid-template-columns:repeat(4,1fr);margin-bottom:12px;"></div>
+    <div class="days-scroll"><table class="days-table" id="asarBuyutTable"></table></div>
+  </section>
+
+  <!-- ===== HUROOF TAB ===== -->
+  <section class="panel" id="panel-huroof">
+    <div class="zaicha-form">
+      <input type="text" id="phraseInput" placeholder="یہاں لکھیں یا نیچے کی بورڈ سے حروف دبائیں...">
+    </div>
+    <div class="huroof-control-row">
+      <button type="button" class="action" id="keypadModeToggle">حروفی</button>
+      <button type="button" class="action" id="phraseClearBtn" title="صاف کریں" aria-label="صاف کریں">🧹</button>
+      <button type="button" class="action" id="phraseSpaceBtn">اسپیس</button>
+      <button type="button" class="action" id="phraseCalcBtn">تفصیل</button>
+    </div>
+    <div class="keypad" id="keypad"></div>
+
+    <div id="phraseEcho" class="moakkil-name-out" style="display:none;"></div>
+    <div class="tal-breakdown" id="phraseBreakdown"></div>
+    <div id="phraseWordTotals" style="margin-top:10px;"></div>
+    <div class="tal-total-box" id="phraseTotalBox" style="display:none;">
+      <span class="num" id="phraseTotal">0</span>
+      <span class="label" id="phraseTotalLabel">مجموعی عدد</span>
+    </div>
+
+    <div class="profile-card" id="profileCard">
+      <div class="letter-title" id="pLetter">ب</div>
+      <div class="value-line" id="pMeta">حرف عدد: —</div>
+      <div class="field-group-grid" id="pFields"></div>
+    </div>
+  </section>
+
+  <!-- ===== AYYAM TAB ===== -->
+  <section class="panel" id="panel-ayyam">
+    <div class="days-scroll ayyam-scroll"><table class="days-table" id="daysTable"></table></div>
+  </section>
+
+  <!-- ===== ANASIR (ELEMENTS) TAB ===== -->
+  <section class="panel" id="panel-anasir">
+    <h3 class="sec-title">تقسیمِ چار عناصر — نمونہ اول (بطریقِ بروج)</h3>
+    <div class="days-scroll"><table class="days-table" id="anasirTable1"></table></div>
+    <h3 class="sec-title">نقشہ تقسیم ابجدیہ — نمونہ دوم (ترتیب وار)</h3>
+    <div class="days-scroll"><table class="days-table" id="anasirTable2"></table></div>
+  </section>
+
+  <!-- ===== MANAZIL QAMAR TAB ===== -->
+  <section class="panel" id="panel-manazil">
+    <div class="days-scroll"><table class="days-table" id="manazilTable"></table></div>
+  </section>
+
+  <!-- ===== YAUMIA AMLIYAT (PLANETARY HOURS) TAB ===== -->
+  <section class="panel" id="panel-yaumia">
+    <div class="live-saat-banner" id="liveSaatBanner">لائیو ساعت لوڈ ہو رہی ہے…</div>
+    <div class="zaicha-form">
+      <input type="date" id="yDate">
+      <select id="yCity"></select>
+      <div id="yManualLoc" style="display:none;gap:8px;" class="zaicha-form">
+        <input type="number" id="yLat" placeholder="عرض بلد" step="0.01">
+        <input type="number" id="yLon" placeholder="طول بلد" step="0.01">
+      </div>
+      <input type="number" id="yTz" value="5" step="0.5" placeholder="ٹائم زون">
+      <select id="yPurpose">
+        <option value="">— عمل کا مقصد منتخب کریں (اختیاری) —</option>
+        <option value="زہرہ">نکاح / شادی / محبت کے عمل</option>
+        <option value="مشتری">مال، دولت اور برکت کے عمل</option>
+        <option value="شمس">عزت، اقتدار اور بلندیِ مرتبہ کے عمل</option>
+        <option value="مریخ">دشمن پر غلبہ اور مقابلے کے عمل</option>
+        <option value="عطارد">تعلیم، تجارت اور ذہانت کے عمل</option>
+        <option value="قمر">صحت، سکون اور حاجت روائی کے عمل</option>
+        <option value="زحل">صبر، حفاظت اور سخت عملیات</option>
+      </select>
+      <button class="action" id="yBuildBtn" style="width:100%;margin-top:8px;">ساعتیں نکالیں</button>
+    </div>
+    <div id="ySunTimes" class="value-line" style="text-align:center;margin-bottom:6px;"></div>
+    <div id="yNowStatus" class="note" style="display:none;"></div>
+    <div class="days-scroll"><table class="days-table" id="yaumiaTable"></table></div>
+
+    <h3 class="sec-title">قمر کی موجودہ گردش — کس برج میں کب رہے گا</h3>
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+      <select id="mtBurj" style="flex:1;"></select>
+      <button class="action" id="mtBtn">معلوم کریں</button>
+    </div>
+    <div class="field-row" id="mtResult" style="margin-top:10px;"></div>
+  </section>
+
+  <!-- ===== BURJ HALAAT TAB ===== -->
+  <section class="panel" id="panel-burjhalaat">
+    <div class="days-scroll"><table class="days-table" id="burjHalaatTable"></table></div>
+
+    <h3 class="sec-title">سبعہ سیارگان کا شرف — تفصیل</h3>
+    <div class="days-scroll"><table class="days-table" id="sharafTable"></table></div>
+  </section>
+
+  <!-- ===== KAWAKIB TASLEETH/TARBEE + QIRANAT TAB (merged) ===== -->
+  <section class="panel" id="panel-kawakib">
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;flex-wrap:wrap;">
+      <select id="tqPlanetA" style="flex:1;min-width:100px;"></select>
+      <select id="tqPlanetB" style="flex:1;min-width:100px;"></select>
+    </div>
+    <select id="tqAspect" style="width:100%;margin-top:8px;">
+      <option value="0">قِران (اقتران) — 0°</option>
+      <option value="60">تسدیس — 60°</option>
+      <option value="90">تربیع — 90°</option>
+      <option value="120">تثلیث — 120°</option>
+      <option value="180">مقابلہ — 180°</option>
+    </select>
+    <button class="action" id="tqBtn" style="width:100%;margin-top:8px;">یہ تعلق کب بنے گا؟ تلاش کریں</button>
+    <div class="field-row" id="tqResult" style="margin-top:10px;display:none;"></div>
+
+    <div class="days-scroll"><table class="days-table" id="kawakibTable"></table></div>
+    <h3 class="sec-title">قرانات (کواکب کے اجتماع کا مقصد)</h3>
+    <div class="days-scroll"><table class="days-table" id="qiranatTable"></table></div>
+  </section>
+
+  <!-- ===== SITARA KE KAAM TAB ===== -->
+  <section class="panel" id="panel-sitarakaam">
+    <div id="sitaraKaamBox"></div>
+  </section>
+
+  <!-- ===== ASMA UL HUSNA TAB ===== -->
+  <section class="panel" id="panel-asma">
+    <div class="days-scroll"><table class="days-table" id="asmaTable"></table></div>
+  </section>
+
+  <!-- ===== TALEH WAQT TAB ===== -->
+  <section class="panel" id="panel-talehwaqt">
+    <div class="days-scroll"><table class="days-table" id="talehWaqtTable"></table></div>
+    <div id="talehWaqtNote" class="note" style="margin-top:12px;"></div>
+  </section>
+
+  <!-- ===== TALISMAN / WAFQ (MAGIC SQUARE) TAB ===== -->
+  <section class="panel" id="panel-talisman">
+    <h3 class="sec-title">لفظ کا عددی حساب (ابجد)</h3>
+    <div class="zaicha-form">
+      <input type="text" id="talAbjadInput" placeholder="یہاں لفظ یا نام لکھیں...">
+      <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+        <button class="action" id="talAbjadCalcBtn" style="flex:1;">حساب کریں</button>
+        <button class="action" id="talAbjadClearBtn" title="صاف کریں" aria-label="صاف کریں" style="width:38px;height:38px;padding:0;font-size:1.1rem;flex:0 0 auto;">🧹</button>
+      </div>
+    </div>
+    <div class="tal-breakdown" id="talAbjadBreakdown"></div>
+    <div id="talWordTotals" style="margin-top:10px;"></div>
+    <div class="tal-total-box" id="talAbjadTotalBox" style="display:none;">
+      <span class="num" id="talAbjadTotal">0</span>
+      <span class="label" id="talAbjadTotalLabel">مجموعی عدد (ابجدی قدر)</span>
+    </div>
+    <details class="scan-details">
+      <summary>حروفِ ابجد کی جدول دیکھیں</summary>
+      <div class="days-scroll" style="margin-top:8px;"><table class="days-table" id="talRefTable"></table></div>
+    </details>
+
+    <h3 class="sec-title">نقش بنائیں — نام کے عدد سے (فارمولہ)</h3>
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+      <input type="number" id="talFormulaTotal" placeholder="مثلاً 34" style="flex:1;">
+      <select id="talFormulaSize" style="flex:1;">
+        <option value="3">3×3</option>
+        <option value="4">4×4</option>
+      </select>
+    </div>
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+      <button class="action" id="talFormulaGenBtn" style="flex:1;font-size:0.85rem;padding:8px 10px;">نقش بنائیں</button>
+      <button class="action" id="talFormulaUseAbjadBtn" style="flex:1;font-size:0.85rem;padding:8px 10px;">ابجد ٹوٹل سے</button>
+    </div>
+    <details class="scan-details" id="talFormulaStepsWrap" style="display:none;">
+      <summary>حساب کے مراحل دیکھیں</summary>
+      <div class="tal-division-steps" id="talFormulaSteps" style="margin-top:10px;"></div>
+    </details>
+    <div class="tal-guide-block" id="talFormulaGridWrap" style="display:none;margin-top:16px;">
+      <h4 id="talFormulaGridTitle"></h4>
+      <div class="tal-grid g3" id="talFormulaGrid"></div>
+      <div class="tal-verdict" id="talFormulaVerdict"></div>
+    </div>
+
+    <h3 class="sec-title">اپنا نقش بنائیں (Fill)</h3>
+    <div class="tal-fill-controls">
+      <label for="talFillSize">سائز:</label>
+      <select id="talFillSize">
+        <option value="3">3×3</option>
+        <option value="4">4×4</option>
+      </select>
+      <button class="action" id="talFillClearBtn" title="خانے صاف کریں" aria-label="خانے صاف کریں" style="width:38px;height:38px;padding:0;font-size:1.1rem;flex:0 0 auto;">🧹</button>
+    </div>
+    <div class="tal-grid g3" id="talFillGrid" style="margin-bottom:14px;"></div>
+    <button class="action" id="talFillCheckBtn" style="width:100%;">جانچیں</button>
+    <div class="tal-verdict" id="talFillVerdict" style="display:none;"></div>
+
+    <h3 class="sec-title">عددی کیلکولیٹر</h3>
+    <div class="tal-calc-display" id="talCalcDisplay">0</div>
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+      <input type="number" id="talNumA" placeholder="پہلا عدد" style="flex:1;">
+      <input type="number" id="talNumB" placeholder="دوسرا عدد" style="flex:1;">
+    </div>
+    <div class="tal-op-row">
+      <button data-op="+">+</button>
+      <button data-op="-">−</button>
+      <button data-op="*">×</button>
+      <button data-op="/">÷</button>
+    </div>
+    <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+      <button class="action" id="talCalcRunBtn" style="flex:1;">نتیجہ نکالیں</button>
+      <button class="action" id="talCalcClearBtn" title="صاف کریں" aria-label="صاف کریں" style="width:38px;height:38px;padding:0;font-size:1.1rem;flex:0 0 auto;">🧹</button>
+    </div>
+    <div id="talCalcResultBlock" style="display:none;margin-top:10px;">
+      <div class="tal-total-box" style="margin-top:0;">
+        <span class="num" id="talCalcResult">0</span>
+        <span class="label" id="talCalcResultLabel">نتیجہ</span>
+      </div>
+      <div id="talDivisionMethod"></div>
+    </div>
+  </section>
+
+  <!-- ===== MOAKKIL BUILDER TAB ===== -->
+  <section class="panel" id="panel-moakkil">
+    <div class="zaicha-form">
+      <input type="text" id="moakkilNaam" placeholder="نام لکھیں...">
+      <button class="action" id="moakkilBtn" style="width:100%;">موکل بنائیں</button>
+    </div>
+    <div id="moakkilResult" style="display:none;">
+      <h3 class="sec-title">حرفی موکل</h3>
+      <div class="field-row" id="moakkilAbjadBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">موکل ملفوظی</h3>
+      <div class="field-row" id="moakkilMalfooziBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">موکل علوی</h3>
+      <div class="field-row" id="moakkilUlviBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">موکل سفلی</h3>
+      <div class="field-row" id="moakkilSufliBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">اعوان</h3>
+      <div class="field-row" id="moakkilAwanBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title">اسمائے جن</h3>
+      <div class="field-row" id="moakkilJinnBox"></div>
+    </div>
+  </section>
+
+  <!-- ===== JAFAR TABDEEL-E-ASAR TAB ===== -->
+  <section class="panel" id="panel-jafar">
+    <div class="zaicha-form">
+      <input type="text" id="jafarTalib" placeholder="طالب/سائل کا نام">
+      <input type="text" id="jafarWalda" placeholder="والدہ کا نام">
+      <div class="zaicha-form" style="flex-direction:row;gap:8px;">
+        <select id="jafarCurrentStar" style="flex:1;"></select>
+        <select id="jafarTargetStar" style="flex:1;"></select>
+      </div>
+      <select id="jafarSize" style="width:100%;">
+        <option value="3">3×3 نقش</option>
+        <option value="4">4×4 نقش</option>
+      </select>
+      <button class="action" id="jafarCalcBtn" style="width:100%;">حساب کریں اور نقش بنائیں</button>
+    </div>
+
+    <div id="jafarResult" style="display:none;">
+      <h3 class="sec-title">حساب</h3>
+      <div class="field-row" id="jafarSummaryBox" style="margin-bottom:14px;"></div>
+
+      <h3 class="sec-title" id="jafarNaqshTitle">نقش (چالِ غزال)</h3>
+      <div class="naqsh2-outer" id="jafarNaqshOuter3" style="grid-template-columns:auto 1fr auto;">
+        <div></div><div style="text-align:center;font-weight:700;padding:4px;color:#C9A227;">بسم اللہ الرحمن الرحیم</div><div></div>
+        <div class="naqsh2-side" style="writing-mode:vertical-rl;font-weight:700;color:#E67E22;" id="jafarMokal1"></div>
+        <div class="tal-grid g3" id="jafarGrid"></div>
+        <div class="naqsh2-side" style="writing-mode:vertical-rl;font-weight:700;color:#E67E22;" id="jafarMokal2"></div>
+      </div>
+      <div class="naqsh2-outer" id="jafarNaqshOuter4" style="grid-template-columns:auto 1fr auto;display:none;">
+        <div></div><div style="text-align:center;font-weight:700;padding:4px;color:#C9A227;">بسم اللہ الرحمن الرحیم</div><div></div>
+        <div class="naqsh2-side" style="writing-mode:vertical-rl;font-weight:700;color:#E67E22;" id="jafarMokal1b"></div>
+        <div class="tal-grid g4" id="jafarGrid4"></div>
+        <div class="naqsh2-side" style="writing-mode:vertical-rl;font-weight:700;color:#E67E22;" id="jafarMokal2b"></div>
+      </div>
+      <div class="note" id="jafarAsarText" style="margin-top:10px;"></div>
+
+      <h3 class="sec-title">وظیفہ</h3>
+      <div class="field-row" id="jafarWazifaBox" style="margin-bottom:14px;"></div>
+
+      <details class="scan-details">
+        <summary>تفصیل — یہ نقش اور موکل کیسے بنے؟</summary>
+        <div class="tal-division-steps" id="jafarStepsBox" style="margin-top:10px;"></div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ================= MOAKKIL BUILDER ================= */
+const moakkilUnits = {1:'ا',2:'ب',3:'ج',4:'د',5:'ه',6:'و',7:'ز',8:'ح',9:'ط'};
+const moakkilTens = {1:'ی',2:'ک',3:'ل',4:'م',5:'ن',6:'س',7:'ع',8:'ف',9:'ص'};
+const moakkilHundreds = {1:'ق',2:'ر',3:'ش',4:'ت',5:'ث',6:'خ',7:'ذ',8:'ض',9:'ظ'};
+
+/* ================= JAFAR TABDEEL-E-ASAR ================= */
+const jafarAbjadMap = {'ا':1,'ب':2,'ج':3,'د':4,'ہ':5,'ه':5,'و':6,'ز':7,'ح':8,'ط':9,'ی':10,'ک':20,'ل':30,'م':40,'ن':50,'س':60,'ع':70,'ف':80,'ص':90,'ق':100,'ر':200,'ش':300,'ت':400,'ث':500,'خ':600,'ذ':700,'ض':800,'ظ':900,'غ':1000,'آ':1,'ء':1,'ة':5,'ٹ':2,'ڈ':4,'ڑ':200,'پ':2,'چ':3,'ژ':7,'گ':20};
+const jafarStarsData = [
+  { id:'zuhal', name:'زحل (Saturn)', abjad:600, wazifa:'یا فتاح یا باسط' },
+  { id:'mushtari', name:'مشتری (Jupiter)', abjad:500, wazifa:'یا رزاق یا غنی' },
+  { id:'mareekh', name:'مریخ (Mars)', abjad:700, wazifa:'یا سلام یا مومن' },
+  { id:'shams', name:'شمس (Sun)', abjad:900, wazifa:'یا عزیز یا قدوس' },
+  { id:'zohra', name:'زہرہ (Venus)', abjad:800, wazifa:'یا ودود یا لطیف' },
+  { id:'atared', name:'عطارد (Mercury)', abjad:1000, wazifa:'یا علیم یا حکیم' },
+  { id:'qamar', name:'قمر (Moon)', abjad:300, wazifa:'یا رحمن یا رحیم' }
+];
+(function(){
+  const cS = document.getElementById('jafarCurrentStar'), tS = document.getElementById('jafarTargetStar');
+  jafarStarsData.forEach(s => { cS.options.add(new Option(s.name, s.id)); tS.options.add(new Option(s.name, s.id)); });
+  cS.value = 'zuhal'; tS.value = 'mushtari';
+})();
+function jafarAbjadValue(text){
+  let total = 0;
+  for(const ch of normalizeUrdu(text)){ if(jafarAbjadMap[ch]) total += jafarAbjadMap[ch]; }
+  return total;
+}
+function jafarGenerateMokal(num, isSufli){
+  let n = num, letters = '';
+  while(n >= 1000){ letters += 'غ'; n -= 1000; }
+  const hundreds = [[900,'ظ'],[800,'ض'],[700,'ذ'],[600,'خ'],[500,'ث'],[400,'ت'],[300,'ش'],[200,'ر'],[100,'ق']];
+  for(const [v,c] of hundreds){ if(n >= v){ letters += c; n -= v; break; } }
+  const tens = [[90,'ص'],[80,'ف'],[70,'ع'],[60,'س'],[50,'ن'],[40,'م'],[30,'ل'],[20,'ک'],[10,'ی']];
+  for(const [v,c] of tens){ if(n >= v){ letters += c; n -= v; break; } }
+  const units = [[9,'ط'],[8,'ح'],[7,'ز'],[6,'و'],[5,'ہ'],[4,'د'],[3,'ج'],[2,'ب'],[1,'ا']];
+  for(const [v,c] of units){ if(n >= v){ letters += c; n -= v; break; } }
+  return isSufli ? 'یا ' + letters + 'طیشُ' : 'یا ' + letters + 'ائیلُ';
+}
+function jafarLetterChips(text){
+  return [...text].filter(ch => ch !== ' ' && jafarAbjadMap[ch] !== undefined)
+    .map(ch => `${ch}(${jafarAbjadMap[ch]})`).join(' + ');
+}
+function jafarMokalSteps(num, label, suffix){
+  let n = num, parts = [];
+  while(n >= 1000){ parts.push('غ=1000'); n -= 1000; }
+  const hundreds = [[900,'ظ'],[800,'ض'],[700,'ذ'],[600,'خ'],[500,'ث'],[400,'ت'],[300,'ش'],[200,'ر'],[100,'ق']];
+  for(const [v,c] of hundreds){ if(n >= v){ parts.push(`${c}=${v}`); n -= v; break; } }
+  const tens = [[90,'ص'],[80,'ف'],[70,'ع'],[60,'س'],[50,'ن'],[40,'م'],[30,'ل'],[20,'ک'],[10,'ی']];
+  for(const [v,c] of tens){ if(n >= v){ parts.push(`${c}=${v}`); n -= v; break; } }
+  const units = [[9,'ط'],[8,'ح'],[7,'ز'],[6,'و'],[5,'ہ'],[4,'د'],[3,'ج'],[2,'ب'],[1,'ا']];
+  for(const [v,c] of units){ if(n >= v){ parts.push(`${c}=${v}`); n -= v; break; } }
+  const letters = parts.map(p => p.split('=')[0]).join('');
+  return `<div class="step"><b>${label}:</b> عدد کو سینکڑہ/دہائی/اکائی میں توڑا (${parts.join(' + ')}) → حروف "${letters}" ملے → آگے "${suffix}" لگایا → <b>${letters}${suffix}</b></div>`;
+}
+document.getElementById('jafarCalcBtn').addEventListener('click', () => {
+  const talib = normalizeUrdu(document.getElementById('jafarTalib').value.trim());
+  const walda = normalizeUrdu(document.getElementById('jafarWalda').value.trim());
+  if(!talib || !walda){ alert('براہِ کرم دونوں نام درج کریں۔'); return; }
+
+  const size = parseInt(document.getElementById('jafarSize').value, 10);
+  const tAbjad = jafarAbjadValue(talib);
+  const wAbjad = jafarAbjadValue(walda);
+  const curStar = jafarStarsData.find(s => s.id === document.getElementById('jafarCurrentStar').value);
+  const tarStar = jafarStarsData.find(s => s.id === document.getElementById('jafarTargetStar').value);
+
+  let finalNumber = (tAbjad + wAbjad + tarStar.abjad) - Math.floor(curStar.abjad / 2);
+  const wasAdjusted = finalNumber < 15;
+  if(wasAdjusted) finalNumber += 1200;
+
+  document.getElementById('jafarSummaryBox').innerHTML =
+    `<span class="f-item"><span class="f-label">نامِ طالب کے اعداد:</span> <span class="f-value">${tAbjad}</span></span><span class="sep">|</span>` +
+    `<span class="f-item"><span class="f-label">نامِ والدہ کے اعداد:</span> <span class="f-value">${wAbjad}</span></span><span class="sep">|</span>` +
+    `<span class="f-item"><span class="f-label">کل حاصل عدد:</span> <span class="f-value">${finalNumber}</span></span>`;
+
+  let stepsHTML = '';
+  stepsHTML += `<div class="step"><b>نامِ طالب کے حروف:</b> ${jafarLetterChips(talib)} = ${tAbjad}</div>`;
+  stepsHTML += `<div class="step"><b>نامِ والدہ کے حروف:</b> ${jafarLetterChips(walda)} = ${wAbjad}</div>`;
+  stepsHTML += `<div class="step"><b>مطلوبہ ستارہ (${tarStar.name}) کا عدد:</b> ${tarStar.abjad}</div>`;
+  stepsHTML += `<div class="step"><b>موجودہ ستارہ (${curStar.name}) کا نصف عدد:</b> ${curStar.abjad} ÷ 2 = ${Math.floor(curStar.abjad/2)}</div>`;
+  stepsHTML += `<div class="step"><b>حساب:</b> ${tAbjad} + ${wAbjad} + ${tarStar.abjad} − ${Math.floor(curStar.abjad/2)} = ${finalNumber - (wasAdjusted?1200:0)}</div>`;
+  if(wasAdjusted){
+    stepsHTML += `<div class="step">حاصل عدد 15 سے کم تھا، اس لیے 1200 جمع کیا گیا → <b>${finalNumber}</b></div>`;
+  }
+
+  let gridEl, mokal1El, mokal2El;
+  if(size === 3){
+    document.getElementById('jafarNaqshOuter3').style.display = 'grid';
+    document.getElementById('jafarNaqshOuter4').style.display = 'none';
+    document.getElementById('jafarNaqshTitle').textContent = 'نقش (چالِ غزال — 3×3)';
+
+    const entry = Math.floor((finalNumber - 12) / 3);
+    const remainder = (finalNumber - 12) % 3;
+    const n = [];
+    for(let i=1;i<=9;i++){ n[i] = entry + (i - 1); }
+    if(remainder === 1){ n[7]+=1; n[8]+=1; n[9]+=1; }
+    else if(remainder === 2){ n[4]+=1; n[5]+=1; n[6]+=1; n[7]+=1; n[8]+=1; n[9]+=1; }
+
+    stepsHTML += `<div class="step"><b>نقش کا حساب (چالِ غزال):</b> (${finalNumber} − 12) ÷ 3 = ${entry}، باقی = ${remainder}</div>`;
+    stepsHTML += `<div class="step">${entry} سے شروع ہو کر 9 خانوں میں پے در پے چڑھایا گیا` + (remainder ? `، باقی (${remainder}) کی وجہ سے آخری چند خانے 1 زیادہ رکھے گئے۔` : `، باقی صفر ہونے کی وجہ سے کوئی تبدیلی نہیں کی گئی۔`) + `</div>`;
+
+    const order = [2,9,4, 7,5,3, 6,1,8];
+    gridEl = document.getElementById('jafarGrid');
+    gridEl.innerHTML = '';
+    order.forEach(idx => {
+      const c = document.createElement('div');
+      c.className = 'cell';
+      c.textContent = n[idx];
+      gridEl.appendChild(c);
+    });
+    mokal1El = document.getElementById('jafarMokal1');
+    mokal2El = document.getElementById('jafarMokal2');
+  } else {
+    document.getElementById('jafarNaqshOuter3').style.display = 'none';
+    document.getElementById('jafarNaqshOuter4').style.display = 'grid';
+    document.getElementById('jafarNaqshTitle').textContent = 'نقش (فارمولہ — 4×4)';
+
+    const r = talGenerateFormulaWafq(finalNumber, 4);
+    stepsHTML += `<div class="step"><b>نقش کا حساب (4×4):</b> ${finalNumber} − ${r.subtractConst} = ${r.diff}؛ ${r.diff} ÷ 4 = ${r.quotient}` + (r.remainder ? `، کسر = ${r.remainder}` : `، بلا کسر`) + `</div>`;
+
+    gridEl = document.getElementById('jafarGrid4');
+    gridEl.className = 'tal-grid g4';
+    gridEl.innerHTML = '';
+    r.values.forEach((v,i) => {
+      const c = document.createElement('div');
+      c.className = 'cell' + (i === r.correctionCellIndex ? ' const' : '');
+      c.textContent = v;
+      gridEl.appendChild(c);
+    });
+    mokal1El = document.getElementById('jafarMokal1b');
+    mokal2El = document.getElementById('jafarMokal2b');
+  }
+
+  stepsHTML += jafarMokalSteps(finalNumber, 'علوی موکل', 'ائیلُ');
+  stepsHTML += jafarMokalSteps(finalNumber, 'سفلی موکل', 'طیشُ');
+  stepsHTML += `<div class="step"><b>اسمائے الٰہی کا تعلق:</b> ہر ستارے کے ساتھ اللہ تعالیٰ کے دو مخصوص اسمائے حسنیٰ جوڑے گئے ہیں (مثلاً ${tarStar.name} کے لیے "${tarStar.wazifa}") — یہی اسمِ الٰہی وظیفے میں پڑھا جاتا ہے، نقش کے اعداد میں نہیں بلکہ الگ سے وظیفے کے طور پر۔</div>`;
+
+  mokal1El.textContent = jafarGenerateMokal(finalNumber, false);
+  mokal2El.textContent = jafarGenerateMokal(finalNumber, true);
+  document.getElementById('jafarAsarText').textContent = `بحقِ تبدیلِ اثر، سائل ${talib} بن ${walda} کو ${curStar.name} کے اثر سے نکال کر ${tarStar.name} میں متبدل فرما۔`;
+  document.getElementById('jafarWazifaBox').innerHTML =
+    `<span class="f-item"><span class="f-label">اسمائے الٰہی برائے تلاوت:</span> <span class="f-value">${tarStar.wazifa}</span></span><span class="sep">|</span>` +
+    `<span class="f-item"><span class="f-label">روزانہ تعدادِ پڑھائی:</span> <span class="f-value">${Math.floor(finalNumber / 2) + 11} مرتبہ</span></span>`;
+  document.getElementById('jafarStepsBox').innerHTML = stepsHTML;
+
+  document.getElementById('jafarResult').style.display = 'block';
+});
+
+function moakkilDecompose(n){
+  if(n >= 1000) return null; // rule for 1000+ not implemented (unclear from source)
+  const units = n % 10;
+  const tens = Math.floor(n/10) % 10;
+  const hundreds = Math.floor(n/100) % 10;
+  const letters = [];
+  if(units) letters.push(moakkilUnits[units]);
+  if(tens) letters.push(moakkilTens[tens]);
+  if(hundreds) letters.push(moakkilHundreds[hundreds]);
+  return letters;
+}
+
+function moakkilNameFromTotal(total){
+  const letters = moakkilDecompose(total);
+  if(!letters){
+    return { warn: true, msg: `عدد (${total}) 1000 یا اس سے زیادہ ہے — اس کے لیے کتاب میں خاص قاعدہ ہے جو ابھی واضح نہیں، براہِ کرم وہ صفحہ صاف تصویر میں بھیجیں۔` };
+  }
+  if(letters.length === 0){
+    return { warn: true, msg: 'موکل بنانے کے لیے کوئی عدد نہیں ملا۔' };
+  }
+  const mansoob = letters.join('') + 'ائیل';
+  const maqloob = letters.slice().reverse().join('') + 'ائیل';
+  return { warn: false, letters, mansoob, maqloob };
+}
+
+function moakkilBoxHTML(total, label){
+  const r = moakkilNameFromTotal(total);
+  if(r.warn){
+    return `<div class="note">${r.msg}</div>`;
+  }
+  return `<div class="moakkil-name-out">عدد: ${total}</div><div class="moakkil-name-out">منسوب: ${r.mansoob}</div><div class="moakkil-name-out">مقلوب: ${r.maqloob}</div>`;
+}
+
+function moakkilSuffixName(total, subtract, suffix, label){
+  const canSubtract = total > subtract;
+  const reduced = canSubtract ? total - subtract : total;
+  const letters = moakkilDecompose(reduced);
+  if(!letters){
+    return { warn: true, html: `<div class="note">حاصل عدد (${reduced}) 1000 یا اس سے زیادہ ہے — اس کے لیے کتاب میں خاص قاعدہ ہے جو ابھی واضح نہیں۔</div>` };
+  }
+  const name = letters.join('') + suffix;
+  const html = `<div class="moakkil-name-out">عدد: ${total}</div><div class="moakkil-name-out">${name}</div>`;
+  return { warn: false, html };
+}
+
+document.getElementById('moakkilBtn').addEventListener('click', () => {
+  const naam = normalizeUrdu(document.getElementById('moakkilNaam').value.trim());
+  if(!naam){ alert('پہلے نام لکھیں۔'); return; }
+  const chars = [...naam].filter(ch => ch !== ' ' && huroofData[ch]);
+  if(chars.length === 0){ alert('اس نام میں کوئی معروف حرف نہیں ملا۔'); return; }
+
+  const abjadTotal = chars.reduce((s,ch) => s + huroofData[ch].val, 0);
+  const malfooziTotal = chars.reduce((s,ch) => s + (huroofData[ch].malfoozi || 0), 0);
+
+  document.getElementById('moakkilResult').style.display = 'block';
+  document.getElementById('moakkilAbjadBox').innerHTML = moakkilBoxHTML(abjadTotal, 'نام کا عدد (ابجد)');
+  document.getElementById('moakkilMalfooziBox').innerHTML = moakkilBoxHTML(malfooziTotal, 'نام کا عدد (ابجد ملفوظی)');
+
+  document.getElementById('moakkilUlviBox').innerHTML = moakkilSuffixName(abjadTotal, 41, 'ائیل', 'موکل علوی').html;
+  document.getElementById('moakkilSufliBox').innerHTML = moakkilSuffixName(abjadTotal, 319, 'طیش', 'موکل سفلی').html;
+  document.getElementById('moakkilAwanBox').innerHTML = moakkilSuffixName(abjadTotal, 316, 'یوش', 'اعوان').html;
+  document.getElementById('moakkilJinnBox').innerHTML = moakkilSuffixName(abjadTotal, 311, 'ہوش', 'اسمائے جن').html;
+});
+
+/* ================= HUROOF DATA ================= */
+/* Columns: حرف عدد, اسم, عدد اسم, خاصیت, تاثیر, طبع, موکل, جن, برج, ستارہ, منزل, بخور */
+function normalizeUrdu(str){
+  if(!str) return str;
+  return str
+    .replace(/ھ|ہ/g, 'ه') // do-chashmi heh (U+06BE) and Urdu heh-goal (U+06C1) -> standard heh (abjad value 5, same letter)
+    .replace(/ۃ|ة/g, 'ه') // teh marbuta / gol heh variants -> standard heh
+    .replace(/ي/g, 'ی')   // Arabic yeh -> Urdu/Farsi yeh
+    .replace(/ك/g, 'ک');  // Arabic kaf -> Urdu/Farsi keheh
+}
+
+const huroofData = {
+  'ا': {val:1,   ism:'الہ',  ismVal:62, malfoozi:111,  khasiyat:'جلال',   taseer:'سعود',   tabe:'گرم',  mowakkil:'اسرافیل',   jinn:'نویش',    burj:'حمل',    sitara:'زحل',    manzil:'شرطین', bakhoor:'مودسیاہ'},
+  'ب': {val:2,   ism:'باقی', ismVal:113, malfoozi:3, khasiyat:'جمال',   taseer:'محبت',   tabe:'رطب',  mowakkil:'جبرائیل',   jinn:'دیوش',    burj:'جوزا',   sitara:'مشتری',  manzil:'بطین',  bakhoor:'شکر'},
+  'ج': {val:3,   ism:'جامع', ismVal:113, malfoozi:53, khasiyat:'مشترک',  taseer:'محبت',   tabe:'یابس', mowakkil:'کاکائیل',   jinn:'نویش',    burj:'سرطان',  sitara:'مریخ',   manzil:'ثریا',  bakhoor:'دارچینی'},
+  'د': {val:4,   ism:'دیان', ismVal:65, malfoozi:35,  khasiyat:'جلالی',  taseer:'عداوت',  tabe:'بارد', mowakkil:'دردائیل',   jinn:'طیویش',   burj:'ثور',    sitara:'شمس',    manzil:'دبران', bakhoor:'صندل سرخ'},
+  'ه': {val:5,   ism:'ہادی', ismVal:20, malfoozi:6,  khasiyat:'جمالی',  taseer:'عداوت',  tabe:'گرم',  mowakkil:'دورائیل',   jinn:'حیوش',    burj:'حمل',    sitara:'زہرہ',   manzil:'ہقعہ',  bakhoor:'صندل سفید'},
+  'و': {val:6,   ism:'ولی',  ismVal:32, malfoozi:13,  khasiyat:'مشترک',  taseer:'محبت',   tabe:'رطب',  mowakkil:'رفتائیل',   jinn:'پویش',    burj:'جوزا',   sitara:'عطارد',  manzil:'هطہ',   bakhoor:'کافور'},
+  'ز': {val:7,   ism:'زکی',  ismVal:37, malfoozi:8,  khasiyat:'مشترک',  taseer:'محبت',   tabe:'خنک',  mowakkil:'شرقائیل',   jinn:'کاویش',   burj:'سرطان',  sitara:'قمر',    manzil:'ذراعہ', bakhoor:'صمغہ'},
+  'ح': {val:8,   ism:'حق',   ismVal:108, malfoozi:9, khasiyat:'جلالی',  taseer:'بغض',    tabe:'تر',   mowakkil:'تکلعیل',    jinn:'میوش',    burj:'جدی',    sitara:'زحل',    manzil:'نثرہ',  bakhoor:'زعفران'},
+  'ط': {val:9,   ism:'طاہر', ismVal:215, malfoozi:10, khasiyat:'جمالی',  taseer:'عقدشہوت', tabe:'گرم', mowakkil:'اسائیل',    jinn:'پرویش',   burj:'حمل',    sitara:'مشتری',  manzil:'طرف',   bakhoor:'مشک'},
+  'ی': {val:10,  ism:'یسر',  ismVal:280, malfoozi:11, khasiyat:'جلالی',  taseer:'فتح رجال', tabe:'تر', mowakkil:'سرکجائیل',  jinn:'ہمیوش',   burj:'میزان',  sitara:'مریخ',   manzil:'ذنب',   bakhoor:'گل نرگس'},
+  'ک': {val:20,  ism:'کانی', ismVal:111, malfoozi:101, khasiyat:'جمالی',  taseer:'محبت',   tabe:'خنک',  mowakkil:'حرزائیل',   jinn:'قدیوش',   burj:'عقرب',   sitara:'شمس',    manzil:'زہرہ',  bakhoor:'گل سفید'},
+  'ل': {val:30,  ism:'للیف', ismVal:129, malfoozi:71, khasiyat:'جمالی',  taseer:'جدائی',  tabe:'سرد',  mowakkil:'طاطائیل',   jinn:'عدیویش',  burj:'ثور',    sitara:'زہرہ',   manzil:'سرفہ',  bakhoor:'پوست بیب'},
+  'م': {val:40,  ism:'ملک',  ismVal:90, malfoozi:90,  khasiyat:'جمالی',  taseer:'محبت',   tabe:'گرم',  mowakkil:'روائیل',    jinn:'بجعیوش',  burj:'اسد',    sitara:'عطارد',  manzil:'غفا',   bakhoor:'بھی'},
+  'ن': {val:50,  ism:'نور',  ismVal:256, malfoozi:106, khasiyat:'جمالی',  taseer:'بغض',    tabe:'تر',   mowakkil:'حوثائیل',   jinn:'دلیوش',   burj:'میزان',  sitara:'قمر',    manzil:'ساک',   bakhoor:'سنبل'},
+  'س': {val:60,  ism:'سبح',  ismVal:180, malfoozi:120, khasiyat:'مشترک',  taseer:'عقدشہوت', tabe:'خنک', mowakkil:'مواکیل',    jinn:'لثیوش',   burj:'قوس',    sitara:'زحل',    manzil:'غفرہ',  bakhoor:'خوشبو مرکب'},
+  'ع': {val:70,  ism:'علی',  ismVal:110, malfoozi:130, khasiyat:'جلال',   taseer:'توگری',  tabe:'سرد',  mowakkil:'لوائیل',    jinn:'فطیوش',   burj:'سنبلہ',  sitara:'مشتری',  manzil:'زبانا', bakhoor:'قطعل سفید'},
+  'ف': {val:80,  ism:'تآج',  ismVal:389, malfoozi:81, khasiyat:'جلالی',  taseer:'عداوت',  tabe:'گرم',  mowakkil:'برھائیل',   jinn:'بعطیوش',  burj:'اسد',    sitara:'مریخ',   manzil:'اکلیل', bakhoor:'جوز'},
+  'ص': {val:90,  ism:'میور', ismVal:298, malfoozi:95, khasiyat:'جلالی',  taseer:'الفت',   tabe:'تر',   mowakkil:'امجائیل',   jinn:'فلاویوش', burj:'میزان',  sitara:'شمس',    manzil:'قلب',   bakhoor:'جونتری'},
+  'ق': {val:100, ism:'قادر', ismVal:305, malfoozi:181, khasiyat:'مشترک',  taseer:'عقدشہوت', tabe:'خنک', mowakkil:'عطرائیل',   jinn:'قسیوش',   burj:'حوت',    sitara:'زہرہ',   manzil:'شولہ',  bakhoor:'ترنج'},
+  'ر': {val:200, ism:'روف',  ismVal:286, malfoozi:201, khasiyat:'جلالی',  taseer:'سودت',   tabe:'سرد',  mowakkil:'اسوائیل',   jinn:'دبیش',    burj:'سنبلہ',  sitara:'عطارد',  manzil:'نعائم', bakhoor:'گلاب'},
+  'ش': {val:300, ism:'شفیع', ismVal:360, malfoozi:360, khasiyat:'جلالی',  taseer:'عداوت',  tabe:'گرم',  mowakkil:'ہمرائیل',   jinn:'تعطیوش',  burj:'عقرب',   sitara:'قمر',    manzil:'بلدہ',  bakhoor:'عود'},
+  'ت': {val:400, ism:'ثواب', ismVal:309, malfoozi:401, khasiyat:'جمالی',  taseer:'معقدنوم', tabe:'تر',  mowakkil:'مزرائیل',   jinn:'للطیوش',  burj:'دلو',    sitara:'زحل',    manzil:'ذابح',  bakhoor:'عنبر'},
+  'ث': {val:500, ism:'ثابت', ismVal:903, malfoozi:501, khasiyat:'جلالی',  taseer:'بغض',    tabe:'خنک',  mowakkil:'میکائیل',   jinn:'طحیوش',   burj:'حوت',    sitara:'مشتری',  manzil:'—',     bakhoor:'عود'},
+  'خ': {val:600, ism:'ناطق', ismVal:231, malfoozi:601, khasiyat:'مشترک',  taseer:'قیمت',   tabe:'سرد',  mowakkil:'مہکائیل',   jinn:'دلائیوش', burj:'جدی',    sitara:'مریخ',   manzil:'سعود',  bakhoor:'بخش'},
+  'ذ': {val:700, ism:'ذاکر', ismVal:921, malfoozi:731, khasiyat:'مشترک',  taseer:'بغض',    tabe:'گرم',  mowakkil:'امرائیل',   jinn:'ساکاویش', burj:'قوس',    sitara:'—',      manzil:'شمس',   bakhoor:'—'},
+  'ض': {val:800, ism:'ضار',  ismVal:1001, malfoozi:805,khasiyat:'جلالی',  taseer:'بغض',    tabe:'گرم',  mowakkil:'عطکائیل',   jinn:'ثبائیوش', burj:'دلو',    sitara:'زہرہ',   manzil:'مقدم',  bakhoor:'گلنار'},
+  'ظ': {val:900, ism:'ظاہر', ismVal:1102, malfoozi:901,khasiyat:'جلالی',  taseer:'عداوت',  tabe:'خنک',  mowakkil:'تورائیل',   jinn:'عتویوش',  burj:'حوت',    sitara:'عطارد',  manzil:'موخر',  bakhoor:'گل نرگس'},
+  'غ': {val:1000,ism:'غفور', ismVal:1187, malfoozi:1060,khasiyat:'جمالی',  taseer:'صحت امراض', tabe:'خنک', mowakkil:'لونائیل', jinn:'مرقویش',  burj:'حوت',    sitara:'قمر',    manzil:'رشا',   bakhoor:'لونگ'}
+};
+const letters = Object.keys(huroofData);
+
+const fieldGroups = [
+  { title:'اعداد', keys:[{key:'val',label:'حرف عدد', fromRoot:true}, {key:'ismVal',label:'عدد اسم'}, {key:'malfoozi',label:'عدد ملفوظی'}] },
+  { title:'اسم و موکلات', keys:[{key:'ism',label:'اسم'}, {key:'mowakkil',label:'موکل'}, {key:'jinn',label:'جن'}] },
+  { title:'خاصیت', keys:[{key:'khasiyat',label:'خاصیت'}, {key:'taseer',label:'تاثیر'}, {key:'tabe',label:'طبع'}] },
+  { title:'فلکیات', keys:[{key:'burj',label:'برج'}, {key:'sitara',label:'ستارہ'}, {key:'manzil',label:'منزل'}, {key:'bakhoor',label:'بخور'}] }
+];
+
+const malfooziKeyLabel = {
+  'ا':'الف','ب':'با','ج':'جیم','د':'دال','ه':'ٓہا','و':'واو','ز':'زا','ح':'حا','ط':'طا','ی':'یا',
+  'ک':'کاف','ل':'لام','م':'میم','ن':'نون','س':'سین','ع':'عین','ف':'فا','ص':'صاد','ق':'قاف','ر':'را',
+  'ش':'شین','ت':'تا','ث':'ثا','خ':'خا','ذ':'ذال','ض':'ضاد','ظ':'ظا','غ':'غین'
+};
+
+let keypadMode = 'haroofi'; // 'haroofi' or 'malfoozi'
+const modeToggleBtn = document.getElementById('keypadModeToggle');
+function refreshKeypadLabels(){
+  document.querySelectorAll('#keypad .letter-btn').forEach(b => {
+    const l = b.dataset.letter;
+    b.textContent = keypadMode === 'malfoozi' ? (malfooziKeyLabel[l] || l) : l;
+  });
+}
+modeToggleBtn.addEventListener('click', () => {
+  keypadMode = keypadMode === 'haroofi' ? 'malfoozi' : 'haroofi';
+  modeToggleBtn.textContent = keypadMode === 'haroofi' ? 'حروفی' : 'ملفوظی';
+  refreshKeypadLabels();
+  if(keypadMode === 'malfoozi'){
+    document.getElementById('profileCard').classList.remove('show');
+  }
+  if(document.getElementById('phraseInput').value.trim()) phraseCalc();
+});
+
+const keypad = document.getElementById('keypad');
+letters.forEach(l => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'letter-btn';
+  b.style.fontSize = '0.85rem';
+  b.dataset.letter = l;
+  b.textContent = l;
+  b.addEventListener('click', () => {
+    const inp = document.getElementById('phraseInput');
+    inp.value += l; // always append the canonical single letter, whatever the button's displayed label
+    inp.focus();
+    if(keypadMode === 'haroofi') selectLetter(l);
+  });
+  keypad.appendChild(b);
+});
+document.getElementById('phraseSpaceBtn').addEventListener('click', () => {
+  const inp = document.getElementById('phraseInput');
+  inp.value += ' ';
+  inp.focus();
+});
+
+function selectLetter(l){
+  const d = huroofData[l];
+  const card = document.getElementById('profileCard');
+  card.classList.add('show');
+  document.getElementById('pLetter').textContent = l;
+  document.getElementById('pMeta').textContent = 'حرف عدد: ' + d.val;
+
+  const fieldsEl = document.getElementById('pFields');
+  fieldsEl.innerHTML = fieldGroups.map(g => `
+    <div class="field-group">
+      <h5>${g.title}</h5>
+      ${g.keys.map(k => `<div class="fg-item"><b>${k.label}:</b> ${k.fromRoot ? d[k.key] : d[k.key]}</div>`).join('')}
+    </div>
+  `).join('');
+}
+
+/* ---- Unified phrase calculator (mode-aware: ابجد حروفی / ملفوظی) ---- */
+function phraseCalc(){
+  const text = normalizeUrdu(document.getElementById('phraseInput').value.trim());
+  const breakdown = document.getElementById('phraseBreakdown');
+  const wordTotalsEl = document.getElementById('phraseWordTotals');
+  const echoEl = document.getElementById('phraseEcho');
+  breakdown.innerHTML = '';
+  wordTotalsEl.innerHTML = '';
+
+  if(text){
+    echoEl.style.display = 'block';
+    echoEl.textContent = 'ان پٹ: ' + text + ` (موڈ: ${keypadMode === 'malfoozi' ? 'ملفوظی' : 'ابجد حروفی'})`;
+  } else {
+    echoEl.style.display = 'none';
+  }
+
+  const words = text.split(/\s+/).filter(w => w.length > 0);
+  let grandTotal = 0, anyAtAll = false;
+  const wordTotals = [];
+
+  words.forEach(word => {
+    let wordTotal = 0, any = false;
+    for(const ch of word){
+      const d = huroofData[ch];
+      const v = d ? (keypadMode === 'malfoozi' ? d.malfoozi : d.val) : undefined;
+      if(v !== undefined){
+        wordTotal += v; any = true; anyAtAll = true;
+        const chip = document.createElement('div');
+        chip.className = 'tal-chip';
+        chip.innerHTML = `${ch}<small>${v}</small>`;
+        breakdown.appendChild(chip);
+      }
+    }
+    if(any){
+      wordTotals.push({ word, total: wordTotal });
+      grandTotal += wordTotal;
+    }
+    if(any && word !== words[words.length-1]){
+      const gap = document.createElement('div');
+      gap.style.cssText = 'flex-basis:100%;height:0;';
+      breakdown.appendChild(gap);
+    }
+  });
+
+  const box = document.getElementById('phraseTotalBox');
+  const modeLabel = keypadMode === 'malfoozi' ? 'مجموعی عدد ملفوظی' : 'مجموعی عدد (ابجد حروفی)';
+  if(anyAtAll){
+    if(wordTotals.length > 1){
+      wordTotalsEl.innerHTML = wordTotals.map(w =>
+        `<div class="tal-total-box" style="margin-top:8px;padding:8px;"><span class="num" style="font-size:1.4rem;">${w.total}</span><span class="label">${w.word}</span></div>`
+      ).join('');
+      document.getElementById('phraseTotal').textContent = grandTotal;
+      document.getElementById('phraseTotalLabel').textContent = `${modeLabel} (${wordTotals.map(w=>w.word).join(' + ')})`;
+    } else {
+      document.getElementById('phraseTotal').textContent = grandTotal;
+      document.getElementById('phraseTotalLabel').textContent = modeLabel;
+    }
+    box.style.display = 'block';
+  } else {
+    box.style.display = 'none';
+  }
+}
+document.getElementById('phraseCalcBtn').addEventListener('click', phraseCalc);
+document.getElementById('phraseClearBtn').addEventListener('click', () => {
+  document.getElementById('phraseInput').value = '';
+  document.getElementById('phraseBreakdown').innerHTML = '';
+  document.getElementById('phraseWordTotals').innerHTML = '';
+  document.getElementById('phraseTotalBox').style.display = 'none';
+  document.getElementById('phraseEcho').style.display = 'none';
+});
+
+/* ================= AYYAM (DAYS) DATA ================= */
+const daysCols = ['دن','ملائکہ','موکلِ علوی','موکلِ سفلی','عون','خوشبو','بخور','دھات','رنگ','لذت','فطرت','سمت'];
+const daysData = [
+  {din:'اتوار / شمس',   malaika:'جبرائیل', olvi:'روفیائیل',  sufli:'ابو عبداللہ',      aoon:'المزہب',              khushboo:'مشک',  bakhoor:'عود',        dhaat:'سونا',      rang:'اورنج طلائی',        lazzat:'شیریں', fitrat:'جلالی سعد اکبر', simt:'مشرق'},
+  {din:'پیر / قمر',     malaika:'میکائیل', olvi:'شدحائیل',   sufli:'ابو النور',        aoon:'مرۃ الابیض بن حارث',  khushboo:'گلاب', bakhoor:'لوبان',      dhaat:'چاندی',     rang:'سفید ہلکا سبز',      lazzat:'شیریں', fitrat:'جلالی نحس اصغر', simt:'شمال'},
+  {din:'منگل / مریخ',   malaika:'سرافیل',  olvi:'مسائیل',    sufli:'ابوجہزر',          aoon:'الاحمر',              khushboo:'عطر گل', bakhoor:'سندرس',   dhaat:'لوہا',       rang:'سرخ',                lazzat:'تمکین', fitrat:'مشترک سب کیلئے',  simt:'مغرب'},
+  {din:'بدھ / عطارد',   malaika:'جبرائیل', olvi:'نوائیل',    sufli:'ابو المحاسب',      aoon:'برقان',               khushboo:'مجموعہ', bakhoor:'مصطکی',   dhaat:'پلاٹینیم',   rang:'فیروزی سیاہ مائل',   lazzat:'شور',   fitrat:'جمالی سعد اکبر', simt:'مغرب'},
+  {din:'جمعرات / مشتری',malaika:'میکائیل', olvi:'صرفیائیل',  sufli:'ابوولید',          aoon:'شمہورش',              khushboo:'گلاب', bakhoor:'حب الغار',   dhaat:'ٹن قلعی',    rang:'سبز',                lazzat:'شیریں', fitrat:'جمالی سعد اکبر', simt:'مشرق'},
+  {din:'جمعہ / زہرہ',   malaika:'جبرائیل', olvi:'عینیائیل',  sufli:'ابوالحسن',         aoon:'زوبعہ ابیض',          khushboo:'سہاگ', bakhoor:'زعفران',    dhaat:'تانبہ',      rang:'ہلکا نیلا',          lazzat:'شیریں', fitrat:'جمالی سعد اکبر', simt:'مغرب'},
+  {din:'ہفتہ / زحل',    malaika:'عزرائیل', olvi:'کسفیائیل',  sufli:'ابونوح',           aoon:'میمون ابیض الحابی',   khushboo:'جبا',  bakhoor:'میعہ سائلہ', dhaat:'سکہ',        rang:'سرخی سیاہ مائل',     lazzat:'شور',   fitrat:'جلالی نحس اکبر', simt:'جنوب'}
+];
+
+const daysLabels = ['ملائکہ','موکلِ علوی','موکلِ سفلی','عون','خوشبو','بخور','دھات','رنگ','لذت','فطرت','سمت'];
+document.getElementById('daysTable').innerHTML =
+  '<thead><tr><th>دن</th>' + daysLabels.map(l => `<th>${l}</th>`).join('') + '</tr></thead><tbody>' +
+  daysData.map(r => {
+    const vals = [r.malaika, r.olvi, r.sufli, r.aoon, r.khushboo, r.bakhoor, r.dhaat, r.rang, r.lazzat, r.fitrat, r.simt];
+    return `<tr><td class="day-name">${r.din}</td>` + vals.map(v => `<td>${v}</td>`).join('') + '</tr>';
+  }).join('') +
+  '</tbody>';
+
+/* ================= ANASIR (4 ELEMENTS) ================= */
+const anasir1 = {
+  'آتشی': ['ا','ه','ط','م','ف','ش','ذ'],
+  'بادی': ['ب','و','ی','ن','س','ت','ض'],
+  'آبی':  ['ج','ز','ک','ص','ق','ث','ظ'],
+  'خاکی': ['د','ح','ل','ع','ر','خ','غ']
+};
+const anasir2 = {
+  'آتشی': ['ا','ب','ج','د','ه','و','ز'],
+  'بادی': ['ح','ط','ی','ک','ل','م','ن'],
+  'آبی':  ['س','ع','ف','ص','ق','ر','ش'],
+  'خاکی': ['ت','ث','خ','ذ','ض','ظ','غ']
+};
+function renderAnasir(id, data){
+  const t = document.getElementById(id);
+  let html = '<tbody>';
+  Object.keys(data).forEach(k => {
+    html += '<tr><td class="day-name">' + k + '</td>' + data[k].map(l => `<td class="harf-cell">${l}</td>`).join('') + '</tr>';
+  });
+  html += '</tbody>';
+  t.innerHTML = html;
+}
+renderAnasir('anasirTable1', anasir1);
+renderAnasir('anasirTable2', anasir2);
+
+/* ================= MANAZIL-E-QAMAR (28 LUNAR MANSIONS) ================= */
+const manazilData = [
+  {n:1,  manzil:'شرطین',      harf:'ا', taseer:'لوگوں کے دلوں میں محبت پیدا ہوتا ہے، اس وقت عملِ محبت کرنا چاہئے، تخییر نہ کرنا چاہئے۔', bakhoor:'فلفل، شونیز'},
+  {n:2,  manzil:'بطین',       harf:'ب', taseer:'غصہ دلوں سے دور رہتا ہے۔ عاملِ عملِ محبت اور طلسمات لکھے، تعویذِ شفائے امراض لکھے، کامیابی پائے۔', bakhoor:'عود، زعفران، مصطکی'},
+  {n:3,  manzil:'ثریا',       harf:'ج', taseer:'عملِ محبت کرنا چاہئے، وشفائے امراض۔', bakhoor:'بزرِ کتان، شونیز'},
+  {n:4,  manzil:'دبران',      harf:'د', taseer:'بغض و عداوت والوں میں پیدا ہوتا ہے۔ عملِ محبت نہ کرنا چاہئے، جو کام ہو اُس کا انجام بخیر نہ ہو۔', bakhoor:'لوبانِ تر، انارِ شیریں کے چھلکے'},
+  {n:5,  manzil:'ہقعہ',       harf:'ه', taseer:'سعد نحس ہے۔ کوئی عمل نہ کرے، نہ تعویذ لکھے۔', bakhoor:'عود، لوبان، مصطکی'},
+  {n:6,  manzil:'ہنعہ',       harf:'و', taseer:'سعد ہے۔ تعویذِ محبت، ترقیِ دولت لکھے۔', bakhoor:'درختِ خمر کی چھال، قطرب'},
+  {n:7,  manzil:'ذراعہ',      harf:'ز', taseer:'سعد ہے۔ عملِ محبت و طلسمات لکھے۔', bakhoor:'اُبی'},
+  {n:8,  manzil:'نثرہ',       harf:'ح', taseer:'نحس ہے۔ عملِ عداوت و بلاکی۔', bakhoor:'انار کے چھلکے'},
+  {n:9,  manzil:'طرف',        harf:'ط', taseer:'نحس ہے۔ عملِ محبت نہ کرے، اور کوئی کام نہ کرے۔', bakhoor:'عود، زعفران'},
+  {n:10, manzil:'جبہہ',       harf:'ی', taseer:'سعد ہے۔ عملِ محبت و ترقیِ رزق۔', bakhoor:'حب الآس، زعفران'},
+  {n:11, manzil:'زبرہ',       harf:'ک', taseer:'سعدِ اکبر۔ عملِ طلسمات و ملاقاتِ امرا، سحر، حب کے عمل کرے۔', bakhoor:'میٹھی انار کے چھلکے'},
+  {n:12, manzil:'صرفہ',       harf:'ل', taseer:'نحسِ اکبر۔ عملِ عداوت کرے، عملِ محبت ہرگز نہ کرے۔', bakhoor:'زعفران'},
+  {n:13, manzil:'عوا',        harf:'م', taseer:'سعد ہے۔ عمل نہ کرے، عداوت کا کرے۔', bakhoor:'لوبانِ تر، سپند'},
+  {n:14, manzil:'ساک',        harf:'ن', taseer:'سعد ہے، نحس ہے۔ عملِ عداوت کرے۔', bakhoor:'لوبانِ تر، سپند'},
+  {n:15, manzil:'غفرا',       harf:'س', taseer:'عملِ تخییر، ترقیِ رزق، طلسمات۔', bakhoor:'لوبانِ تر'},
+  {n:16, manzil:'زبانا',      harf:'ع', taseer:'سعد ہے۔ عملِ تخییر کرے۔', bakhoor:'درخت'},
+  {n:17, manzil:'اکلیل',      harf:'ف', taseer:'سعد و نحس، عملِ نفس نہ کرے۔', bakhoor:'قلقل، زعفران'},
+  {n:18, manzil:'قلب',        harf:'ص', taseer:'سعد ہے۔ عملِ تخییر و ترقی مناسب۔', bakhoor:'بڑی پُشتی انار کے چھلکے، مصطکی'},
+  {n:19, manzil:'شولہ',       harf:'ق', taseer:'سعد ہے۔ عملِ تخییر و ترقی مناسب۔', bakhoor:'لوبانِ تر'},
+  {n:20, manzil:'نعائم',      harf:'ر', taseer:'سعد ہے۔ عملِ محبت و طلسمات۔', bakhoor:'سنبل، عود'},
+  {n:21, manzil:'بلدہ',       harf:'ش', taseer:'نحسِ اکبر۔ کوئی جدید کام نہ کرے۔ عملِ بغض و عداوت کرے۔', bakhoor:'کشم'},
+  {n:22, manzil:'ذابح',       harf:'ت', taseer:'نحس ہے۔ کام کے پاس نہ جائے۔ عملِ محبت نہ کرے، عداوت و جدائی کے عمل کرے۔', bakhoor:'—'},
+  {n:23, manzil:'سعدبلع',     harf:'ث', taseer:'نحس ہے۔ عملِ عداوت کرے، زیادہ شر پھیلا دے۔', bakhoor:'عود، مصطکی'},
+  {n:24, manzil:'سعدالسعود',  harf:'خ', taseer:'سعد ہے۔ عملِ محبت و مودت و طلسمات کرے۔', bakhoor:'لوبانِ تر'},
+  {n:25, manzil:'سعدالاخبیہ', harf:'ذ', taseer:'اِس میں عملِ عداوت نہ کرے، فتنہ و فساد۔', bakhoor:'انزروت، فلفل'},
+  {n:26, manzil:'فرحِ مقدم',  harf:'ض', taseer:'زیادہ ہو۔ طلسمات، کیمیاوی عملِ تخییر کرے، کامیاب ہوگا۔', bakhoor:'لوبانِ تر، زعفران، شونیز'},
+  {n:27, manzil:'فرحِ موخر',  harf:'ظ', taseer:'نحس ہے۔ عملِ عداوت کرے۔ عملِ تخییر کرے، قوی رکھے۔', bakhoor:'فلفل، دارچینی'},
+  {n:28, manzil:'رشا',        harf:'غ', taseer:'عملِ محبت کرے، طلسم لکھے۔', bakhoor:'شونیز'}
+];
+const manazilCols = ['نمبر','منازل','حروف','تاثیرات','بخور'];
+document.getElementById('manazilTable').innerHTML =
+  '<colgroup><col style="width:8%"><col style="width:14%"><col style="width:8%"><col style="width:45%"><col style="width:25%"></colgroup>' +
+  '<thead><tr>' + manazilCols.map(c=>`<th>${c}</th>`).join('') + '</tr></thead><tbody>' +
+  manazilData.map(r => `<tr><td>${r.n}</td><td class="day-name">${r.manzil}</td><td class="harf-cell">${r.harf}</td><td class="small-txt">${r.taseer}</td><td class="small-txt">${r.bakhoor}</td></tr>`).join('') +
+  '</tbody>';
+
+/* Cross-check / correct the huroof table's منزل field using this dedicated manazil table */
+manazilData.forEach(m => { if(huroofData[m.harf]) huroofData[m.harf].manzil = m.manzil; });
+
+
+
+/* ================= BURJ HALAAT (12 ROWS) ================= */
+const burjHalaatData = [
+  {burj:'حمل (مقلب)',  saad:'تبدیلیاں لانے کے کام کریں سے اچھائی کیلئے، پستی کی ترقی',           nahs:'بغض و نفاق، بلا، دشمن، سرگردانی، انقلاب کے کام'},
+  {burj:'ثور (ثابت)',  saad:'حصولِ دولت، عزت، اکتسابِ رزق، اور مرتبہ کے کام کریں',                 nahs:'جائیداد و دولت، میاں بیوی خانہ داری کا خاتمہ'},
+  {burj:'جوزا (ذوجسدین)', saad:'منسوخی، خواب، تخییر و ترقی کے کام کریں',                        nahs:'طلاق، جدائی، نفرت کے کام'},
+  {burj:'سرطان (مقلب)', saad:'تبدیلیاں لانے کے کام کریں سے اچھائی کیلئے، پستی کی ترقی',          nahs:'بغض و نفاق، بلا، دشمن، سرگردانی، انقلاب کے کام'},
+  {burj:'اسد (ثابت)',   saad:'حصولِ دولت، عزت، اکتسابِ رزق، اور مرتبہ کے کام کریں',                nahs:'جائیداد و دولت، میاں بیوی خانہ داری کا خاتمہ'},
+  {burj:'سنبلہ (ذوجسدین)', saad:'منسوخی، خواب، تخییر و ترقی کے کام کریں',                      nahs:'طلاق، جدائی، نفرت کے کام'},
+  {burj:'میزان (مقلب)', saad:'تبدیلیاں لانے کے کام کریں سے اچھائی کیلئے، پستی کی ترقی',          nahs:'بغض و نفاق، بلا، دشمن، سرگردانی، انقلاب کے کام'},
+  {burj:'عقرب (ثابت)',  saad:'حصولِ دولت، عزت، اکتسابِ رزق، اور مرتبہ کے کام کریں',                nahs:'جائیداد و دولت، میاں بیوی خانہ داری کا خاتمہ'},
+  {burj:'قوس (ذوجسدین)', saad:'منسوخی، خواب، تخییر و ترقی کے کام کریں',                          nahs:'طلاق، جدائی، نفرت کے کام'},
+  {burj:'جدی (مقلب)',   saad:'تبدیلیاں لانے کے کام کریں سے اچھائی کیلئے، پستی کی ترقی',           nahs:'بغض و نفاق، بلا، دشمن، سرگردانی، انقلاب کے کام'},
+  {burj:'دلو (ثابت)',   saad:'حصولِ دولت، عزت، اکتسابِ رزق، اور مرتبہ کے کام کریں',                nahs:'جائیداد و دولت، میاں بیوی خانہ داری کا خاتمہ'},
+  {burj:'حوت (ذوجسدین)', saad:'منسوخی، خواب، تخییر و ترقی کے کام کریں',                          nahs:'طلاق، جدائی، نفرت کے کام'}
+];
+document.getElementById('burjHalaatTable').innerHTML =
+  '<thead><tr><th>برج</th><th>حالتِ سعد طالع</th><th>حالتِ نحس طالع</th></tr></thead><tbody>' +
+  burjHalaatData.map(r => `<tr><td class="day-name">${r.burj}</td><td class="small-txt">${r.saad}</td><td class="small-txt">${r.nahs}</td></tr>`).join('') +
+  '</tbody>';
+
+/* ================= KAWAKIB TASLEETH / TARBEE ================= */
+const kawakibData = [
+  {pair:'قمر و زہرہ',   good:'حبِ تسخیرِ مستورات',                       bad:'طلاق و نفاق، عورت و مرد میں'},
+  {pair:'قمر و مریخ',   good:'خواب بندی و تخییرِ حاسدوں',                bad:'دشمنی و فعیہ حشراتِ الارض'},
+  {pair:'قمر و مشتری',  good:'ترقیِ جاہ و جلال، حصولِ رزق و مال، نفعِ کاروبار', bad:'انکشافِ اسرارِ مخفی و فضیحہ'},
+  {pair:'قمر و زحل',    good:'ترقیِ زراعت و بقائے جائیداد',               bad:'دشمن کو بیزار کرنا، ذلیل کرنا، سرگردان کرنا'},
+  {pair:'عطارد و زہرہ', good:'وصلِ مطلوب، تسخیرِ آبی جانوران',            bad:'کاروبار بست کرنا، دوستوں میں جدائی ڈالنا'},
+  {pair:'عطارد و مریخ', good:'شفائے بیمار، قوتِ بدن',                     bad:'کاروبار بست کرنا، بیمار کرنا'},
+  {pair:'عطارد و مشتری',good:'ترقیِ علوم و صنعت و حرفت',                  bad:'کسی دشمن کے ملک و املاک کو تباہ کرنا'},
+  {pair:'عطارد و زحل',  good:'حلِ المشکلات',                              bad:'املاک تباہ کرنا'},
+  {pair:'زہرہ و مریخ',  good:'فتنہ و فساد دور کرنا، تسخیرِ مستورات',       bad:'مرد و عورت کے درمیان طلاق و جدائی'},
+  {pair:'زہرہ و مشتری', good:'تسخیرِ مطلوب و محبوبِ خلق، دفعِ غضبِ حکام و امرا', bad:'مرتبے سے گرانا'},
+  {pair:'زہرہ و زحل',   good:'محبت و نکاح کے استحکام کیلئے',              bad:'عورتوں و مردوں میں فساد ڈالنا'},
+  {pair:'مریخ و شمس',   good:'تسخیرِ سلاطین و نواب',                      bad:'جنگ و جدل ڈالنا، مخالفین کو منتشر کرنا'},
+  {pair:'مریخ و زحل',   good:'حصولِ زر و مال',                            bad:'عذاب و سزا دینا'},
+  {pair:'مشتری و زحل',  good:'ترقیِ دولت و معزز نزدیک حکام',              bad:'آباد جگہ کو ویران کرنا'},
+  {pair:'زحل و شمس',    good:'دفعِ مدعا، طلبِ حاجات',                     bad:'کسی کو مرتبے سے گرانا'}
+];
+document.getElementById('kawakibTable').innerHTML =
+  '<thead><tr><th>کواکب</th><th>تثلیث / تسدیس (اچھا)</th><th>مقابلہ / تربیع (بُرا)</th></tr></thead><tbody>' +
+  kawakibData.map(r => `<tr><td class="day-name">${r.pair}</td><td class="small-txt">${r.good}</td><td class="small-txt">${r.bad}</td></tr>`).join('') +
+  '</tbody>';
+
+const kawakibOuterData = [
+  {pair:'زحل و یورینس',   good:'انقلابی مگر مستحکم تبدیلی، پرانے نظام میں نظم و ضبط کے ساتھ اصلاح۔', bad:'بغاوت اور رکاوٹ کے مابین شدید تصادم، اچانک بندش۔'},
+  {pair:'مشتری و یورینس', good:'وسعت اور جدت کا امتزاج، غیر متوقع مگر خوش آئند ترقی۔',            bad:'زیادہ خطرہ مول لینا، بے احتیاطی سے نقصان۔'},
+  {pair:'زہرہ و نیپچون',  good:'گہرا روحانی و رومانوی تعلق، فنکارانہ الہام۔',                     bad:'فریب اور وہمِ عشق، غیر حقیقی توقعات۔'},
+  {pair:'مشتری و نیپچون', good:'روحانی وسعت، مذہبی و فلاحی رجحان میں برکت۔',                       bad:'مبالغہ آرائی، جھوٹی امیدیں اور غلط اندازے۔'},
+  {pair:'مریخ و پلوٹو',   good:'بھرپور عزم اور تبدیلی لانے کی قوت، فیصلہ کن اقدام۔',                bad:'شدید تصادم، تباہ کن غصہ اور جبر۔'},
+  {pair:'زحل و پلوٹو',    good:'گہری اور دیرپا تبدیلی، پرانے ڈھانچے کی مضبوط تعمیرِ نو۔',            bad:'جبر اور اختیار کی کشمکش، طویل دباؤ۔'}
+];
+document.getElementById('kawakibTable').innerHTML +=
+  '<tbody><tr><td colspan="3" style="text-align:center;font-weight:800;font-size:1rem;background:#1E3B2C;color:#b8bdc7;padding:10px 6px;">جدید سیارے (یورینس، نیپچون، پلوٹو) — جدید علمِ نجوم کی عمومی تعبیرات</td></tr>' +
+  kawakibOuterData.map(r => `<tr><td class="day-name">${r.pair}</td><td class="small-txt">${r.good}</td><td class="small-txt">${r.bad}</td></tr>`).join('') +
+  '</tbody>';
+
+/* ================= QIRANAT ================= */
+const qiranatData = [
+  {pair:'قمر و مریخ',   maqsad:'برائے نصرت، اعداء مغلوبی، حاسدوں اور ملاقاتِ امرا۔'},
+  {pair:'قمر و عطارد',  maqsad:'برائے ملاقاتِ اہلِ قلم، وزراء، اہلِ صنعت و حرفت کیلئے۔'},
+  {pair:'قمر و زہرہ',   maqsad:'محبت و طلبِ عشق و شادی کیلئے۔'},
+  {pair:'قمر و مشتری',  maqsad:'ترقیِ علم، حصولِ مال و ترقیِ تجارت و کاروبار۔'},
+  {pair:'قمر و زحل',    maqsad:'تباہی و بربادیِ دشمن، سرگردانی، اذیت پہنچانا، اور کثرتِ زراعت کیلئے۔'},
+  {pair:'مریخ و عطارد', maqsad:'دشمنی ڈالنے کیلئے، عمارت کو ویران کرنا۔'},
+  {pair:'مریخ و زہرہ',  maqsad:'مستورات اور اہلِ نشاط پر تسلط و غلبہ حاصل کرنے کیلئے۔'},
+  {pair:'مریخ و مشتری', maqsad:'تسخیرِ لشکریان، لڑائی میں فتح، اور اہلِ جنگ کو طاقت پہنچانا۔'},
+  {pair:'عطارد و زحل',  maqsad:'خرابی و ہلاکتِ دشمن، کسی جگہ کو ویران کرنا، ترقیِ زراعت، اور اشیائے پوشیدہ کی زیادتی۔'},
+  {pair:'زہرہ و عطارد', maqsad:'اتصالِ محبت، حصولِ علمِ موسیقی، ترقیِ ادکاری و فلم و تھیئٹر۔'},
+  {pair:'زہرہ و مشتری', maqsad:'برائے تسخیرِ مرد و زن، عاملان و عالمان کے عملی تسخیر و منفعت۔'},
+  {pair:'مشتری و زحل',  maqsad:'اہلِ علم کو ذلیل کرنے اور ان میں دشمنی ڈالنے کیلئے۔'},
+  {pair:'مشتری و شمس',  maqsad:'حصولِ مال و دولت، ورثہ کی زیادتی، اور قبیلہ میں سربلند ہونے کیلئے۔'},
+  {pair:'عطارد و شمس',  maqsad:'ترقی، درخواست، دیناروں کی رزق۔'},
+  {pair:'شمس و زحل',    maqsad:'طاقتِ دشمن کو ختم کرنے اور تباہ کرنے کیلئے۔'}
+];
+document.getElementById('qiranatTable').innerHTML =
+  '<thead><tr><th>کواکب</th><th>مقصد</th></tr></thead><tbody>' +
+  qiranatData.map(r => `<tr><td class="day-name">${r.pair}</td><td class="small-txt">${r.maqsad}</td></tr>`).join('') +
+  '</tbody>';
+
+const qiranatOuterData = [
+  {pair:'زحل و یورینس',   maqsad:'پرانے نظام کو توڑ کر نیا ڈھانچہ کھڑا کرنے کی علامت — اچانک اصلاحات۔'},
+  {pair:'مشتری و یورینس', maqsad:'اچانک وسعت، غیر متوقع مواقع اور بلندیِ نصیب کی علامت۔'},
+  {pair:'زہرہ و نیپچون',  maqsad:'گہرے روحانی و رومانوی تعلق کی علامت، مگر فریب کا امکان بھی ساتھ رہتا ہے۔'},
+  {pair:'مشتری و نیپچون', maqsad:'روحانی و مذہبی رجحان کے عروج اور وسیع تر بصیرت کی علامت۔'},
+  {pair:'مریخ و پلوٹو',   maqsad:'شدید عزم، طاقت کے حصول یا بڑے تصادم کی علامت۔'},
+  {pair:'زحل و پلوٹو',    maqsad:'بڑے پیمانے پر تبدیلی اور پرانے ڈھانچوں کے خاتمے کی علامت۔'}
+];
+document.getElementById('qiranatTable').innerHTML +=
+  '<tbody><tr><td colspan="2" style="text-align:center;font-weight:800;font-size:1rem;background:#1E3B2C;color:#b8bdc7;padding:10px 6px;">جدید سیارے (یورینس، نیپچون، پلوٹو) — جدید علمِ نجوم کی عمومی تعبیرات</td></tr>' +
+  qiranatOuterData.map(r => `<tr><td class="day-name">${r.pair}</td><td class="small-txt">${r.maqsad}</td></tr>`).join('') +
+  '</tbody>';
+
+/* ================= SITARON KE KAAM (planet texts) ================= */
+const sitaraKaamData = [
+  {name:'زحل', text:'زحل کا تعلق غم واندوہ، محنت، بیماری، قید وبند سے ہوتا ہے۔ لہذا اس میں نفاقِ جانی و بربادی کے لئے، اور دفعِ دشمنانِ بخانہ خرابی کے ہر قسم کے عملِ عداوت و بغض تیار کرنا چاہیے۔'},
+  {name:'مشتری', text:'مشتری کا تعلق مراتب کارابرو نہ ہو، اس میں اکتسابِ آسانی سے، سعادت روی اختیار کرنے سے اس میں کشائش ہوتا ہے۔ لہذا حصولِ دولت، ترقیِ کاروبار، حصولِ رزق، دستِ عزت، ترقیِ مرتبہ و عزت، تسخیرِ امراء و زعرا، حاضری علم، اہلِ علم اور دفعِ امراضِ غائبہ کے عمل کریں۔'},
+  {name:'مریخ', text:'مریخ کا تعلق جنگ و جدال، فساد میں تباہی و جیرانی سے ہوتا ہے۔ لہذا دو شخصوں کے درمیان نفاق و فساد ڈالنا، تحدید و ظہرا، خلافت پر ڈالنا، اور دشمن کو رسوا کرنا اور دشمن کو کوتاہ کرنا اور جنگ چاہو کرنا اور تخییرِ شرِ دشمن، اور دفعِ امراض کے عمل بھی دیتے ہیں۔'},
+  {name:'شمس', text:'شمس کا تعلق جاہ و حشمت کا حصول، خفیت میں، عزیز ہونا، محترم ہونا، تعظیم، برتری، حکمت، ترقی، اور دستِ زندگی کے حصول عملات کے کاموں سے ہوتا ہے۔ لہذا تسخیرِ امراء، افسران، وزراء، اور اکاش و بادشاہ کے کاموں کے عمل کریں۔'},
+  {name:'زہرہ', text:'زہرہ کا تعلق محبت، دوستی، شادی اور تفریحات سے ہوتا ہے۔ اس لئے تسخیرِ مطلوب، محبتِ مستورات، حصولِ حسن و جمالِ عشرت کے عمل کریں۔'},
+  {name:'عطارد', text:'عطارد کا تعلق حفظ و فہم، ذکاوت، دفع سحر، جادو، فصاحت، ترقیِ علم، دیانتِ زبان بندی، خوابِ بندی، بازغانِ سحر و بندی کے عمل کریں۔'},
+  {name:'قمر', text:'قمر کا تعلق حفظِ صحت، حصولِ شفا، پانی سے، سیکون حاصل کرنا، بندوں کی نظر، وانددیشے، دفعِ خوف، حاجت پوری کرنا، اور تحریرِ زراعت و باغ کے عمل کریں۔'},
+  {name:'--- جدید سیارے (جدید علمِ نجوم کی عمومی تعبیرات) ---', text:'', isDivider:true},
+  {name:'یورینس', text:'یورینس کا تعلق جدید علمِ نجوم میں اچانک تبدیلی، انقلاب، آزادی پسندی اور غیر روایتی سوچ سے ہے۔ سائنس، ٹیکنالوجی اور اختراع سے متعلق امور اسی سے منسوب کیے جاتے ہیں۔'},
+  {name:'نیپچون', text:'نیپچون کا تعلق روحانیت، تخیل، خواب اور وہم و گمان سے ہے۔ فنونِ لطیفہ، شاعری اور باطنی رجحانات کو جدید علمِ نجوم میں اسی سیارے سے جوڑا جاتا ہے۔'},
+  {name:'پلوٹو', text:'پلوٹو کا تعلق گہری تبدیلی، فنا و بقا، اور پوشیدہ طاقتوں سے ہے۔ جدید علمِ نجوم میں تحقیق، نفسیاتی گہرائی اور بڑے پیمانے کی تبدیلیوں کو اسی سے منسوب کیا جاتا ہے۔'}
+];
+const sitaraBox = document.getElementById('sitaraKaamBox');
+sitaraBox.innerHTML = sitaraKaamData.map(s =>
+  s.isDivider
+    ? `<div style="text-align:center;font-weight:800;color:#b8bdc7;background:#1E3B2C;padding:10px 6px;margin:14px 0 6px;border-radius:4px;">${s.name}</div>`
+    : `<div class="sitara-block"><h4>${s.name}</h4><p>${s.text}</p></div>`
+).join('');
+
+/* ================= ASMA-UL-HUSNA (99 NAMES) ================= */
+const asmaData = [
+  ['اللہ','66/3'],['الرحمن','298/1'],['الرحیم','258/6'],['الملک','91/1'],['القدوس','170/8'],['السلام','131/5'],['المؤمن','136/1'],
+  ['المهيمن','145/1'],['العزيز','94/4'],['الجبار','206/8'],['المتكبر','662/5'],['الخالق','731/2'],['الباری','213/6'],['المصور','336/3'],
+  ['الغفار','1281/3'],['القهار','306/9'],['الوهاب','14/5'],['الرزاق','308/2'],['الفتاح','489/3'],['العليم','150/6'],['القابض','903/8'],
+  ['الباسط','72/9'],['الخافض','1481/5'],['الرافع','351/9'],['المعز','117/9'],['المذل','770/5'],['السميع','180/9'],['البصير','302/5'],
+  ['الحكم','68/5'],['العدل','104/6'],['اللطيف','129/3'],['الخبير','812/2'],['الحليم','88/7'],['العظيم','1020/3'],['الغفور','1286/8'],
+  ['الشكور','526/4'],['العلی','110/2'],['الكبير','232/7'],['الحفيظ','998/8'],['المقيت','550/1'],['الحسيب','80/8'],['الجليل','73/1'],
+  ['الكريم','270/9'],['الرقيب','312/6'],['المجيب','55/1'],['الواسع','137/2'],['الحكيم','78/6'],['الودود','20/2'],['المجيد','57/3'],
+  ['الباعث','573/6'],['الشهيد','319/4'],['الحق','108/9'],['الوكيل','66/3'],['القوی','116/8'],['المتين','500/1'],['الولی','46/1'],
+  ['الحمید','62/8'],['المحصی','148/4'],['المبدی','56/2'],['المعید','124/7'],['المحیی','68/5'],['الممیت','490/4'],['الحی','18/9'],
+  ['القیوم','156/3'],['الواجد','14/5'],['الماجد','48/3'],['الواحد','13/4'],['الاحد','13/4'],['الصمد','134/8'],['القادر','305/8'],
+  ['المقتدر','744/6'],['المقدم','184/9'],['المؤخر','846/9'],['الاول','37/1'],['الآخر','801/9'],['الظاهر','1106/1'],['الباطن','62/8'],
+  ['الوالی','47/2'],['المتعالی','540/9'],['البر','202/4'],['التواب','409/4'],['المنتقم','670/9'],['العفو','156/3'],['الرؤوف','286/7'],
+  ['مالك الملك','212/5'],['ذوالجلال والاكرام','1100/2'],['المقسط','209/6'],['الجامع','114/6'],['الغنی','1060/7'],['المغنی','1100/2'],
+  ['المانع','161/8'],['الضار','1001/2'],['النافع','201/3'],['النور','256/4'],['الهادی','20/2'],['البدیع','86/5'],['الباقی','113/5'],
+  ['الوارث','707/1'],['الرشید','514/1'],['الصبور','298/1']
+];
+document.getElementById('asmaTable').innerHTML =
+  '<thead><tr><th>#</th><th>اسم</th><th>کل عدد</th><th>عدد مفرد</th></tr></thead><tbody>' +
+  asmaData.map((r,i) => {
+    const [kul, mufrad] = r[1].split('/');
+    return `<tr><td>${i+1}</td><td class="day-name">${r[0]}</td><td>${kul}</td><td>${mufrad}</td></tr>`;
+  }).join('') +
+  '</tbody>';
+
+/* ================= TALEH-E-WAQT FORMULA TABLE (structure ready) ================= */
+const talehWaqtData = [
+  {burj:'حمل نمبر 1',  sooraj:'21 مارچ سے 20 اپریل', hind:3, yunan:'3 دقیقہ 45 ثانیہ'},
+  {burj:'ثور نمبر 2',  sooraj:'21 اپریل سے 21 مئی',  hind:4, yunan:'4 دقیقہ 15 ثانیہ'},
+  {burj:'جوزا نمبر 3', sooraj:'22 مئی سے 21 جون',    hind:5, yunan:'5 دقیقہ 7 ثانیہ'},
+  {burj:'سرطان نمبر 4',sooraj:'22 جون سے 23 جولائی', hind:6, yunan:'5 دقیقہ 35 ثانیہ'},
+  {burj:'اسد نمبر 5',  sooraj:'24 جولائی سے 23 اگست',hind:6, yunan:'5 دقیقہ 48 ثانیہ'},
+  {burj:'سنبلہ نمبر 6',sooraj:'24 اگست سے 23 ستمبر', hind:6, yunan:'5 دقیقہ 37 ثانیہ'},
+  {burj:'میزان نمبر 7',sooraj:'24 ستمبر سے 23 اکتوبر',hind:6, yunan:'5 دقیقہ 37 ثانیہ'},
+  {burj:'عقرب نمبر 8', sooraj:'24 اکتوبر سے 22 نومبر',hind:6, yunan:'5 دقیقہ 48 ثانیہ'},
+  {burj:'قوس نمبر 9',  sooraj:'23 نومبر سے 22 دسمبر',hind:6, yunan:'5 دقیقہ 35 ثانیہ'},
+  {burj:'جدی نمبر 10', sooraj:'23 دسمبر سے 20 جنوری',hind:5, yunan:'5 دقیقہ 7 ثانیہ'},
+  {burj:'دلو نمبر 11', sooraj:'21 جنوری سے 19 فروری',hind:4, yunan:'4 دقیقہ 15 ثانیہ'},
+  {burj:'حوت نمبر 12', sooraj:'20 فروری سے 20 مارچ', hind:3, yunan:'3 دقیقہ 45 ثانیہ'}
+];
+document.getElementById('talehWaqtTable').innerHTML =
+  '<thead><tr><th>برج</th><th>سورج کا برج میں قیام</th><th>دقیقہ بطریقِ نجومِ ہند</th><th>دقیقہ و ثانیہ بطریقِ نجومِ یونان</th></tr></thead><tbody>' +
+  talehWaqtData.map(r => `<tr><td class="day-name">${r.burj}</td><td>${r.sooraj}</td><td>${r.hind}</td><td>${r.yunan}</td></tr>`).join('') +
+  '</tbody>';
+document.getElementById('talehWaqtNote').innerHTML =
+  'جب طالعِ وقت معلوم کرنا ہو تو یہ دیکھیں کہ سورج اس وقت کس برج میں ہے، طلوعِ آفتاب سے جتنے منٹ گھنٹے گزرے ہیں، ان کو اوپر دی گئی دقیقہ کی گنتیوں سے ضرب دے دیں — جتنا حاصلِ ضرب آئے، اتنے درجے سورج کے برج سے آگے شمار کر کے طالعِ وقت معلوم ہوگا۔';
+
+/* ================= ZAICHA (PROFILE) BUILDER ================= */
+function mostFrequent(arr){
+  const counts = {};
+  arr.forEach(v => { if(v && v !== '—'){ counts[v] = (counts[v]||0) + 1; } });
+  let best = null, bestCount = 0;
+  Object.keys(counts).forEach(k => { if(counts[k] > bestCount){ best = k; bestCount = counts[k]; } });
+  return best ? `${best} (${bestCount} حرف)` : '—';
+}
+function unsurOf(letter){
+  for(const k in anasir1){ if(anasir1[k].includes(letter)) return k; }
+  return '—';
+}
+
+const planetTraits = {
+  'شمس':'قائدانہ صلاحیت، خود اعتمادی اور وقار رکھنے والا مزاج۔',
+  'قمر':'نرم دل، جذباتی اور خیال رکھنے والا مزاج۔',
+  'مریخ':'پرجوش، بےباک اور جلد فیصلہ کرنے والا مزاج۔',
+  'عطارد':'ذہین، باتونی اور تجزیاتی سوچ رکھنے والا مزاج۔',
+  'مشتری':'فراخ دل، پرامید اور دانش مند مزاج۔',
+  'زہرہ':'محبت کرنے والا، ملنسار اور خوش مزاج۔',
+  'زحل':'سنجیدہ، صابر اور ذمہ دار مزاج۔'
+};
+
+const milaapVerdict = {
+  'آتشی-آتشی':'ہم مزاج جوڑا — دونوں کا جوش و ولولہ ملتا جلتا ہے، آسانی سے ایک دوسرے کو سمجھ لیں گے، مگر یکسانیت کی وجہ سے کبھی کبھار ٹکراؤ بھی ہو سکتا ہے۔',
+  'خاکی-خاکی':'ہم مزاج جوڑا — دونوں سنجیدہ اور عملی طبیعت کے مالک ہیں، زندگی مستحکم اور منظم رہے گی۔',
+  'بادی-بادی':'ہم مزاج جوڑا — دونوں کا ذہنی میلان ملتا ہے، خیالات کا خوب تبادلہ ہوگا، مگر عملی معاملات میں توجہ ضروری ہوگی۔',
+  'آبی-آبی':'ہم مزاج جوڑا — دونوں جذباتی طور پر ایک دوسرے کو گہرائی سے سمجھیں گے، رشتہ محبت بھرا رہے گا۔',
+  'آتشی-بادی':'بہترین ہم آہنگی — ہوا آگ کو مزید تقویت دیتی ہے، جوش و خیال کا خوب ساتھ رہے گا، زندگی متحرک اور دلچسپ رہے گی۔',
+  'آتشی-خاکی':'محنت طلب مگر مستحکم امتزاج — ابتدا میں مزاج کا فرق محسوس ہوگا، مگر صبر سے مضبوط اور مستحکم بنیاد بنے گی۔',
+  'آتشی-آبی':'مشکل امتزاج — دونوں کا مزاج ایک دوسرے سے مختلف ہے، جذباتی ٹکراؤ کا امکان رہے گا، باہمی سمجھوتہ بہت ضروری ہوگا۔',
+  'خاکی-آبی':'قدرتی ہم آہنگی — عملی خاک اور نرم پانی ایک دوسرے کی تکمیل کرتے ہیں، گھریلو زندگی مستحکم اور پرسکون رہے گی۔',
+  'خاکی-بادی':'اعتدال والا امتزاج — عملی مزاج اور آزاد خیالی میں کچھ فرق رہے گا، ایک دوسرے سے ہم آہنگی بنانے میں وقت لگے گا۔',
+  'بادی-آبی':'حساس امتزاج — ذہنی رجحان اور جذباتی طبیعت میں کبھی خیالات ملیں گے، کبھی احساسات پر بات کرنا مشکل ہوگا، کھلی بات چیت اہم رہے گی۔'
+};
+function verdictFor(e1, e2){
+  const key1 = e1 + '-' + e2, key2 = e2 + '-' + e1;
+  return milaapVerdict[key1] || milaapVerdict[key2] || 'دونوں کے مزاج کا ملاپ عمومی نوعیت کا ہے — باہمی افہام و تفہیم سے رشتہ خوشگوار بنایا جا سکتا ہے۔';
+}
+
+function analyzeNaam(naam, walid){
+  const chars = [...naam].filter(ch => ch !== ' ' && huroofData[ch]);
+  const walidChars = walid ? [...walid].filter(ch => ch !== ' ' && huroofData[ch]) : [];
+  const allChars = chars.concat(walidChars);
+  if(allChars.length === 0) return null;
+
+  const burjList = allChars.map(ch => huroofData[ch].burj);
+  const sitaraList = allChars.map(ch => huroofData[ch].sitara);
+  const unsurList = allChars.map(ch => unsurOf(ch));
+  const total = allChars.reduce((s,ch) => s + huroofData[ch].val, 0);
+
+  return {
+    naam, walid, total,
+    burj: mostFrequent(burjList),
+    sitara: mostFrequent(sitaraList),
+    unsur: mostFrequent(unsurList)
+  };
+}
+
+function buildMilaap(){
+  const larkaNaam = normalizeUrdu(document.getElementById('zLarkaNaam').value.trim());
+  const larkaWalid = normalizeUrdu(document.getElementById('zLarkaWalid').value.trim());
+  const larkiNaam = normalizeUrdu(document.getElementById('zLarkiNaam').value.trim());
+  const larkiWalid = normalizeUrdu(document.getElementById('zLarkiWalid').value.trim());
+
+  if(!larkaNaam || !larkiNaam){ alert('لڑکے اور لڑکی، دونوں کا نام لکھیں۔'); return; }
+
+  const larka = analyzeNaam(larkaNaam, larkaWalid);
+  const larki = analyzeNaam(larkiNaam, larkiWalid);
+
+  if(!larka || !larki){
+    alert('نام میں کوئی معروف حرف نہیں ملا — براہِ کرم اردو حروف میں لکھیں۔');
+    return;
+  }
+
+  document.getElementById('zStartMsg').style.display = 'none';
+  document.getElementById('zResult').style.display = 'block';
+
+  function summaryHTML(p, label){
+    const trait = planetTraits[p.sitara] || '';
+    const fields = [
+      {label:'نام', value: p.naam + (p.walid ? ' بن/بنت ' + p.walid : '')},
+      {label:'مجموعی عددِ ابجد', value: p.total},
+      {label:'غالب برج (لگن)', value: p.burj},
+      {label:'غالب ستارہ', value: p.sitara},
+      {label:'غالب عنصر', value: p.unsur}
+    ];
+    let html = fields.map(f => `<span class="f-item"><span class="f-label">${f.label}:</span> <span class="f-value">${f.value}</span></span>`).join('<span class="sep">|</span>');
+    if(trait) html += `<div style="margin-top:8px;font-size:0.82rem;"><b>مزاج:</b> ${trait}</div>`;
+    return html;
+  }
+  document.getElementById('zLarkaSummary').innerHTML = summaryHTML(larka, 'لڑکا');
+  document.getElementById('zLarkiSummary').innerHTML = summaryHTML(larki, 'لڑکی');
+
+  const verdict = verdictFor(larka.unsur, larki.unsur);
+  document.getElementById('zMilaapVerdict').innerHTML =
+    `<h4>لڑکا (${larka.unsur}) × لڑکی (${larki.unsur})</h4><p>${verdict}</p>`;
+
+  const larkaTrait = planetTraits[larka.sitara] || '';
+  const larkiTrait = planetTraits[larki.sitara] || '';
+  const lifeText = `لڑکے پر غالب اثر ${larka.sitara} کا ہے — ${larkaTrait} لڑکی پر غالب اثر ${larki.sitara} کا ہے — ${larkiTrait} ان دونوں مزاجوں کا ملاپ اس بات کا تعین کرتا ہے کہ گھریلو زندگی میں کون سا پہلو نمایاں رہے گا۔ ${verdict} — روزمرہ زندگی میں باہمی احترام اور بات چیت ہی رشتے کو مضبوط رکھنے کی اصل کنجی رہے گی۔`;
+  document.getElementById('zMilaapLife').innerHTML = `<p>${lifeText}</p>`;
+}
+document.getElementById('zBuildBtn').addEventListener('click', buildMilaap);
+
+/* ================= PAIDAISHI ZAICHA (BIRTH CHART) ================= */
+const cities = [
+  {name:'کراچی',      lat:24.86, lon:67.01},
+  {name:'لاہور',       lat:31.55, lon:74.34},
+  {name:'اسلام آباد',  lat:33.68, lon:73.05},
+  {name:'پشاور',       lat:34.01, lon:71.58},
+  {name:'کوئٹہ',       lat:30.18, lon:66.99},
+  {name:'ملتان',       lat:30.16, lon:71.52},
+  {name:'فیصل آباد',   lat:31.42, lon:73.09},
+  {name:'راولپنڈی',    lat:33.60, lon:73.04},
+  {name:'حیدرآباد',    lat:25.40, lon:68.37},
+  {name:'دیگر (خود درج کریں)', lat:null, lon:null}
+];
+const pCitySel = document.getElementById('pCity');
+cities.forEach((c,i) => {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = c.name;
+  pCitySel.appendChild(o);
+});
+pCitySel.addEventListener('change', () => {
+  const c = cities[pCitySel.value];
+  document.getElementById('pManualLoc').style.display = (c.lat === null) ? 'flex' : 'none';
+});
+
+const burjNames = ['حمل','ثور','جوزا','سرطان','اسد','سنبلہ','میزان','عقرب','قوس','جدی','دلو','حوت'];
+const burjSymbols = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+const houseNames = ['بیت الطالع','بیت المال','بیت الاقربا','بیت الارض','بیت الاولاد','بیت المرض','بیت الزوج','بیت الموت','بیت السفر','بیت العزت','بیت الامید','بیت الاعداء'];
+const houseMeanings = [
+  'شخصیت، جسم، ظاہری وجود اور مزاج کا گھر۔',
+  'مال، دولت، زبان اور خاندانی معاملات کا گھر۔',
+  'بہن بھائی، ہمت، مختصر سفر کا گھر۔',
+  'گھر، ماں، جائیداد اور دلی سکون کا گھر۔',
+  'اولاد، محبت اور تخلیقی صلاحیت کا گھر۔',
+  'بیماری، ملازمت اور دشمن کا گھر۔',
+  'شادی، ساتھی اور معاہدوں کا گھر۔',
+  'وراثت، پوشیدہ امور اور تبدیلی کا گھر۔',
+  'سفر، مذہب اور اعلیٰ تعلیم کا گھر۔',
+  'کیریئر، عزت اور بلند مقام کا گھر۔',
+  'امیدوں، دوستوں اور آمدنی کا گھر۔',
+  'پوشیدہ خرچ، تنہائی اور پوشیدہ دشمن کا گھر۔'
+];
+
+function getManzil(lonVal){
+  const idx = Math.floor(norm360(lonVal) / (360/28)) % 28;
+  return manazilData[idx];
+}
+
+
+function norm360(x){ x = x % 360; if(x < 0) x += 360; return x; }
+
+function julianDay(y,m,d,hourUT){
+  if(m <= 2){ y -= 1; m += 12; }
+  const A = Math.floor(y/100), B = 2 - A + Math.floor(A/4);
+  return Math.floor(365.25*(y+4716)) + Math.floor(30.6001*(m+1)) + d + B - 1524.5 + hourUT/24.0;
+}
+
+const orbitalElements = {
+  Mercury:{L0:252.250906,Lr:149472.6746358,a:0.387098310,e0:0.20563175,er:0.000020406,i0:7.004986,ir:-0.0059516,Om0:48.330893,Omr:-0.1254229,w0:77.456119,wr:0.1588643},
+  Venus:{L0:181.979801,Lr:58517.8156760,a:0.723329820,e0:0.00677188,er:-0.000047766,i0:3.394662,ir:-0.0008568,Om0:76.679920,Omr:-0.2780080,w0:131.563707,wr:0.0048646},
+  Earth:{L0:100.466449,Lr:35999.3728519,a:1.000001018,e0:0.01670862,er:-0.000042037,i0:0,ir:0,Om0:0,Omr:0,w0:102.937348,wr:0.3225557},
+  Mars:{L0:355.433275,Lr:19140.2993313,a:1.523679342,e0:0.09340062,er:0.000090483,i0:1.849726,ir:-0.0081479,Om0:49.558093,Omr:-0.2949846,w0:336.060234,wr:0.4438898},
+  Jupiter:{L0:34.351484,Lr:3034.9056746,a:5.202603191,e0:0.04849485,er:0.000163244,i0:1.303270,ir:-0.0019872,Om0:100.464441,Omr:0.1766828,w0:14.331309,wr:0.2155525},
+  Saturn:{L0:50.077471,Lr:1222.1137943,a:9.554909596,e0:0.05550862,er:-0.000346818,i0:2.488878,ir:0.0025515,Om0:113.665524,Omr:-0.2566649,w0:93.056787,wr:0.5665496},
+  Uranus:{L0:313.238104,Lr:428.482028,a:19.191264,e0:0.047167710,er:-0.000191500,i0:0.769860,ir:-0.000427970,Om0:74.016925,Omr:-0.009018060,w0:170.954276,wr:0.408052810},
+  Neptune:{L0:-55.120030,Lr:218.459453,a:30.068963,e0:0.008585870,er:0.000025140,i0:1.769170,ir:-0.009673520,Om0:131.784226,Omr:-0.005086640,w0:44.964762,wr:-0.322414640},
+  Pluto:{L0:238.929038,Lr:145.207805,a:39.482117,e0:0.248827300,er:0.000051700,i0:17.140012,ir:0.000048180,Om0:110.303937,Omr:-0.011834820,w0:224.068916,wr:-0.040629420}
+};
+
+function solveKepler(Mdeg, e){
+  let M = Mdeg * Math.PI/180, E = M;
+  for(let k=0;k<50;k++){
+    const dE = (E - e*Math.sin(E) - M) / (1 - e*Math.cos(E));
+    E -= dE;
+    if(Math.abs(dE) < 1e-10) break;
+  }
+  return E;
+}
+
+function helioEcliptic(planet, T){
+  const el = orbitalElements[planet];
+  const L = norm360(el.L0 + el.Lr*T);
+  const a = el.a;
+  const e = el.e0 + el.er*T;
+  const i = el.i0 + el.ir*T;
+  const Om = norm360(el.Om0 + el.Omr*T);
+  const wPeri = norm360(el.w0 + el.wr*T);
+  const M = norm360(L - wPeri);
+  const E = solveKepler(M, e);
+  const xp = a*(Math.cos(E) - e);
+  const yp = a*Math.sqrt(1-e*e)*Math.sin(E);
+  const w = (norm360(wPeri - Om)) * Math.PI/180;
+  const OmR = Om * Math.PI/180, iR = i * Math.PI/180;
+  const cw=Math.cos(w), sw=Math.sin(w), cO=Math.cos(OmR), sO=Math.sin(OmR), ci=Math.cos(iR), si=Math.sin(iR);
+  const x = (cw*cO - sw*sO*ci)*xp + (-sw*cO - cw*sO*ci)*yp;
+  const y = (cw*sO + sw*cO*ci)*xp + (-sw*sO + cw*cO*ci)*yp;
+  return {x,y};
+}
+
+function geocentricLongitude(planet, T){
+  const earth = helioEcliptic('Earth', T);
+  let X, Y;
+  if(planet === 'Sun'){ X = -earth.x; Y = -earth.y; }
+  else{ const p = helioEcliptic(planet, T); X = p.x - earth.x; Y = p.y - earth.y; }
+  return norm360(Math.atan2(Y,X) * 180/Math.PI);
+}
+
+function moonLongitude(T){
+  const Lp = norm360(218.3164477 + 481267.88123421*T);
+  const D  = norm360(297.8501921 + 445267.1114034*T) * Math.PI/180;
+  const M  = norm360(357.5291092 + 35999.0502909*T) * Math.PI/180;
+  const Mp = norm360(134.9633964 + 477198.8675055*T) * Math.PI/180;
+  const F  = norm360(93.2720950 + 483202.0175233*T) * Math.PI/180;
+  const dL = 6.288774*Math.sin(Mp) + 1.274027*Math.sin(2*D-Mp) + 0.658314*Math.sin(2*D)
+    + 0.213618*Math.sin(2*Mp) - 0.185116*Math.sin(M) - 0.114332*Math.sin(2*F)
+    + 0.058793*Math.sin(2*D-2*Mp) + 0.057066*Math.sin(2*D-M-Mp)
+    + 0.053322*Math.sin(2*D+Mp) + 0.045758*Math.sin(2*D-M);
+  return norm360(Lp + dL);
+}
+
+function gmstDeg(jd){
+  const T = (jd - 2451545.0)/36525.0;
+  return norm360(280.46061837 + 360.98564736629*(jd-2451545.0) + 0.000387933*T*T - T*T*T/38710000);
+}
+
+function ascendantLongitude(ramcDeg, latDeg, epsDeg){
+  const ramc = ramcDeg*Math.PI/180, lat = latDeg*Math.PI/180, eps = epsDeg*Math.PI/180;
+  const num = -Math.cos(ramc);
+  const den = Math.sin(eps)*Math.tan(lat) + Math.cos(eps)*Math.sin(ramc);
+  return norm360(Math.atan2(num, den) * 180/Math.PI);
+}
+
+function burjOf(lon){ return burjNames[Math.floor(lon/30) % 12]; }
+function degInBurj(lon){ return (lon % 30).toFixed(1); }
+
+function onTurnHouseChange(){
+  const sel = document.getElementById('pTurnHouse');
+  const offset = parseInt(sel.value, 10) - 1;
+  if(window.lastAscBurjIdx === undefined || !window.lastPlanetsByHouse) return;
+  drawSquareChart(window.lastAscBurjIdx, window.lastPlanetsByHouse, offset);
+}
+
+function buildHouseGridSVG(ascBurjIdx, planetsByHouse, labelFn, targetId){
+  targetId = targetId || 'pHouseDetail';
+  const S = 300;
+  const TL=[0,0], TR=[S,0], BR=[S,S], BL=[0,S];
+  const TM=[S/2,0], RM=[S,S/2], BM=[S/2,S], LM=[0,S/2];
+  const C=[S/2,S/2];
+  const P1=[75,75], P2=[225,75], P3=[225,225], P4=[75,225];
+
+  const houses = [
+    [P1,TM,P2,C], [TM,TR,P2], [TR,RM,P2], [P2,RM,P3,C],
+    [RM,BR,P3], [BR,BM,P3], [P3,BM,P4,C], [BM,BL,P4],
+    [BL,LM,P4], [P4,LM,P1,C], [LM,TL,P1], [TL,TM,P1]
+  ];
+
+  const elementColors = ['#F7DCC8','#DCE8C9','#D7E2F1','#D2E6E7']; // fire, earth, air, water (pastel)
+
+  function centroid(pts){
+    let x=0,y=0; pts.forEach(p=>{x+=p[0];y+=p[1];});
+    return [x/pts.length, y/pts.length];
+  }
+
+  let svg = `<svg viewBox="-6 -6 ${S+12} ${S+12}" style="width:min(360px,94vw);height:auto;background:#F5FAF3;border-radius:6px;box-shadow:0 2px 8px rgba(31,35,64,0.25);">`;
+  svg += `<rect x="-6" y="-6" width="${S+12}" height="${S+12}" fill="none" stroke="#2F6B41" stroke-width="2" rx="6"/>`;
+  svg += `<rect x="0" y="0" width="${S}" height="${S}" fill="#E0F5F0" stroke="#1E3B2C" stroke-width="2"/>`;
+  svg += `<line x1="0" y1="0" x2="${S}" y2="${S}" stroke="#1E3B2C" stroke-width="1"/>`;
+  svg += `<line x1="${S}" y1="0" x2="0" y2="${S}" stroke="#1E3B2C" stroke-width="1"/>`;
+
+  houses.forEach((poly, idx) => {
+    const houseNum = idx + 1; // physical house from actual ascendant
+    const burjIdx = (ascBurjIdx + idx) % 12;
+    const ptsStr = poly.map(p=>p.join(',')).join(' ');
+    svg += `<polygon points="${ptsStr}" fill="${elementColors[burjIdx % 4]}" fill-opacity="0.55" stroke="none" style="cursor:pointer;" onclick="showHouseDetail(${houseNum}, '${targetId}')" />`;
+  });
+
+  svg += `<polygon points="${TM.join(',')} ${RM.join(',')} ${BM.join(',')} ${LM.join(',')}" fill="none" stroke="#2F6B41" stroke-width="1.4"/>`;
+
+  houses.forEach((poly, idx) => {
+    const houseNum = idx + 1;
+    const burjIdx = (ascBurjIdx + idx) % 12;
+    const [cx, cy] = centroid(poly);
+    const planetsHere = planetsByHouse[houseNum] || [];
+    svg += `<g style="pointer-events:none;">`;
+    const lbl = labelFn(idx, houseNum);
+    svg += `<text x="${cx}" y="${cy-19}" font-size="13" fill="#2F6B41" text-anchor="middle" font-weight="700">${lbl.top}</text>`;
+    if(lbl.sub){
+      svg += `<text x="${cx}" y="${cy-8}" font-size="9.5" fill="#7a5a1e" text-anchor="middle" font-weight="600">${lbl.sub}</text>`;
+    }
+    svg += `<text x="${cx}" y="${cy+7}" font-size="12" fill="#3E6B54" text-anchor="middle" font-weight="600">${burjSymbols[burjIdx]} ${burjNames[burjIdx]}</text>`;
+    if(planetsHere.length){
+      svg += `<text x="${cx}" y="${cy+21}" font-size="12" fill="#4169E1" text-anchor="middle" font-weight="700">${planetsHere.join(' ')}</text>`;
+    }
+    svg += `</g>`;
+  });
+
+  svg += `</svg>`;
+  return svg;
+}
+
+const houseShortLabel = ['خود/ذات','مال','بھائی بہن','گھر/والدہ','اولاد','بیماری','شریکِ حیات','وراثت','سفر','کیریئر','دوست','پوشیدہ امور'];
+
+function drawSquareChart(ascBurjIdx, planetsByHouse, turnOffset){
+  turnOffset = turnOffset || 0;
+  window.lastPlanetsByHouse = planetsByHouse;
+  window.lastAscBurjIdx = ascBurjIdx;
+  window.lastTurnOffset = turnOffset;
+
+  const normalSvg = buildHouseGridSVG(ascBurjIdx, planetsByHouse, (idx, houseNum) => ({ top: String(houseNum) }), 'pHouseDetail');
+  document.getElementById('pSquareChart').innerHTML = normalSvg;
+  document.getElementById('pHouseDetail').style.display = 'none';
+
+  const wrap = document.getElementById('pSquareChartTurnedWrap');
+  if(turnOffset === 0){
+    wrap.style.display = 'none';
+    document.getElementById('pSquareChartTurned').innerHTML = '';
+    document.getElementById('pHouseDetailTurned').style.display = 'none';
+  } else {
+    const sel = document.getElementById('pTurnHouse');
+    const optText = sel ? sel.options[sel.selectedIndex].text : '';
+    document.getElementById('pTurnedChartTitle').textContent = `تحویل شدہ زائچہ — ${optText}`;
+    const turnedSvg = buildHouseGridSVG(ascBurjIdx, planetsByHouse, (idx, houseNum) => {
+      const dispNum = ((idx - turnOffset) % 12 + 12) % 12 + 1;
+      return { top: String(dispNum), sub: houseShortLabel[dispNum-1] };
+    }, 'pHouseDetailTurned');
+    document.getElementById('pSquareChartTurned').innerHTML = turnedSvg;
+    wrap.style.display = 'block';
+    document.getElementById('pHouseDetailTurned').style.display = 'none';
+  }
+}
+
+function showHouseDetail(houseNum, targetId){
+  targetId = targetId || 'pHouseDetail';
+  const box = document.getElementById(targetId);
+  box.style.display = 'block';
+  box.style.textAlign = 'right';
+  box.style.lineHeight = '2';
+
+  const info = window.lastChartInfo;
+  if(!info){ box.innerHTML = 'پہلے زائچہ بنائیں۔'; return; }
+
+  // the normal chart always shows plain (untouched) house meanings;
+  // only the turned-chart's own box applies the selected viewpoint's offset.
+  const turnOffset = (targetId === 'pHouseDetailTurned') ? (window.lastTurnOffset || 0) : 0;
+  const dispNum = ((houseNum - 1 - turnOffset) % 12 + 12) % 12 + 1; // derived/turned house number for meaning
+  const meaningIdx = dispNum - 1;
+
+  const burjIdxHere = (info.ascBurjIdx + houseNum - 1) % 12;
+  const burjName = burjNames[burjIdxHere];
+  const burjHalaat = burjHalaatData[burjIdxHere];
+  const planetsHere = (window.lastPlanetsByHouse && window.lastPlanetsByHouse[houseNum]) || [];
+
+  let headerLabel = turnOffset === 0
+    ? `گھر ${houseNum} — ${houseNames[houseNum-1]}`
+    : `گھر ${houseNum} (بطور تحویل شدہ گھر ${dispNum} — ${houseNames[meaningIdx]})`;
+
+  let html = `<div style="margin-bottom:8px;"><b style="color:#2F6B41;">${headerLabel}</b><br>`;
+  html += `<span style="font-size:0.85rem;">${houseMeanings[meaningIdx]}</span></div>`;
+
+  if(meaningIdx === 5){ // house 6 — بیت المرض: add traditional body-part/disease-nature note
+    html += `<div style="margin-bottom:8px;"><span style="font-size:0.85rem;"><b>امراض کی نوعیت (روایتی طور پر برج کے مطابق):</b> ${burjBodyPart[burjName]}</span></div>`;
+  }
+
+  html += `<div style="margin-bottom:8px;"><b style="color:#2F6B41;">برج:</b> ${burjSymbols[burjIdxHere]} ${burjName}<br>`;
+  const cond = burjCondition(burjName, planetsHere, info.planetDetails);
+  if(cond === 'saad'){
+    html += `<span style="color:#1e6b2e;font-size:0.85rem;"><b>موجودہ حالت — سعد:</b> ${burjHalaat.saad}</span></div>`;
+  } else {
+    html += `<span style="color:#B5651D;font-size:0.95rem;font-weight:800;"><b>موجودہ حالت — نحس:</b> ${burjHalaat.nahs}</span></div>`;
+  }
+
+  if(planetsHere.length === 0){
+    html += `<div style="opacity:0.7;">اس گھر میں فی الحال کوئی سیارہ موجود نہیں — صرف اوپر بیان کردہ برج کا اثر غالب ہے۔</div>`;
+  } else {
+    planetsHere.forEach(p => {
+      const d = info.planetDetails[p];
+      html += `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #BFE0C4;">`;
+      html += `<b style="color:#4169E1;">${p}${d.retro ? ' (رجعت)' : ''}</b> — ${d.deg}° ${burjName}<br>`;
+      html += `<span style="font-size:0.85rem;"><b>حالت:</b> ${d.dignity.label}</span><br>`;
+      const meaning = (asarBuyutData[p] && asarBuyutData[p][meaningIdx]) || '—';
+      html += `<span style="font-size:0.85rem;"><b>اس گھر میں اثر:</b> ${meaning}</span>`;
+      if(d.manzil){
+        html += `<br><span style="font-size:0.85rem;"><b>منزلِ قمر:</b> ${d.manzil.manzil} (نمبر ${d.manzil.n}) — ${d.manzil.taseer}</span>`;
+      }
+      html += `</div>`;
+    });
+  }
+  box.innerHTML = html;
+}
+
+const ownSigns = {'شمس':['اسد'],'قمر':['سرطان'],'عطارد':['جوزا','سنبلہ'],'زہرہ':['ثور','میزان'],'مریخ':['حمل','عقرب'],'مشتری':['قوس','حوت'],'زحل':['جدی','دلو']};
+const burjBodyPart = {
+  'حمل':'سر، چہرہ اور آنکھوں سے متعلق مسائل۔',
+  'ثور':'گلا، گردن اور آواز سے متعلق مسائل۔',
+  'جوزا':'پھیپھڑے، بازو، ہاتھ اور اعصابی نظام سے متعلق مسائل۔',
+  'سرطان':'سینہ، معدہ اور نظامِ ہضم سے متعلق مسائل۔',
+  'اسد':'دل، کمر کا اوپری حصہ اور خون کی گردش سے متعلق مسائل۔',
+  'سنبلہ':'آنتیں اور نظامِ انہضام سے متعلق مسائل۔',
+  'میزان':'گردے اور کمر کے نچلے حصے سے متعلق مسائل۔',
+  'عقرب':'تولیدی نظام اور اخراجی نظام سے متعلق مسائل۔',
+  'قوس':'رانوں اور کولہوں سے متعلق مسائل۔',
+  'جدی':'گھٹنوں، جوڑوں اور ہڈیوں سے متعلق مسائل۔',
+  'دلو':'پنڈلیوں اور خون کی گردش سے متعلق مسائل۔',
+  'حوت':'پاؤں اور مدافعتی نظام سے متعلق مسائل۔'
+};
+const exaltSign = {'شمس':'حمل','قمر':'ثور','عطارد':'سنبلہ','زہرہ':'حوت','مریخ':'جدی','مشتری':'سرطان','زحل':'میزان'};
+const naturalBenefics = ['مشتری','زہرہ','قمر'];
+const naturalMalefics = ['زحل','مریخ','شمس','راس','ذنب'];
+function burjLord(burjName){
+  for(const p in ownSigns){ if(ownSigns[p].includes(burjName)) return p; }
+  return null;
+}
+// Determines whether a sign's condition (سعد/نحس) should be shown as favourable or unfavourable
+// for THIS chart: prioritises any planet actually occupying the house, falling back to the
+// natural benefic/malefic quality of the sign's ruling planet.
+function burjCondition(burjName, planetsHere, planetDetails){
+  for(const p of planetsHere){
+    const d = planetDetails[p];
+    if(d && d.dignity){
+      if(d.dignity.good === true) return 'saad';
+      if(d.dignity.good === false) return 'nahs';
+    }
+  }
+  for(const p of planetsHere){
+    if(naturalMalefics.includes(p)) return 'nahs';
+  }
+  for(const p of planetsHere){
+    if(naturalBenefics.includes(p)) return 'saad';
+  }
+  const lord = burjLord(burjName);
+  if(lord && naturalMalefics.includes(lord)) return 'nahs';
+  return 'saad';
+}
+const fallSign  = {'شمس':'میزان','قمر':'عقرب','عطارد':'حوت','زہرہ':'سنبلہ','مریخ':'سرطان','مشتری':'جدی','زحل':'حمل'};
+const planetEnglishKey = {'شمس':'Sun','عطارد':'Mercury','زہرہ':'Venus','مریخ':'Mars','مشتری':'Jupiter','زحل':'Saturn'};
+
+function oppositeBurj(burjName){ const i = burjNames.indexOf(burjName); return burjNames[(i+6)%12]; }
+
+function getDignity(planet, burjName){
+  if(exaltSign[planet] === burjName) return {label:'شرفِ اعلیٰ', good:true};
+  if(fallSign[planet] === burjName) return {label:'ہبوط (کمزور ترین)', good:false};
+  if(ownSigns[planet] && ownSigns[planet].includes(burjName)) return {label:'اپنے گھر میں (بیت)', good:true};
+  if(ownSigns[planet] && ownSigns[planet].includes(oppositeBurj(burjName))) return {label:'وبال (کمزور)', good:false};
+  return {label:'اعتدال (درمیانہ حالت)', good:null};
+}
+
+function isRetrograde(planet, T){
+  if(planet === 'شمس' || planet === 'قمر') return false;
+  if(planet === 'راس' || planet === 'ذنب') return true; // lunar nodes: conventionally always retrograde
+  const dt = 1/36525;
+  const lon1 = geocentricLongitude(planetEnglishKey[planet], T);
+  const lon2 = geocentricLongitude(planetEnglishKey[planet], T+dt);
+  let diff = lon2 - lon1;
+  if(diff > 180) diff -= 360;
+  if(diff < -180) diff += 360;
+  return diff < 0;
+}
+
+function meanLunarNodeLongitude(T){
+  // Meeus mean ascending node (راس) formula
+  const omega = 125.0445479 - 1934.1362891*T + 0.0020754*T*T + (T*T*T)/467441 - (T*T*T*T)/60616000;
+  return norm360(omega);
+}
+
+function buildPaidaishiZaicha(){
+  const dateVal = document.getElementById('pDate').value;
+  const timeVal = document.getElementById('pTime').value;
+  const tz = parseFloat(document.getElementById('pTz').value || '5');
+  if(!dateVal || !timeVal){ alert('پہلے تاریخ اور وقت درج کریں۔'); return; }
+
+  const cityIdx = pCitySel.value;
+  let lat, lon;
+  if(cities[cityIdx].lat !== null){ lat = cities[cityIdx].lat; lon = cities[cityIdx].lon; }
+  else{
+    lat = parseFloat(document.getElementById('pLat').value);
+    lon = parseFloat(document.getElementById('pLon').value);
+    if(isNaN(lat) || isNaN(lon)){ alert('مقام کیلئے عرض بلد اور طول بلد درج کریں۔'); return; }
+  }
+
+  const [y,m,d] = dateVal.split('-').map(Number);
+  const [hh,mm] = timeVal.split(':').map(Number);
+  const localHour = hh + mm/60;
+  const utHour = localHour - tz;
+  const jd = julianDay(y, m, d, utHour);
+  const T = (jd - 2451545.0)/36525.0;
+
+  const planets = {
+    'شمس': geocentricLongitude('Sun', T),
+    'قمر': moonLongitude(T),
+    'عطارد': geocentricLongitude('Mercury', T),
+    'زہرہ': geocentricLongitude('Venus', T),
+    'مریخ': geocentricLongitude('Mars', T),
+    'مشتری': geocentricLongitude('Jupiter', T),
+    'زحل': geocentricLongitude('Saturn', T),
+    'راس': meanLunarNodeLongitude(T),
+    'ذنب': norm360(meanLunarNodeLongitude(T) + 180)
+  };
+
+  const eps = 23.4392911 - 0.0130042*T;
+  const lst = norm360(gmstDeg(jd) + lon);
+  const asc = ascendantLongitude(lst, lat, eps);
+
+  document.getElementById('pStartMsg').style.display = 'none';
+  document.getElementById('pResult').style.display = 'block';
+
+  const naam = normalizeUrdu(document.getElementById('pNaam').value.trim());
+  const gender = document.getElementById('pGender').value;
+  const relation = document.getElementById('pRelation').value;
+  document.getElementById('pAscSign').textContent = burjOf(asc) + ' ' + degInBurj(asc) + '°';
+  const relLabel = relation === 'خود' ? '' : ' (' + relation + ')';
+  document.getElementById('pAscLabel').textContent = (naam ? naam + relLabel + ' — ' + gender + ' — ' : '') + 'طالع (Ascendant)';
+
+  const houseOf = (lonVal) => { let diff = norm360(lonVal - asc); return Math.floor(diff/30) + 1; };
+
+  const planetsByHouse = {};
+  const planetDetails = {};
+  Object.keys(planets).forEach(p => {
+    const lonVal = planets[p];
+    const h = houseOf(lonVal);
+    const burjName = burjOf(lonVal);
+    const dign = getDignity(p, burjName);
+    const retro = isRetrograde(p, T);
+    planetDetails[p] = { lon: lonVal, burj: burjName, deg: degInBurj(lonVal), houseNum: h, dignity: dign, retro: retro, manzil: (p === 'قمر' ? getManzil(lonVal) : null) };
+    if(!planetsByHouse[h]) planetsByHouse[h] = [];
+    planetsByHouse[h].push(p);
+  });
+  window.lastChartInfo = { asc, ascBurjIdx: Math.floor(asc/30), planetDetails, naam, gender, relation };
+  const turnSel = document.getElementById('pTurnHouse');
+  if(turnSel) turnSel.value = '1';
+  drawSquareChart(Math.floor(asc/30), planetsByHouse, 0);
+
+  const planetRows = Object.keys(planets).map(p => {
+    const lonVal = planets[p];
+    const burjName = burjOf(lonVal);
+    const houseNum = houseOf(lonVal);
+    const dign = getDignity(p, burjName);
+    const retro = isRetrograde(p, T);
+    const mansub = kawakibMansubData.find(k => k.k === p);
+    const mansubText = dign.good === true ? (mansub ? mansub.good : '—')
+                      : dign.good === false ? (mansub ? mansub.bad : '—')
+                      : (mansub ? (mansub.good + ' / ' + mansub.bad) : '—');
+    const asarText = (asarBuyutData[p] && asarBuyutData[p][houseNum-1]) || '—';
+    const dignClass = dign.good === true ? 'good' : (dign.good === false ? 'bad' : '');
+    return `<tr>
+      <td class="day-name">${p}${retro ? ' (رجعت)' : ''}</td>
+      <td>${burjName}</td>
+      <td>${degInBurj(lonVal)}°</td>
+      <td>گھر ${houseNum}</td>
+      <td class="${dignClass}">${dign.label}</td>
+      <td class="small-txt">${mansubText}</td>
+      <td class="small-txt">${asarText}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('pPlanetsTable').innerHTML =
+    '<thead><tr><th>سیارہ</th><th>برج</th><th>درجہ</th><th>گھر</th><th>حالت</th><th>مناسبات (سعد/نحس)</th><th>اس گھر میں اثر</th></tr></thead><tbody>' + planetRows + '</tbody>';
+
+  const houseRows = [];
+  for(let hnum = 1; hnum <= 12; hnum++){
+    const cuspLon = norm360(asc + (hnum-1)*30);
+    const burjIdxHere = Math.floor(cuspLon/30) % 12;
+    const burjHalaat = burjHalaatData[burjIdxHere];
+    const planetsHere = (planetsByHouse[hnum] || []).join('، ') || '—';
+    houseRows.push(`<tr>
+      <td class="day-name">${hnum} — ${houseNames[hnum-1]}</td>
+      <td>${burjOf(cuspLon)}</td>
+      <td>${planetsHere}</td>
+      <td class="small-txt"><b style="color:#345A3A;">سعد:</b> ${burjHalaat.saad}</td>
+      <td class="small-txt"><b style="color:#B5651D;font-size:0.9rem;">نحس:</b> ${burjHalaat.nahs}</td>
+    </tr>`);
+  }
+  document.getElementById('pHousesTable').innerHTML =
+    '<thead><tr><th>گھر</th><th>برج</th><th>سیارے</th><th>حالتِ برج (سعد)</th><th>حالتِ برج (نحس)</th></tr></thead><tbody>' + houseRows.join('') + '</tbody>';
+}
+document.getElementById('pBuildBtn').addEventListener('click', buildPaidaishiZaicha);
+
+/* ================= YAUMIA (SAAT-E-KAWAKIB / PLANETARY HOURS) ================= */
+const yCitySel = document.getElementById('yCity');
+cities.forEach((c,i) => {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = c.name;
+  yCitySel.appendChild(o);
+});
+yCitySel.addEventListener('change', () => {
+  const c = cities[yCitySel.value];
+  document.getElementById('yManualLoc').style.display = (c.lat === null) ? 'flex' : 'none';
+});
+
+const chaldeanOrder = ['زحل','مشتری','مریخ','شمس','زہرہ','عطارد','قمر'];
+const saatAmalData = {
+  'زحل':  'صبر، استقامت، تعمیرات، پرانے معاملات نمٹانا، دشمن کو کمزور کرنا — نئے کام یا شادی/محبت کیلئے نامناسب۔',
+  'مشتری':'علم، دولت، ترقی، عزت کے حصول، مذہبی امور، نکاح کی بات چیت — نہایت مبارک ساعت۔',
+  'مریخ': 'ہمت اور جرات کے کام، مقابلہ، جنگ، سرجری — محبت اور صلح کیلئے نامناسب۔',
+  'شمس':  'عزت، اقتدار، حکام سے ملاقات، قوتِ ارادی کے کام — کامیابی اور بلندی کیلئے موزوں۔',
+  'زہرہ': 'محبت، نکاح، دوستی، فن اور خوبصورتی سے متعلق امور — رومانوی اور سماجی معاملات کیلئے بہترین۔',
+  'عطارد':'تجارت، تحریر، سفر، معاہدے، تعلیم سے متعلق کام — ذہنی و کاروباری امور کیلئے موزوں۔',
+  'قمر':  'سفر، جذباتی معاملات، ماں سے متعلق امور، پانی سے جڑے کام — تبدیلی اور رفتار کی ساعت۔'
+};
+const dayRulerByWeekday = ['شمس','قمر','مریخ','عطارد','مشتری','زہرہ','زحل']; // JS getDay(): 0=Sunday
+const weekdayNamesUrdu = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'];
+
+function sunLonDecl(T){
+  const L0 = norm360(280.46646 + 36000.76983*T);
+  const M = norm360(357.52911 + 35999.05029*T);
+  const Mr = M*Math.PI/180;
+  const C = (1.914602 - 0.004817*T)*Math.sin(Mr) + 0.019993*Math.sin(2*Mr);
+  const lam = norm360(L0 + C);
+  const eps = 23.439291 - 0.0130042*T;
+  const decl = Math.asin(Math.sin(eps*Math.PI/180)*Math.sin(lam*Math.PI/180)) * 180/Math.PI;
+  return {lam, decl};
+}
+
+function sunriseSunset(y,m,d,lat,lon,tz){
+  const jd0 = julianDay(y,m,d, 12.0 - tz);
+  const T = (jd0-2451545.0)/36525.0;
+  const {decl} = sunLonDecl(T);
+  const latR = lat*Math.PI/180, declR = decl*Math.PI/180;
+  let cosH = -Math.tan(latR)*Math.tan(declR);
+  cosH = Math.max(-1, Math.min(1, cosH));
+  const H = Math.acos(cosH) * 180/Math.PI;
+  const solarNoonUt = 12.0 - lon/15.0;
+  const sunriseUt = solarNoonUt - H/15.0;
+  const sunsetUt = solarNoonUt + H/15.0;
+  return { sunrise: norm360((sunriseUt+tz)*15)/15, sunset: norm360((sunsetUt+tz)*15)/15 };
+}
+
+function hourToClock(h){
+  h = ((h % 24)+24)%24;
+  const hh = Math.floor(h);
+  const mm = Math.round((h-hh)*60);
+  return String(hh).padStart(2,'0') + ':' + String(mm).padStart(2,'0');
+}
+
+function buildYaumia(){
+  const dateVal = document.getElementById('yDate').value;
+  if(!dateVal){ alert('پہلے تاریخ درج کریں۔'); return; }
+  const tz = parseFloat(document.getElementById('yTz').value || '5');
+  const cityIdx = yCitySel.value;
+  let lat, lon;
+  if(cities[cityIdx].lat !== null){ lat = cities[cityIdx].lat; lon = cities[cityIdx].lon; }
+  else{
+    lat = parseFloat(document.getElementById('yLat').value);
+    lon = parseFloat(document.getElementById('yLon').value);
+    if(isNaN(lat) || isNaN(lon)){ alert('مقام کیلئے عرض بلد اور طول بلد درج کریں۔'); return; }
+  }
+  const [y,m,d] = dateVal.split('-').map(Number);
+  const dateObj = new Date(y, m-1, d);
+  const weekday = dateObj.getDay();
+
+  const today = sunriseSunset(y,m,d,lat,lon,tz);
+  const tomorrowDate = new Date(y, m-1, d+1);
+  const tmrw = sunriseSunset(tomorrowDate.getFullYear(), tomorrowDate.getMonth()+1, tomorrowDate.getDate(), lat, lon, tz);
+
+  document.getElementById('ySunTimes').textContent =
+    `${weekdayNamesUrdu[weekday]} — طلوعِ آفتاب: ${hourToClock(today.sunrise)} | غروبِ آفتاب: ${hourToClock(today.sunset)}`;
+
+  const dayLen = (today.sunset - today.sunrise + 24) % 24;
+  const nightLen = 24 - dayLen;
+  const dayHourLen = dayLen/12;
+  const nightHourLen = nightLen/12;
+
+  const startPlanetIdx = chaldeanOrder.indexOf(dayRulerByWeekday[weekday]);
+
+  // is the selected date actually today (real device date)? if so, compute "abhi" (right now) marker
+  const realNow = new Date();
+  const isToday = (realNow.getFullYear() === y && realNow.getMonth() === m-1 && realNow.getDate() === d);
+  const nowLocalHour = isToday ? (realNow.getUTCHours() + realNow.getUTCMinutes()/60 + realNow.getUTCSeconds()/3600 + tz + 24) % 24 : null;
+  const nowElapsed = isToday ? ((nowLocalHour - today.sunrise + 24) % 24) : null;
+
+  const purposePlanet = document.getElementById('yPurpose').value;
+
+  const rows = [];
+  for(let hnum = 1; hnum <= 24; hnum++){
+    const planet = chaldeanOrder[(startPlanetIdx + hnum - 1) % 7];
+    let startClock, endClock, label, offStart, offEnd;
+    if(hnum <= 12){
+      const s = today.sunrise + (hnum-1)*dayHourLen;
+      const e = today.sunrise + hnum*dayHourLen;
+      startClock = hourToClock(s); endClock = hourToClock(e); label = 'دن — ساعت ' + hnum;
+      offStart = (hnum-1)*dayHourLen; offEnd = hnum*dayHourLen;
+    } else {
+      const nIdx = hnum - 12;
+      const s = today.sunset + (nIdx-1)*nightHourLen;
+      const e = today.sunset + nIdx*nightHourLen;
+      startClock = hourToClock(s); endClock = hourToClock(e); label = 'رات — ساعت ' + nIdx;
+      offStart = dayLen + (nIdx-1)*nightHourLen; offEnd = dayLen + nIdx*nightHourLen;
+    }
+    const isNow = isToday && nowElapsed >= offStart && nowElapsed < offEnd;
+    rows.push({label, startClock, endClock, planet, isNow, offStart});
+  }
+
+  if(isToday){
+    const curRow = rows.find(r => r.isNow);
+    const moonNow = moonBurjAt(new Date());
+    const statusBox = document.getElementById('yNowStatus');
+    statusBox.style.display = 'block';
+    statusBox.innerHTML = `اس وقت: ${curRow ? 'ساعتِ ' + curRow.planet + ' جاری ہے (' + curRow.startClock + ' – ' + curRow.endClock + ')' : 'ساعت معلوم نہیں ہو سکی'} — چاند اس وقت برج ${moonNow.burj} میں ہے۔`;
+  } else {
+    document.getElementById('yNowStatus').style.display = 'none';
+  }
+
+  let nextPurposeMsg = '';
+  if(purposePlanet){
+    const favBurj = (ownSigns[purposePlanet] || []).join('، ');
+    const matches = rows.filter(r => r.planet === purposePlanet);
+    if(isToday){
+      const upcoming = matches.find(r => r.offStart >= (nowElapsed || 0));
+      if(upcoming){
+        nextPurposeMsg = `<div class="note" style="margin-top:8px;">منتخب مقصد کے لیے اگلی موزوں ساعت: <b>${upcoming.label}</b> (${upcoming.startClock} – ${upcoming.endClock})${favBurj ? ' — مناسب برج: ' + favBurj : ''}</div>`;
+      } else {
+        nextPurposeMsg = `<div class="note" style="margin-top:8px;">آج اس مقصد کی مزید ساعت نہیں آئے گی — جدول میں ${purposePlanet} کی ساعتیں دیکھیں یا اگلے دن کی تاریخ منتخب کریں۔${favBurj ? ' مناسب برج: ' + favBurj : ''}</div>`;
+      }
+    } else {
+      const first = matches[0];
+      nextPurposeMsg = first ? `<div class="note" style="margin-top:8px;">منتخب تاریخ میں اس مقصد کی ساعت: <b>${first.label}</b> (${first.startClock} – ${first.endClock})${favBurj ? ' — مناسب برج: ' + favBurj : ''}</div>` : '';
+    }
+  }
+
+  document.getElementById('yaumiaTable').innerHTML =
+    '<thead><tr><th>ساعت</th><th>وقت (شروع - ختم)</th><th>حاکم سیارہ</th><th>مناسب عمل</th></tr></thead><tbody>' +
+    rows.map(r => {
+      const highlight = r.isNow ? ' style="background:var(--peach-light) !important;font-weight:700;"' : '';
+      const purposeMark = (purposePlanet && r.planet === purposePlanet) ? ' ⭐' : '';
+      return `<tr${highlight}><td>${r.isNow ? '◀ ابھی — ' : ''}${r.label}${purposeMark}</td><td>${r.startClock} – ${r.endClock}</td><td class="day-name">${r.planet}</td><td class="small-txt">${saatAmalData[r.planet]}</td></tr>`;
+    }).join('') +
+    '</tbody>' +
+    (nextPurposeMsg ? '' : '');
+  if(nextPurposeMsg){
+    document.getElementById('yaumiaTable').insertAdjacentHTML('afterend', nextPurposeMsg);
+  }
+}
+document.getElementById('yBuildBtn').addEventListener('click', buildYaumia);
+
+/* ================= MOON SIGN TRANSIT (قمر کی موجودہ گردش) ================= */
+function dateToJD(dateObj){ return dateObj.getTime()/86400000 + 2440587.5; }
+function TfromDate(dateObj){ return (dateToJD(dateObj) - 2451545.0)/36525.0; }
+function moonBurjAt(dateObj){
+  const lonVal = norm360(moonLongitude(TfromDate(dateObj)));
+  return { lon: lonVal, burjIdx: Math.floor(lonVal/30), burj: burjOf(lonVal) };
+}
+function isMoonInBurj(dateObj, targetIdx){ return moonBurjAt(dateObj).burjIdx === targetIdx; }
+function refineBoundary(dateA, dateB){
+  let lo = dateA.getTime(), hi = dateB.getTime();
+  const loIsTarget = isMoonInBurj(dateA, refineBoundary.targetIdx);
+  for(let i=0;i<25;i++){
+    const mid = (lo+hi)/2;
+    const midDate = new Date(mid);
+    if(isMoonInBurj(midDate, refineBoundary.targetIdx) === loIsTarget) lo = mid; else hi = mid;
+  }
+  return new Date((lo+hi)/2);
+}
+function findMoonTransit(targetIdx){
+  refineBoundary.targetIdx = targetIdx;
+  const now = new Date();
+  const stepMs = 60*60*1000; // 1 hour steps
+  const curIsTarget = isMoonInBurj(now, targetIdx);
+  let entryDate = null, exitDate = null;
+
+  if(curIsTarget){
+    for(let i=1; i<=24*20; i++){
+      const testDate = new Date(now.getTime() - i*stepMs);
+      if(!isMoonInBurj(testDate, targetIdx)){ entryDate = refineBoundary(testDate, new Date(testDate.getTime()+stepMs)); break; }
+    }
+    for(let i=1; i<=24*20; i++){
+      const testDate = new Date(now.getTime() + i*stepMs);
+      if(!isMoonInBurj(testDate, targetIdx)){ exitDate = refineBoundary(new Date(testDate.getTime()-stepMs), testDate); break; }
+    }
+  } else {
+    for(let i=1; i<=24*40; i++){
+      const testDate = new Date(now.getTime() + i*stepMs);
+      if(isMoonInBurj(testDate, targetIdx)){ entryDate = refineBoundary(new Date(testDate.getTime()-stepMs), testDate); break; }
+    }
+    if(entryDate){
+      for(let i=1; i<=24*10; i++){
+        const testDate = new Date(entryDate.getTime() + i*stepMs);
+        if(!isMoonInBurj(testDate, targetIdx)){ exitDate = refineBoundary(new Date(testDate.getTime()-stepMs), testDate); break; }
+      }
+    }
+  }
+  return { entryDate, exitDate, currentlyIn: curIsTarget };
+}
+function fmtDateTime(dateObj){
+  if(!dateObj) return '؟';
+  const dd = String(dateObj.getDate()).padStart(2,'0');
+  const mm = String(dateObj.getMonth()+1).padStart(2,'0');
+  const yy = dateObj.getFullYear();
+  const hh = String(dateObj.getHours()).padStart(2,'0');
+  const mi = String(dateObj.getMinutes()).padStart(2,'0');
+  return `${dd}-${mm}-${yy} — ${hh}:${mi}`;
+}
+function saatAtMoment(dateObj, lat, lon, tz){
+  const y = dateObj.getFullYear(), m = dateObj.getMonth()+1, d = dateObj.getDate();
+  const day = sunriseSunset(y, m, d, lat, lon, tz);
+  const localHour = (dateObj.getHours() + dateObj.getMinutes()/60);
+  const dayLen = (day.sunset - day.sunrise + 24) % 24;
+  const nightLen = 24 - dayLen;
+  const dayHourLen = dayLen/12, nightHourLen = nightLen/12;
+  const elapsed = (localHour - day.sunrise + 24) % 24;
+  const weekday = dateObj.getDay();
+  const startPlanetIdx = chaldeanOrder.indexOf(dayRulerByWeekday[weekday]);
+  let hnum;
+  if(elapsed < dayLen){ hnum = Math.floor(elapsed/dayHourLen) + 1; }
+  else{ hnum = 12 + Math.floor((elapsed-dayLen)/nightHourLen) + 1; }
+  hnum = Math.min(Math.max(hnum,1),24);
+  return chaldeanOrder[(startPlanetIdx + hnum - 1) % 7];
+}
+function getYaumiaLocation(){
+  const tz = parseFloat(document.getElementById('yTz').value || '5');
+  const cityIdx = yCitySel.value;
+  if(cities[cityIdx] && cities[cityIdx].lat !== null) return { lat: cities[cityIdx].lat, lon: cities[cityIdx].lon, tz };
+  const lat = parseFloat(document.getElementById('yLat').value);
+  const lon = parseFloat(document.getElementById('yLon').value);
+  if(isNaN(lat) || isNaN(lon)) return null;
+  return { lat, lon, tz };
+}
+
+function updateLiveSaatBanner(){
+  const banner = document.getElementById('liveSaatBanner');
+  if(!banner) return;
+  let loc = getYaumiaLocation();
+  if(!loc){
+    const fallback = cities.find(c => c.lat !== null) || cities[0];
+    if(fallback && fallback.lat !== null) loc = { lat: fallback.lat, lon: fallback.lon, tz: parseFloat(document.getElementById('yTz').value || '5') };
+  }
+  if(!loc){ banner.textContent = 'ساعت معلوم کرنے کے لیے شہر منتخب کریں۔'; return; }
+
+  const now = new Date();
+  const day = sunriseSunset(now.getFullYear(), now.getMonth()+1, now.getDate(), loc.lat, loc.lon, loc.tz);
+  const dayLen = (day.sunset - day.sunrise + 24) % 24;
+  const nightLen = 24 - dayLen;
+  const dayHourLen = dayLen/12, nightHourLen = nightLen/12;
+  const localHour = (now.getUTCHours() + now.getUTCMinutes()/60 + now.getUTCSeconds()/3600 + loc.tz + 24) % 24;
+  const elapsed = (localHour - day.sunrise + 24) % 24;
+  const weekday = now.getDay();
+  const startPlanetIdx = chaldeanOrder.indexOf(dayRulerByWeekday[weekday]);
+
+  let hnum, hourStartOffset, hourLen;
+  if(elapsed < dayLen){
+    hnum = Math.floor(elapsed/dayHourLen) + 1;
+    hourStartOffset = (hnum-1)*dayHourLen; hourLen = dayHourLen;
+  } else {
+    const nIdx = Math.floor((elapsed-dayLen)/nightHourLen) + 1;
+    hnum = 12 + nIdx;
+    hourStartOffset = dayLen + (nIdx-1)*nightHourLen; hourLen = nightHourLen;
+  }
+  hnum = Math.min(Math.max(hnum,1),24);
+  const curPlanet = chaldeanOrder[(startPlanetIdx + hnum - 1) % 7];
+  const nextPlanet = chaldeanOrder[(startPlanetIdx + hnum) % 7];
+  const remainingHours = (hourStartOffset + hourLen) - elapsed;
+  const remainingMin = Math.max(0, Math.round(remainingHours*60));
+
+  banner.innerHTML = `ابھی ساعتِ <b>${curPlanet}</b> چل رہی ہے — تقریباً <b>${remainingMin}</b> منٹ باقی ہیں۔ اس کے بعد ساعتِ <b>${nextPlanet}</b> شروع ہوگی۔`;
+}
+updateLiveSaatBanner();
+setInterval(updateLiveSaatBanner, 60000);
+yCitySel.addEventListener('change', updateLiveSaatBanner);
+document.getElementById('yTz').addEventListener('change', updateLiveSaatBanner);
+const mtBurjSel = document.getElementById('mtBurj');
+mtBurjSel.innerHTML = burjNames.map((b,i) => `<option value="${i}" ${b==='عقرب'?'selected':''}>${b}</option>`).join('');
+document.getElementById('mtBtn').addEventListener('click', () => {
+  const targetIdx = parseInt(mtBurjSel.value, 10);
+  const targetName = burjNames[targetIdx];
+  const { entryDate, exitDate, currentlyIn } = findMoonTransit(targetIdx);
+  const nowMoon = moonBurjAt(new Date());
+  const loc = getYaumiaLocation();
+  let html = `<div style="margin-bottom:6px;"><b>اس وقت چاند:</b> ${nowMoon.burj} میں ہے۔</div>`;
+  if(currentlyIn){
+    html += `<div><b>چاند ابھی برج ${targetName} میں موجود ہے۔</b></div>`;
+    html += `<div>داخلہ: ${fmtDateTime(entryDate)}${(loc && entryDate) ? ' — ساعتِ ' + saatAtMoment(entryDate, loc.lat, loc.lon, loc.tz) : ''}</div>`;
+    html += `<div>اخراج (اگلی راس میں منتقلی): ${fmtDateTime(exitDate)}${(loc && exitDate) ? ' — ساعتِ ' + saatAtMoment(exitDate, loc.lat, loc.lon, loc.tz) : ''}</div>`;
+  } else {
+    html += `<div>برج ${targetName} میں اگلا داخلہ: <b>${fmtDateTime(entryDate)}</b>${(loc && entryDate) ? ' — ساعتِ ' + saatAtMoment(entryDate, loc.lat, loc.lon, loc.tz) : ''}</div>`;
+    html += `<div>اس برج سے اخراج: ${fmtDateTime(exitDate)}${(loc && exitDate) ? ' — ساعتِ ' + saatAtMoment(exitDate, loc.lat, loc.lon, loc.tz) : ''}</div>`;
+  }
+  if(entryDate && exitDate){
+    const durMs = exitDate.getTime() - entryDate.getTime();
+    const durDays = Math.floor(durMs/(24*3600*1000));
+    const durHours = Math.round((durMs%(24*3600*1000))/(3600*1000));
+    html += `<div style="margin-top:6px;"><b>مجموعی دورانیہ:</b> تقریباً ${durDays} دن ${durHours} گھنٹے۔</div>`;
+  }
+  if(!loc){
+    html += `<div class="note" style="margin-top:8px;">ساعت معلوم کرنے کے لیے اوپر شہر یا مقام درج کریں۔</div>`;
+  }
+  document.getElementById('mtResult').innerHTML = html;
+});
+
+/* ================= TASLEES/TARBI/QIRAN SEARCH (سعد/نحس تعلقات تلاش) ================= */
+const aspectPlanetList = ['شمس','قمر','عطارد','زہرہ','مریخ','مشتری','زحل','راس','ذنب','یورینس','نیپچون','پلوٹو'];
+const aspectNames = {0:'قِران (اقتران)', 60:'تسدیس', 90:'تربیع', 120:'تثلیث', 180:'مقابلہ'};
+function longitudeOf(name, T){
+  switch(name){
+    case 'شمس': return geocentricLongitude('Sun', T);
+    case 'قمر': return moonLongitude(T);
+    case 'عطارد': return geocentricLongitude('Mercury', T);
+    case 'زہرہ': return geocentricLongitude('Venus', T);
+    case 'مریخ': return geocentricLongitude('Mars', T);
+    case 'مشتری': return geocentricLongitude('Jupiter', T);
+    case 'زحل': return geocentricLongitude('Saturn', T);
+    case 'یورینس': return geocentricLongitude('Uranus', T);
+    case 'نیپچون': return geocentricLongitude('Neptune', T);
+    case 'پلوٹو': return geocentricLongitude('Pluto', T);
+    case 'راس': return meanLunarNodeLongitude(T);
+    case 'ذنب': return norm360(meanLunarNodeLongitude(T) + 180);
+  }
+  return 0;
+}
+function angularSep(lonA, lonB){
+  let d = Math.abs(norm360(lonA - lonB));
+  if(d > 180) d = 360 - d;
+  return d;
+}
+function aspectDiffAtJD(jd, pA, pB, target){
+  const T = (jd - 2451545.0)/36525.0;
+  return angularSep(longitudeOf(pA, T), longitudeOf(pB, T)) - target;
+}
+function findNextAspect(pA, pB, target){
+  const jd0 = dateToJD(new Date());
+  const stepDays = 0.25; // 6-hour resolution
+  let prevJD = jd0;
+  let prevVal = aspectDiffAtJD(prevJD, pA, pB, target);
+  const maxSteps = Math.ceil(500/stepDays); // ~500-day horizon
+  for(let i=1; i<=maxSteps; i++){
+    const curJD = jd0 + i*stepDays;
+    const curVal = aspectDiffAtJD(curJD, pA, pB, target);
+    if((prevVal <= 0 && curVal > 0) || (prevVal >= 0 && curVal < 0)){
+      let lo = prevJD, hi = curJD;
+      for(let k=0; k<30; k++){
+        const mid = (lo+hi)/2;
+        const midVal = aspectDiffAtJD(mid, pA, pB, target);
+        if((midVal <= 0) === (aspectDiffAtJD(lo, pA, pB, target) <= 0)) lo = mid; else hi = mid;
+      }
+      return new Date(((lo+hi)/2 - 2440587.5)*86400000);
+    }
+    prevJD = curJD; prevVal = curVal;
+  }
+  return null;
+}
+const tqSelA = document.getElementById('tqPlanetA');
+const tqSelB = document.getElementById('tqPlanetB');
+tqSelA.innerHTML = aspectPlanetList.map((p,i) => `<option value="${p}" ${i===5?'selected':''}>${p}</option>`).join('');
+tqSelB.innerHTML = aspectPlanetList.map((p,i) => `<option value="${p}" ${i===6?'selected':''}>${p}</option>`).join('');
+document.getElementById('tqBtn').addEventListener('click', () => {
+  const pA = tqSelA.value, pB = tqSelB.value;
+  const target = parseInt(document.getElementById('tqAspect').value, 10);
+  const box = document.getElementById('tqResult');
+  box.style.display = 'block';
+  if(pA === pB){ box.innerHTML = 'دونوں الگ الگ سیارے منتخب کریں۔'; return; }
+  box.innerHTML = 'تلاش کی جا رہی ہے…';
+  setTimeout(() => {
+    const resultDate = findNextAspect(pA, pB, target);
+    const loc = getYaumiaLocation();
+    if(!resultDate){
+      box.innerHTML = 'اگلے 500 دنوں میں یہ تعلق نہیں مل سکا۔';
+      return;
+    }
+    let html = `<div><b>${pA}</b> اور <b>${pB}</b> کے مابین <b>${aspectNames[target]} (${target}°)</b> کا تعلق اگلی بار بنے گا:</div>`;
+    html += `<div style="margin-top:6px;font-size:1.05rem;"><b>${fmtDateTime(resultDate)}</b></div>`;
+    if(loc){
+      html += `<div style="margin-top:4px;">اس وقت ساعتِ ${saatAtMoment(resultDate, loc.lat, loc.lon, loc.tz)} چل رہی ہوگی۔</div>`;
+    }
+    box.innerHTML = html;
+  }, 30);
+});
+
+
+/* ================= MANSOOBAT-E-KAWAKIB (general, traditional) ================= */
+const kawakibMansubData = [
+  {k:'شمس', good:'عزت، وقار، اقتدار، حکومت سے قربت، خودی، صحت و توانائی، والد سے تعلق مضبوط۔', bad:'تکبر، انا پرستی، حاکموں سے تصادم، آنکھ اور دل سے متعلق کمزوری، والد سے فاصلہ۔'},
+  {k:'قمر', good:'ذہنی سکون، عوام میں مقبولیت، ماں سے محبت، سفر میں برکت، تخیل اور فنکارانہ صلاحیت۔', bad:'ذہنی پریشانی، وہم، تلون مزاجی، سفر میں رکاوٹ، ماں سے دوری، نیند کی خرابی۔'},
+  {k:'عطارد', good:'ذہانت، تحریر و تقریر میں مہارت، تجارت میں کامیابی، دوستوں سے تعلقات اچھے۔', bad:'جھوٹ، فریب، وہم، بے چینی، تعلیم میں رکاوٹ، اعصابی کمزوری۔'},
+  {k:'زہرہ', good:'محبت، خوشگوار ازدواجی زندگی، فن اور خوبصورتی سے لگاؤ، مال و آسائش۔', bad:'عشق میں ناکامی، بدکاری کا رجحان، فضول خرچی، ازدواجی زندگی میں تلخی۔'},
+  {k:'مریخ', good:'ہمت، بہادری، جوش، مقابلے میں کامیابی، جائیداد میں اضافہ۔', bad:'غصہ، جھگڑا، حادثات، زخم و چوٹ، خون کی خرابی، بھائیوں سے ناچاقی۔'},
+  {k:'مشتری', good:'علم، حکمت، دولت، اولاد کی خوشی، مذہبی رجحان، عزت اور بلند مرتبہ۔', bad:'فضول خرچی، قرض، جھوٹی شان، جگر اور خون سے متعلق کمزوری۔'},
+  {k:'زحل', good:'محنت، صبر، استقامت، دیرپا کامیابی، انصاف پسندی۔', bad:'غم، تاخیر، رکاوٹ، تنہائی، ہڈیوں اور جوڑوں کی کمزوری، والدین سے دوری۔'},
+  {k:'یورینس', good:'انوکھی ذہانت، ایجادات، آزاد خیالی، غیر معمولی کامیابی۔', bad:'اچانک تبدیلیاں، بغاوت، بے چینی، حادثات، غیر متوقع نقصان۔'},
+  {k:'نیپچون', good:'روحانیت، تخیل، فنون لطیفہ میں مہارت، خواب اور الہام۔', bad:'دھوکہ، وہم، نشہ کی طرف رجحان، غیر واضح خوف، فریب۔'},
+  {k:'پلوٹو', good:'گہری تبدیلی، اندرونی طاقت، تحقیق میں کامیابی۔', bad:'ضد، تباہی و بربادی کا رجحان، پوشیدہ دشمنی، جنونیت۔'},
+  {k:'راس', good:'اچانک ترقی، غیر معمولی کامیابی، بلند خواہشات کی تکمیل، نئے اور غیر روایتی راستوں سے فائدہ۔', bad:'بے چینی، وہم و گمان، غیر یقینی صورتحال، فریب، اچانک نقصان، ذہنی الجھن اور بے قابو خواہشات۔'},
+  {k:'ذنب', good:'روحانی ترقی، تصوف اور باطنی علوم میں رسائی، دنیاوی الجھنوں سے آزادی، اندرونی سکون۔', bad:'لاتعلقی، بے مقصدیت کا احساس، صحت میں پراسرار یا مبہم مسائل، تعلقات میں دوری اور تنہائی۔'}
+];
+document.getElementById('kawakibMansubTable').innerHTML =
+  '<thead><tr><th>کوکب</th><th>بصورتِ سعد (اچھی حالت)</th><th>بصورتِ نحس (بری حالت)</th></tr></thead><tbody>' +
+  kawakibMansubData.map(r => `<tr><td class="day-name">${r.k}</td><td class="small-txt">${r.good}</td><td class="small-txt">${r.bad}</td></tr>`).join('') +
+  '</tbody>';
+
+/* ================= ASAR-UL-BUYUT (planet in house — general principles) ================= */
+const asarBuyutData = {
+  'شمس': ['خودی، شخصیت اور صحت پر روشنی، رہنمائی کی صلاحیت۔','مال و دولت کے حصول میں مدد، خرچ میں کھلا ہاتھ۔','بھائیوں سے تعلق، ہمت اور مختصر سفر۔','گھر اور والدین سے تعلق، جائیداد۔','اولاد اور تخلیقی صلاحیت، خوشی۔','ملازمت اور صحت کے معاملات میں سرگرمی۔','ازدواجی زندگی میں حاکمانہ رویہ۔','وراثت اور پوشیدہ امور سے دلچسپی۔','سفر، اعلیٰ تعلیم اور مذہبی رجحان۔','عزت، مرتبہ اور کیریئر میں بلندی۔','دوستوں اور امیدوں کا حصول۔','پوشیدہ اخراجات اور تنہائی کا رجحان۔'],
+  'قمر': ['جذباتی شخصیت، عوامی مقبولیت۔','مالی معاملات میں اتار چڑھاؤ۔','بھائی بہنوں سے جذباتی تعلق۔','ماں اور گھر سے گہرا لگاؤ۔','اولاد سے محبت، تخیل۔','صحت میں نازک پہلو، جذباتی دباؤ۔','ازدواجی زندگی میں جذباتی وابستگی۔','خوف اور نفسیاتی الجھنیں۔','سفر کا شوق، مذہبی رجحان۔','عوام میں شہرت، ماں سے متعلق کیریئر۔','دوستوں سے جذباتی قربت۔','تنہائی میں سکون کی تلاش۔'],
+  'عطارد': ['ذہانت، بات چیت میں مہارت۔','تجارت اور حساب کتاب میں مہارت۔','بہن بھائیوں سے علمی تبادلہ، مختصر سفر۔','گھر میں علمی ماحول۔','اولاد ذہین ہوں، تخلیقی تحریر۔','تفصیلی کام، صحت میں اعصابی پہلو۔','ازدواجی زندگی میں مکالمہ اہم۔','تحقیق اور پوشیدہ علوم سے دلچسپی۔','اعلیٰ تعلیم، تحریر و تصنیف۔','کیریئر میں تحریر، تجارت یا ابلاغ کا میدان۔','دوستوں سے علمی گفتگو۔','پوشیدہ منصوبہ بندی۔'],
+  'زہرہ': ['خوش اخلاقی، حسن اور نرمی۔','مال و دولت، آسائش کی چیزیں۔','بہن بھائیوں سے محبت۔','گھر میں خوبصورتی اور سکون۔','عشق، اولاد کی خوشی، فنون سے لگاؤ۔','ملازمت میں نرمی، صحت اچھی رہے۔','خوشگوار ازدواجی زندگی، محبت کی شادی۔','وراثت میں فائدہ۔','سفر میں آسائش، فنونِ لطیفہ کی تعلیم۔','کیریئر میں فن یا خوبصورتی سے متعلق میدان۔','دوستوں سے محبت بھرے تعلقات۔','پوشیدہ عشق یا رومانوی معاملات۔'],
+  'مریخ': ['بہادری، جوش، لیکن غصہ بھی۔','مالی معاملات میں جلد بازی، تنازعہ۔','بھائیوں سے رقابت یا تعاون۔','گھر میں تناؤ، جائیداد کے جھگڑے۔','اولاد کے معاملے میں مشکلات، جوش۔','حادثات اور صحت میں چوٹ کا امکان۔','ازدواجی زندگی میں تناؤ یا جذباتی شدت۔','حادثاتی امور، وراثت میں جھگڑا۔','سفر میں خطرہ، مذہبی جوش۔','کیریئر میں مقابلہ آرائی، عسکری یا تکنیکی میدان۔','دوستوں سے اختلاف کا امکان۔','پوشیدہ دشمنی۔'],
+  'مشتری': ['علم، حکمت، عزت والی شخصیت۔','دولت میں اضافہ، فیاضی۔','بھائیوں سے تعاون، مذہبی سفر۔','گھر میں برکت، خوشحالی۔','اولاد کی خوشی، تعلیم میں کامیابی۔','ملازمت میں ترقی، صحت بہتر۔','خوشگوار اور بابرکت ازدواجی زندگی۔','وراثت میں فائدہ۔','اعلیٰ تعلیم، مذہبی رجحان، بیرونی سفر۔','عزت، بلند مرتبہ، کیریئر میں کامیابی۔','دوستوں سے فائدہ، امیدوں کا حصول۔','خیرات اور روحانی رجحان۔'],
+  'زحل': ['سنجیدہ شخصیت، محنتی مگر تاخیر کا سامنا۔','مالی معاملات میں تاخیر یا کفایت شعاری۔','بھائیوں سے فاصلہ۔','گھر میں ذمہ داریوں کا بوجھ۔','اولاد میں تاخیر یا ذمہ داری۔','دائمی بیماری یا ملازمت میں محنت۔','ازدواجی زندگی میں تاخیر یا سنجیدگی۔','طویل بیماری یا وراثت میں تاخیر۔','سفر میں رکاوٹ، سخت مذہبی نظم۔','کیریئر میں دیر سے مگر پائیدار کامیابی۔','دوستوں کی کمی، پرانے تعلقات۔','تنہائی، پوشیدہ غم۔'],
+  'راس': ['غیر معمولی خواہشات، بے چینی۔','اچانک مالی فائدہ یا نقصان۔','بھائیوں سے غیر متوقع معاملات۔','گھر میں بے چینی۔','اولاد کے معاملے میں غیر یقینی۔','پیچیدہ بیماری کی تشخیص میں دیر۔','ازدواجی زندگی میں غیر متوقع موڑ۔','پراسرار امور سے دلچسپی۔','بیرونِ ملک سفر یا اجنبی ثقافت سے تعلق۔','غیر روایتی کیریئر، اچانک شہرت۔','غیر متوقع دوستی۔','پوشیدہ خوف۔'],
+  'ذنب': ['روحانی رجحان، دنیاوی امور سے لاتعلقی۔','مالی معاملات میں لاپرواہی۔','بھائیوں سے لاتعلقی۔','گھر سے دوری کا احساس۔','اولاد کے معاملے میں روحانی رجحان۔','پراسرار یا مشکل تشخیص والی بیماری۔','ازدواجی زندگی میں لاتعلقی۔','غیبی علوم سے دلچسپی۔','روحانی سفر، تصوف کی طرف رجحان۔','دنیاوی عزت سے بےرغبتی۔','دوستوں سے لاتعلقی۔','گوشہ نشینی، روحانی تنہائی۔']
+};
+const asarKeypad = document.getElementById('asarKeypad');
+Object.keys(asarBuyutData).forEach((p,i) => {
+  const b = document.createElement('button');
+  b.type='button'; b.className='letter-btn'; b.style.fontSize='0.8rem'; b.textContent = p;
+  b.addEventListener('click', () => renderAsarBuyut(p, b));
+  asarKeypad.appendChild(b);
+  if(i===0) b.classList.add('active');
+});
+function renderAsarBuyut(planet, btn){
+  document.querySelectorAll('#asarKeypad .letter-btn').forEach(x=>x.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const rows = asarBuyutData[planet];
+  document.getElementById('asarBuyutTable').innerHTML =
+    '<thead><tr><th>گھر</th><th>' + planet + ' کا عمومی اثر</th></tr></thead><tbody>' +
+    rows.map((txt,idx) => `<tr><td class="day-name">گھر ${idx+1}</td><td class="small-txt">${txt}</td></tr>`).join('') +
+    '</tbody>';
+}
+renderAsarBuyut('شمس', null);
+
+
+/* ================= BOOK SCAN GALLERIES (reference photos) ================= */
+
+/* ================= SHARAF (EXALTATION) DETAIL TABLE ================= */
+const sharafDetailData = [
+  {p:'شمس', sign:'حمل', deg:'19', note:'سب سے زیادہ قوت اسی درجے پر ہوتی ہے — سالانہ چکر میں یہ نکتہ مختصر عرصے کے لیے آتا ہے۔ روایتی طور پر عزت، اقتدار اور کامیابی کے کاموں کے لیے موزوں وقت مانا جاتا ہے۔'},
+  {p:'قمر', sign:'ثور', deg:'3', note:'ماہانہ چکر میں قمر تیزی سے حرکت کرتا ہے، اس لیے یہ نکتہ ہر ماہ صرف تھوڑے وقت کے لیے آتا ہے۔ سکون، برکت اور نیک کاموں کے لیے سازگار مانا جاتا ہے۔'},
+  {p:'عطارد', sign:'سنبلہ', deg:'15', note:'عطارد تیز رفتار سیارہ ہے، سال میں کئی بار مختصر وقفوں کے لیے اپنے شرف کے قریب آتا ہے۔ فہم، تعلیم اور تحریر سے متعلق امور کے لیے موزوں۔'},
+  {p:'زہرہ', sign:'حوت', deg:'27', note:'روایتی متن کے مطابق سال میں ایک بار تقریباً چوبیس دن تک زہرہ اس درجے کے آس پاس رہتا ہے۔ محبت، مصالحت اور خوشگوار معاملات کے لیے سازگار وقت۔'},
+  {p:'مریخ', sign:'جدی', deg:'28', note:'تقریباً ڈیڑھ برس کے دورانیے میں مریخ اس نکتے کے قریب پینتیس دن کے لگ بھگ رہتا ہے۔ ہمت، مقابلے اور تیز فیصلوں کے لیے قوی وقت۔'},
+  {p:'مشتری', sign:'سرطان', deg:'15', note:'بارہ برس کے مدار میں مشتری تقریباً ایک سال تک اپنے شرف کے قریب رہتا ہے۔ علم، برکت اور خوش حالی کے کاموں کے لیے بہترین وقت مانا جاتا ہے۔'},
+  {p:'زحل', sign:'میزان', deg:'21', note:'زحل ہر برج میں تقریباً ڈھائی برس رہتا ہے، اسی عرصے میں اپنے شرف کے مقام سے گزرتا ہے۔ صبر، استقامت اور دیرپا بنیاد والے کاموں کے لیے موزوں مانا جاتا ہے۔'}
+];
+document.getElementById('sharafTable').innerHTML =
+  '<thead><tr><th>سیارہ</th><th>برجِ شرف</th><th>درجہ</th><th>تفصیل</th></tr></thead><tbody>' +
+  sharafDetailData.map(r => `<tr><td class="day-name">${r.p}</td><td>${r.sign}</td><td>${r.deg}°</td><td class="small-txt">${r.note}</td></tr>`).join('') +
+  '</tbody>';
+
+
+/* ================= TALISMAN / WAFQ (ported from separate abjad app) ================= */
+const talAbjadGroups = [
+  {letters:["آ","ا"], val:1},
+  {letters:["ب","پ"], val:2},
+  {letters:["ج","چ"], val:3},
+  {letters:["د","ڈ"], val:4},
+  {letters:["ہ","ھ","ۃ"], val:5},
+  {letters:["و"], val:6},
+  {letters:["ز"], val:7},
+  {letters:["ح"], val:8},
+  {letters:["ط"], val:9},
+  {letters:["ئ","ی","ي"], val:10},
+  {letters:["ک","گ"], val:20},
+  {letters:["ل"], val:30},
+  {letters:["م"], val:40},
+  {letters:["ن","ں"], val:50},
+  {letters:["س"], val:60},
+  {letters:["ع"], val:70},
+  {letters:["ف"], val:80},
+  {letters:["ص"], val:90},
+  {letters:["ق"], val:100},
+  {letters:["ر","ڑ"], val:200},
+  {letters:["ش"], val:300},
+  {letters:["ت","ٹ"], val:400},
+  {letters:["ث"], val:500},
+  {letters:["خ"], val:600},
+  {letters:["ذ"], val:700},
+  {letters:["ض"], val:800},
+  {letters:["ظ"], val:900},
+  {letters:["غ"], val:1000},
+  {letters:["ء"], val:1}
+];
+const talLetterValue = {};
+talAbjadGroups.forEach(g => g.letters.forEach(l => talLetterValue[l] = g.val));
+
+function talBuildRefTable(){
+  const t = document.getElementById('talRefTable');
+  let html = '<thead><tr><th>حروف</th><th>عدد</th><th>حروف</th><th>عدد</th></tr></thead><tbody>';
+  for(let i=0;i<talAbjadGroups.length;i+=2){
+    const a = talAbjadGroups[i], b = talAbjadGroups[i+1];
+    html += '<tr>';
+    html += `<td class="day-name">${a.letters.join(' ')}</td><td>${a.val}</td>`;
+    if(b){ html += `<td class="day-name">${b.letters.join(' ')}</td><td>${b.val}</td>`; }
+    else { html += '<td></td><td></td>'; }
+    html += '</tr>';
+  }
+  html += '</tbody>';
+  t.innerHTML = html;
+}
+talBuildRefTable();
+
+let talLastAbjadTotal = null;
+document.getElementById('talAbjadCalcBtn').addEventListener('click', () => {
+  const text = normalizeUrdu(document.getElementById('talAbjadInput').value.trim());
+  const breakdown = document.getElementById('talAbjadBreakdown');
+  const wordTotalsEl = document.getElementById('talWordTotals');
+  breakdown.innerHTML = '';
+  wordTotalsEl.innerHTML = '';
+
+  const words = text.split(/\s+/).filter(w => w.length > 0);
+  let grandTotal = 0, anyAtAll = false;
+  const wordTotals = [];
+
+  words.forEach(word => {
+    let wordTotal = 0, any = false;
+    for(const ch of word){
+      const v = talLetterValue[ch];
+      if(v !== undefined){
+        wordTotal += v; any = true; anyAtAll = true;
+        const chip = document.createElement('div');
+        chip.className = 'tal-chip';
+        chip.innerHTML = `${ch}<small>${v}</small>`;
+        breakdown.appendChild(chip);
+      }
+    }
+    if(any){
+      wordTotals.push({ word, total: wordTotal });
+      grandTotal += wordTotal;
+    }
+    // small visual gap between words in the letter breakdown
+    if(any && word !== words[words.length-1]){
+      const gap = document.createElement('div');
+      gap.style.cssText = 'flex-basis:100%;height:0;';
+      breakdown.appendChild(gap);
+    }
+  });
+
+  const box = document.getElementById('talAbjadTotalBox');
+  if(anyAtAll){
+    if(wordTotals.length > 1){
+      wordTotalsEl.innerHTML = wordTotals.map(w =>
+        `<div class="tal-total-box" style="margin-top:8px;padding:8px;"><span class="num" style="font-size:1.4rem;">${w.total}</span><span class="label">${w.word}</span></div>`
+      ).join('');
+      document.getElementById('talAbjadTotal').textContent = grandTotal;
+      document.getElementById('talAbjadTotalLabel').textContent = `مجموعی اعداد (${wordTotals.map(w=>w.word).join(' + ')})`;
+    } else {
+      document.getElementById('talAbjadTotal').textContent = grandTotal;
+      document.getElementById('talAbjadTotalLabel').textContent = 'مجموعی عدد (ابجدی قدر)';
+    }
+    box.style.display = 'block';
+    talLastAbjadTotal = grandTotal;
+  } else {
+    box.style.display = 'none';
+  }
+});
+document.getElementById('talAbjadClearBtn').addEventListener('click', () => {
+  document.getElementById('talAbjadInput').value = '';
+  document.getElementById('talAbjadBreakdown').innerHTML = '';
+  document.getElementById('talWordTotals').innerHTML = '';
+  document.getElementById('talAbjadTotalBox').style.display = 'none';
+});
+
+/* ---- Formula-based Wafq generator ---- */
+const talUrduDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+function talToUrduNum(n){ return String(n).split('').map(c => /[0-9]/.test(c) ? talUrduDigits[c] : c).join(''); }
+
+const talTemplates = {
+  3: { values: [6,1,8, 7,5,3, 2,9,4], constant: 15, size: 3 },
+  4: { values: [8,11,14,1, 13,2,7,12, 3,16,9,6, 10,5,4,15], constant: 34, size: 4 }
+};
+
+function talGenerateFormulaWafq(total, size){
+  const tpl = talTemplates[size];
+  const subtractConst = tpl.constant - size;
+  const diff = total - subtractConst;
+  const quotient = Math.floor(diff / size);
+  let remainder = diff - quotient * size;
+  if(remainder < 0){ remainder += size; }
+
+  const n = size * size;
+  const fillOrder = new Array(n);
+  for(let v = 1; v <= n; v++){ fillOrder[v-1] = tpl.values.indexOf(v); }
+
+  const skipStep = remainder > 0 ? size * (size - remainder) + 1 : null;
+
+  const values = new Array(n);
+  for(let k = 1; k <= n; k++){
+    let val = quotient + (k - 1);
+    if(skipStep && k >= skipStep) val += 1;
+    values[fillOrder[k-1]] = val;
+  }
+  const correctionCellIndex = skipStep ? fillOrder[skipStep - 1] : -1;
+  return { values, quotient, remainder, correctionCellIndex, subtractConst, diff, size, skipStep };
+}
+
+function talRenderFormulaWafq(){
+  const total = parseFloat(document.getElementById('talFormulaTotal').value);
+  const size = parseInt(document.getElementById('talFormulaSize').value);
+  const stepsBlock = document.getElementById('talFormulaSteps');
+  const stepsWrap = document.getElementById('talFormulaStepsWrap');
+  const gridWrap = document.getElementById('talFormulaGridWrap');
+
+  if(isNaN(total)){
+    stepsWrap.style.display = 'block';
+    stepsBlock.innerHTML = '<div class="step">براہِ کرم نام کا عدد درج کریں۔</div>';
+    gridWrap.style.display = 'none';
+    return;
+  }
+
+  const r = talGenerateFormulaWafq(total, size);
+
+  stepsWrap.style.display = 'block';
+  stepsBlock.innerHTML =
+    `<div class="step">نام کا عدد (Total) = ${total}</div>` +
+    `<div class="step">${total} − ${r.subtractConst} = ${r.diff}</div>` +
+    `<div class="step">${r.diff} ÷ ${size} = ${r.quotient}` + (r.remainder ? `  &nbsp; کسر = ${r.remainder}` : `  &nbsp; بلا کسر`) + `</div>` +
+    `<div class="step">خانہ نمبر 1 سے شروع ہو کر ${r.quotient} پے در پے چڑھتا ہے (${r.quotient}, ${r.quotient+1}, ${r.quotient+2} ...)</div>` +
+    (r.remainder
+      ? `<div class="step">کسر ${r.remainder} ہے → خانہ نمبر ${r.skipStep} پر ایک عدد چھوڑ کر (کسر کی وجہ سے) اگلا عدد لیا جائے گا، اور اس کے بعد کے تمام خانے بھی 1 زیادہ ہوں گے۔</div>`
+      : `<div class="step">بلا کسر</div>`);
+
+  gridWrap.style.display = 'block';
+  document.getElementById('talFormulaGridTitle').textContent =
+    (size === 3 ? 'مثلث آتشی چال' : 'مربع آتشی چال') + ` — ${size}×${size} — عدد ${total}`;
+
+  const gridEl = document.getElementById('talFormulaGrid');
+  gridEl.className = 'tal-grid g' + size;
+  gridEl.innerHTML = '';
+  r.values.forEach((v, i) => {
+    const c = document.createElement('div');
+    c.className = 'cell' + (i === r.correctionCellIndex ? ' const' : '');
+    c.textContent = talToUrduNum(v);
+    gridEl.appendChild(c);
+  });
+
+  const grid = [];
+  for(let row=0; row<size; row++) grid.push(r.values.slice(row*size, (row+1)*size));
+  const sums = [];
+  for(let row=0; row<size; row++) sums.push(grid[row].reduce((a,b)=>a+b,0));
+  for(let col=0; col<size; col++){ let s=0; for(let row=0; row<size; row++) s+=grid[row][col]; sums.push(s); }
+  let d1=0,d2=0;
+  for(let i=0;i<size;i++){ d1+=grid[i][i]; d2+=grid[i][size-1-i]; }
+  sums.push(d1,d2);
+  const target = sums[0];
+  const allEqual = sums.every(s => s === target);
+
+  const verdict = document.getElementById('talFormulaVerdict');
+  if(allEqual){
+    verdict.className = 'tal-verdict good';
+    verdict.textContent = `نقش مکمل ہوگیا — ہر قطار، کالم اور ترچھی لائن کا مجموعہ = ${target}`;
+  } else {
+    verdict.className = 'tal-verdict bad';
+    verdict.textContent = `توجہ: تصحیح کے بعد بھی کچھ لائنوں کا مجموعہ مختلف ہے (${[...new Set(sums)].join(', ')}) — براہِ کرم عدد دوبارہ چیک کریں۔`;
+  }
+}
+document.getElementById('talFormulaGenBtn').addEventListener('click', talRenderFormulaWafq);
+document.getElementById('talFormulaUseAbjadBtn').addEventListener('click', () => {
+  if(talLastAbjadTotal !== null){ document.getElementById('talFormulaTotal').value = talLastAbjadTotal; }
+});
+
+/* ---- Fill-your-own grid ---- */
+const talFillGrid = document.getElementById('talFillGrid');
+function talBuildFillGrid(size){
+  talFillGrid.className = 'tal-grid g' + size;
+  talFillGrid.innerHTML = '';
+  for(let i=0;i<size*size;i++){
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    const inp = document.createElement('input');
+    inp.type = 'number';
+    cell.appendChild(inp);
+    talFillGrid.appendChild(cell);
+  }
+  document.getElementById('talFillVerdict').style.display = 'none';
+}
+talBuildFillGrid(3);
+document.getElementById('talFillSize').addEventListener('change', (e) => talBuildFillGrid(parseInt(e.target.value)));
+document.getElementById('talFillClearBtn').addEventListener('click', () => {
+  talFillGrid.querySelectorAll('input').forEach(i => i.value = '');
+  document.getElementById('talFillVerdict').style.display = 'none';});
+
+document.getElementById('talFillCheckBtn').addEventListener('click', () => {
+  const size = parseInt(document.getElementById('talFillSize').value);
+  const inputs = [...talFillGrid.querySelectorAll('input')];
+  const values = inputs.map(i => parseFloat(i.value));
+  const verdict = document.getElementById('talFillVerdict');
+  verdict.style.display = 'block';
+  if(values.some(v => isNaN(v))){
+    verdict.className = 'tal-verdict bad';
+    verdict.textContent = 'براہِ کرم تمام خانے پُر کریں۔';
+    return;
+  }
+  const grid = [];
+  for(let r=0;r<size;r++) grid.push(values.slice(r*size,(r+1)*size));
+  const sums = [];
+  for(let r=0;r<size;r++) sums.push(grid[r].reduce((a,b)=>a+b,0));
+  for(let c=0;c<size;c++){ let s=0; for(let r=0;r<size;r++) s+=grid[r][c]; sums.push(s); }
+  let d1=0,d2=0;
+  for(let i=0;i<size;i++){ d1 += grid[i][i]; d2 += grid[i][size-1-i]; }
+  sums.push(d1, d2);
+  const target = sums[0];
+  const allEqual = sums.every(s => s === target);
+  if(allEqual){
+    verdict.className = 'tal-verdict good';
+    verdict.textContent = `مبارک ہو! یہ درست نقش ہے — عدد ثابتہ (Magic constant) = ${target}`;
+  } else {
+    verdict.className = 'tal-verdict bad';
+    verdict.textContent = `یہ نقش مکمل نہیں ہے — ہر قطار، کالم اور ترچھی لائن کا مجموعہ برابر نہیں۔ (ملی ہوئی رقمیں: ${[...new Set(sums)].join(', ')})`;
+  }
+});
+
+/* ---- Basic calculator ---- */
+let talSelectedOp = '+';
+document.querySelectorAll('.tal-op-row button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.tal-op-row button').forEach(x => x.classList.remove('selected'));
+    b.classList.add('selected');
+    talSelectedOp = b.dataset.op;
+  });
+});
+document.querySelector('.tal-op-row button[data-op="+"]').classList.add('selected');
+
+function talSchoolDivision(a, b){
+  a = Math.trunc(Math.abs(a)); b = Math.trunc(Math.abs(b));
+  if(b === 0) return null;
+  const dividend = String(a);
+  const n = dividend.length;
+  let current = 0;
+  let quotientDigits = [];
+  const rows = []; // {type:'value'|'subtract'|'rule', startCol, endCol, text, coloredLast}
+  let shownWork = false;
+
+  for(let i=0;i<n;i++){
+    current = current*10 + Number(dividend[i]);
+    const q = Math.floor(current/b);
+    quotientDigits.push(q);
+    const used = q*b;
+    if(used === 0) continue; // silent: nothing to show, digit absorbed for next iteration
+
+    const curStr = String(current);
+    const valueStart = i - curStr.length + 1;
+    if(shownWork){
+      // needs its own line since it isn't simply the original dividend's digits
+      rows.push({type:'value', text: curStr, startCol: valueStart, endCol: i, coloredLast: true});
+    }
+    const usedStr = String(used);
+    const usedStart = i - usedStr.length + 1; // same span as the number itself; minus sign drawn via CSS, not its own column
+    rows.push({type:'subtract', text: usedStr, startCol: usedStart, endCol: i});
+    rows.push({type:'rule', startCol: Math.min(valueStart, usedStart), endCol: i});
+
+    current -= used;
+    shownWork = true;
+  }
+  // final leftover remainder line
+  if(shownWork){
+    const remStr = String(current);
+    rows.push({type:'value', text: remStr, startCol: n - remStr.length, endCol: n-1, coloredLast:false});
+  }
+
+  let leading = true;
+  const quotientStr = quotientDigits.map((d,i) => {
+    if(d !== 0) leading = false;
+    if(leading && i !== quotientDigits.length-1) return null;
+    return d;
+  });
+  return { dividend, divisor:b, quotientDigits: quotientStr, rows, remainder: current, n };
+}
+
+const TAL_COLW = 32; // px per digit column
+function talRenderSchoolDivision(a, b){
+  const d = talSchoolDivision(a, b);
+  if(!d) return '<div class="step">صفر پر تقسیم ممکن نہیں</div>';
+  const n = d.n;
+  const colStyle = `grid-template-columns:repeat(${n},${TAL_COLW}px);`;
+
+  let html = '<div class="tal-lbox">';
+
+  // quotient row (spacer matches divisor column width)
+  html += `<div class="tal-lrow"><div class="tal-lspacer"></div><div class="tal-lgrid" style="${colStyle}">`;
+  d.quotientDigits.forEach((q,i) => {
+    html += `<div class="tal-lcell tal-lq tal-lsingle" style="grid-column:${i+1}/${i+2};">${q === null ? '' : q}</div>`;
+  });
+  html += `</div></div>`;
+
+  // bracket row: divisor + dividend
+  html += `<div class="tal-lrow"><div class="tal-lspacer tal-ldivisor">${d.divisor}</div><div class="tal-lbracket"><div class="tal-lgrid" style="${colStyle}">`;
+  d.dividend.split('').forEach((digit,i) => {
+    html += `<div class="tal-lcell tal-lsingle" style="grid-column:${i+1}/${i+2};">${digit}</div>`;
+  });
+  html += `</div></div></div>`;
+
+  // work rows
+  html += `<div class="tal-lrow"><div class="tal-lspacer"></div><div class="tal-lgrid" style="${colStyle}">`;
+  d.rows.forEach(r => {
+    const cs = Math.max(0, r.startCol);
+    const gc = `grid-column:${cs+1}/${r.endCol+2};`;
+    if(r.type === 'rule'){
+      html += `<div class="tal-lrule" style="${gc}"></div>`;
+    } else if(r.type === 'subtract'){
+      html += `<div class="tal-lcell tal-lsub" style="${gc}">${r.text}</div>`;
+    } else {
+      if(r.coloredLast){
+        const chars = r.text.split('');
+        const lastCh = chars.pop();
+        html += `<div class="tal-lcell" style="${gc}">${chars.join('')}<span class="tal-lbrought">${lastCh}</span></div>`;
+      } else {
+        html += `<div class="tal-lcell" style="${gc}">${r.text}</div>`;
+      }
+    }
+  });
+  html += `</div></div>`;
+
+  html += '</div>';
+  const remLabel = d.remainder ? `کسر = ${d.remainder}` : 'بلا کسر';
+  html += `<div class="step" style="margin-top:8px;">حاصلِ تقسیم = ${parseInt(d.quotientDigits.filter(x=>x!==null).join(''),10)} &nbsp; | &nbsp; ${remLabel}</div>`;
+  return html;
+}
+document.getElementById('talCalcRunBtn').addEventListener('click', () => {
+  const a = parseFloat(document.getElementById('talNumA').value);
+  const b = parseFloat(document.getElementById('talNumB').value);
+  const block = document.getElementById('talCalcResultBlock');
+  const methodDiv = document.getElementById('talDivisionMethod');
+  methodDiv.innerHTML = '';
+  block.style.display = 'block';
+  if(isNaN(a) || isNaN(b)){
+    document.getElementById('talCalcResult').textContent = '—';
+    document.getElementById('talCalcResultLabel').textContent = 'دونوں عدد درج کریں';
+    return;
+  }
+  let result, label;
+  if(talSelectedOp === '+'){ result = a+b; label = `${a} + ${b} = ${result}`; }
+  else if(talSelectedOp === '-'){ result = a-b; label = `${a} − ${b} = ${result}`; }
+  else if(talSelectedOp === '*'){ result = a*b; label = `${a} × ${b} = ${result}`; }
+  else if(talSelectedOp === '/'){
+    if(b === 0){ result = '—'; label = 'صفر پر تقسیم ممکن نہیں'; }
+    else if(Number.isInteger(a) && Number.isInteger(b)){
+      const negResult = (a < 0) ^ (b < 0);
+      const dSchool = talSchoolDivision(a, b);
+      const qNum = parseInt(dSchool.quotientDigits.filter(x=>x!==null).join(''), 10);
+      const q = negResult ? -qNum : qNum;
+      result = q + (dSchool.remainder ? ` (کسر ${dSchool.remainder})` : '');
+      label = `${a} ÷ ${b}`;
+      methodDiv.innerHTML = '<h3 class="sec-title">تقسیم کا مکمل طریقہ (بچوں کا طریقہ)</h3>' + talRenderSchoolDivision(a, b);
+    } else {
+      result = (a/b).toFixed(4);
+      label = `${a} ÷ ${b}`;
+    }
+  }
+  if(typeof result === 'number' && Number.isNaN(result)){ result = '—'; label = 'حساب مکمل نہیں ہو سکا'; }
+  document.getElementById('talCalcResult').textContent = result;
+  document.getElementById('talCalcResultLabel').textContent = label;
+});
+document.getElementById('talCalcClearBtn').addEventListener('click', () => {
+  document.getElementById('talNumA').value = '';
+  document.getElementById('talNumB').value = '';
+  document.getElementById('talCalcResultBlock').style.display = 'none';
+});
+
+/* ================= Tabs / Home Menu ================= */
+function openMenu(){ document.querySelector('nav.tabs').classList.add('open'); }
+function closeMenu(){ document.querySelector('nav.tabs').classList.remove('open'); }
+function goHome(){
+  const homeBtn = document.querySelector('.tab-btn[data-tab="paidaishi"]');
+  if(homeBtn) homeBtn.click();
+  closeMenu();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    document.getElementById('currentPanelLabel').textContent = btn.textContent;
+    closeMenu();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
