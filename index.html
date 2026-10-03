@@ -17,7 +17,8 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.s
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style>
+
+  <style>
   :root{
     --paper:#153020;--paper-light:#E0F5F0;--ink:#1E3B2C;--ink-soft:#3E6B54;
     --maroon:#4169E1;--gold:#3C7A4C;--gold-light:#7AB98A;--gold-dark:#1F4A2E;--line:#9FCBA8;
@@ -145,7 +146,30 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.s
   .tal-fill-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
   .tal-fill-controls select{font-family:'Lora',serif;padding:8px 10px;border:1px solid var(--ink);background:#E0F5F0;color:var(--ink);}
   details.scan-details{margin-top:14px;border-top:1px dashed var(--peach-light);padding-top:10px;}
-  details.scan-details summary{cursor:pointer;color:var(--peach-light);font-weight:700;padding:4px 0;}
+  /* ===== Rani Fix: Font Bold aur Bada ===== */
+body{ font-weight:700 !important; font-size:15px !important; }
+p, span, div, li, td, th, h1, h2, h3, h4, h5 { font-weight:700 !important; }
+.sec-title{ font-weight:800 !important; font-size:1.15rem !important; }
+.note{ font-weight:700 !important; font-size:0.9rem !important; }
+table.days-table{ font-size:14px !important; }
+table.days-table th{ font-weight:800 !important; font-size:14px !important; padding:8px 6px !important; }
+table.days-table td{ font-weight:700 !important; font-size:14px !important; padding:8px 6px !important; }
+table.days-table td.day-name{ font-weight:800 !important; font-size:15px !important; }
+table.days-table td.small-txt{ font-weight:700 !important; font-size:13.5px !important; line-height:2 !important; }
+.field-row{ font-weight:700 !important; font-size:14px !important; }
+.field-row .f-value{ font-weight:800 !important; }
+.field-group .fg-item{ font-weight:700 !important; font-size:13.5px !important; }
+.sitara-block p{ font-weight:700 !important; font-size:14px !important; }
+.sitara-block h4{ font-weight:800 !important; font-size:1.2rem !important; }
+.profile-card .letter-title{ font-weight:800 !important; }
+.profile-card .value-line{ font-weight:700 !important; }
+button.action{ font-weight:800 !important; font-size:1.05rem !important; }
+.letter-btn{ font-weight:800 !important; font-size:1rem !important; }
+input, select{ font-weight:700 !important; font-size:1.05rem !important; }
+.tal-chip{ font-weight:800 !important; }
+.tal-total-box .label{ font-weight:700 !important; }
+.moakkil-name-out{ font-weight:800 !important; font-size:15px !important; }
+    details.scan-details summary{cursor:pointer;color:var(--peach-light);font-weight:700;padding:4px 0;}
   
   /* ===== Tilism Haroof-e-Sawamat ===== */
   #panel-tilism-sawamat{direction:rtl;font-family:'Noto Nastaliq Urdu','Noto Naskh Arabic',serif;}
